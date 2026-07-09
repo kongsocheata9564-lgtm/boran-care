@@ -1,1 +1,5 @@
-<template>helloo</template>
+<template>
+    <div>
+        <Product/>
+    </div>
+</template>
