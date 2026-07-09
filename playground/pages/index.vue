@@ -1,1 +1,6 @@
-<template>helloo</template>
+
+<template>
+    <div>
+        <StoryAbout />
+    </div>
+</template>
