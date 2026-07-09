@@ -1,1 +1,8 @@
-<template>helloo</template>
+<template>
+  <div>
+    <HeroSection />
+    <ContactUs />
+
+  </div>
+
+</template>
