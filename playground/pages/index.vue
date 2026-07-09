@@ -3,9 +3,9 @@
     <HeroSection />
     <ContactUs />
 
-  </div>
 
-    <div>
         <Product/>
+
+        <StoryAbout />
     </div>
 </template>
