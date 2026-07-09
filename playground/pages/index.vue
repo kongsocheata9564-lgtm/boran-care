@@ -5,4 +5,7 @@
 
   </div>
 
+    <div>
+        <Product/>
+    </div>
 </template>
