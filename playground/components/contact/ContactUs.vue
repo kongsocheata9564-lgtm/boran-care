@@ -1,161 +1,181 @@
 <template>
-  <section class="contact-us">
-    <h2 class="contact-us__title">CONTACT US</h2>
+  <section class="bg-[#F8F3E7] py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-center text-4xl sm:text-5xl font-extrabold tracking-widest text-[#B8863B] mb-12">
+        CONTACT US
+      </h1>
 
-    <div class="contact-us__grid">
-      <!-- Form -->
-      <form class="contact-us__form contact-us__card" @submit.prevent="handleSubmit">
-        <div class="contact-us__row">
-          <div class="field">
-            <label for="first_name">First Name</label>
-            <input
-              id="first_name"
-              v-model="form.first_name"
-              type="text"
-              name="first_name"
-              placeholder="Your first name"
-              required
-            />
-          </div>
-          <div class="field">
-            <label for="last_name">Last Name</label>
-            <input
-              id="last_name"
-              v-model="form.last_name"
-              type="text"
-              name="last_name"
-              placeholder="Your last name"
-              required
-            />
-          </div>
-        </div>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
+        <!-- Form Card -->
+        <div class="bg-white rounded-[18px] shadow-[0_12px_32px_rgba(74,50,34,0.08)] border border-[#f0e6d2] px-6 py-7 sm:px-9 sm:py-10">
+          <form @submit.prevent="handleSubmit">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="block text-[0.82rem] font-semibold text-[#145a3a] mb-2">First Name</label>
+                <input
+                  v-model="form.firstName"
+                  type="text"
+                  required
+                  placeholder="Your first name"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                />
+              </div>
+              <div>
+                <label class="block text-[0.82rem] font-semibold text-[#145a3a] mb-2">Last Name</label>
+                <input
+                  v-model="form.lastName"
+                  type="text"
+                  required
+                  placeholder="Your last name"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                />
+              </div>
+            </div>
 
-        <div class="contact-us__row">
-          <div class="field">
-            <label for="email">Email Address</label>
-            <input
-              id="email"
-              v-model="form.email"
-              type="email"
-              name="email"
-              placeholder="you@gmail.com"
-              required
-            />
-          </div>
-          <div class="field">
-            <label for="phone">Phone Number</label>
-            <input
-              id="phone"
-              v-model="form.phone"
-              type="tel"
-              name="phone"
-              placeholder="+855 XX XXX XXXX"
-            />
-          </div>
-        </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="block text-[0.82rem] font-semibold text-[#145a3a] mb-2">Email Address</label>
+                <input
+                  v-model="form.email"
+                  type="email"
+                  required
+                  placeholder="you@gmail.com"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                />
+              </div>
+              <div>
+                <label class="block text-[0.82rem] font-semibold text-[#145a3a] mb-2">Phone Number</label>
+                <input
+                  v-model="form.phone"
+                  type="tel"
+                  placeholder="+855 XX XXX XXXX"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                />
+              </div>
+            </div>
 
-        <div class="field">
-          <label for="topic">Topic</label>
-          <select id="topic" v-model="form.topic" name="topic" required>
-            <option value="" disabled>Select your topic</option>
-            <option value="Product Inquiry">Product Inquiry</option>
-            <option value="OEM/ODM Partnership">OEM/ODM Partnership</option>
-            <option value="Support">Support</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+            <div class="mb-5">
+              <label class="block text-[0.82rem] font-semibold text-[#145a3a] mb-2">Topic</label>
+              <select
+                v-model="form.topic"
+                required
+                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+              >
+                <option value="" disabled selected>Select your topic</option>
+                <option value="Product Inquiry">Product Inquiry</option>
+                <option value="OEM/ODM Partnership">OEM/ODM Partnership</option>
+                <option value="Support">Support</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea
-            id="message"
-            v-model="form.message"
-            name="message"
-            rows="5"
-            placeholder="Write your message here"
-            required
-          />
-        </div>
+            <div class="mb-7">
+              <label class="block text-[0.82rem] font-semibold text-[#145a3a] mb-2">Message</label>
+              <textarea
+                v-model="form.message"
+                required
+                rows="5"
+                placeholder="Write your message here"
+                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] resize-y leading-relaxed transition-all duration-200"
+              ></textarea>
+            </div>
 
-        <button type="submit" class="contact-us__submit" :disabled="status === 'sending'">
-          <span>{{ status === 'sending' ? 'Sending...' : 'Send Message' }}</span>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-            <path d="M3 12l18-8-8 18-2-8-8-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-          </svg>
-        </button>
-
-        <p v-if="status === 'success'" class="contact-us__note contact-us__note--ok">
-          Thanks! Your message has been sent.
-        </p>
-        <p v-if="status === 'error'" class="contact-us__note contact-us__note--error">
-          Something went wrong. Please try again.
-        </p>
-      </form>
-
-      <!-- Info panel -->
-      <div class="contact-us__info">
-        <h3>Get in Touch</h3>
-        <p>
-          We would love to hear from you. Whether you have questions, need
-          support, or want to learn more about our products, our team is
-          here to help.
-        </p>
-
-        <ul class="contact-us__list">
-          <li>
-            <span class="icon">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
-                <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.7 21 3 13.3 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+            <button
+              type="submit"
+              :disabled="status === 'sending'"
+              class="inline-flex items-center gap-2.5 rounded-full bg-[#b8863e] px-8 py-3.5 text-white text-[0.95rem] font-semibold shadow-[0_8px_18px_rgba(184,134,62,0.3)] hover:bg-[#9c6f2e] hover:shadow-[0_12px_28px_rgba(156,111,46,0.4)] hover:-translate-y-0.5 hover:scale-[1.05] active:translate-y-0 active:scale-[0.98] active:shadow-[0_4px_12px_rgba(156,111,46,0.3)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-[0_8px_18px_rgba(184,134,62,0.3)]"
+            >
+              {{ status === 'sending' ? 'Sending...' : 'Send Message' }}
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" class="transition-transform duration-200">
+                <path d="M3 12l18-8-8 18-2-8-8-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
               </svg>
-            </span>
-            <span>+855 12 973 500</span>
-          </li>
-          <li>
-            <span class="icon">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4" />
-                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4" />
-                <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7.1" stroke="currentColor" stroke-width="1.4" />
-              </svg>
-            </span>
-            <span>ceo@borancare.com</span>
-          </li>
-          <li>
-            <span class="icon icon--location">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
-                <path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
-                <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.4" />
-              </svg>
-            </span>
-            <span>Pongro Village, Sangkat Kampong Svay, Sarei Saophoan City, Banteay Meanchey Province</span>
-          </li>
-        </ul>
+            </button>
+
+            <p v-if="status === 'success'" class="mt-3 text-[0.85rem] text-[#2f6a3f]">
+              Thanks! Your message has been sent — we'll get back to you soon.
+            </p>
+            <p v-if="status === 'error'" class="mt-3 text-[0.85rem] text-[#a33a2a]">
+              Something went wrong. Please try again in a moment.
+            </p>
+          </form>
+        </div>
+
+        <!-- Get in Touch -->
+        <div class="pt-2 lg:pt-4">
+          <h2 class="text-2xl font-bold text-[#B8863B] mb-3">Get in Touch</h2>
+          <p class="text-[#1F3A2E]/80 text-sm leading-relaxed mb-8">
+            We would love to hear from you. Whether you have questions, need support,
+            or want to learn more about our products, our team is here to help.
+          </p>
+
+          <div class="divide-y divide-gray-200 border-b border-gray-200">
+            <div class="flex items-center gap-4 py-4 group cursor-pointer">
+              <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#F2E4C4] flex items-center justify-center group-hover:bg-[#B8863B] group-hover:shadow-lg group-hover:shadow-[#B8863B]/25 group-hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#B8863B] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/>
+                </svg>
+              </span>
+              <a href="tel:+85512973500" class="text-[#1F3A2E] font-medium group-hover:text-[#B8863B] transition-colors duration-300">+855 12 973 500</a>
+            </div>
+
+            <div class="flex items-center gap-4 py-4 group cursor-pointer">
+              <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#F2E4C4] flex items-center justify-center group-hover:bg-[#B8863B] group-hover:shadow-lg group-hover:shadow-[#B8863B]/25 group-hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#B8863B] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 6-10 7L2 6"/>
+                </svg>
+              </span>
+              <a href="mailto:ceo@borancare.com" class="text-[#1F3A2E] font-medium group-hover:text-[#B8863B] transition-colors duration-300">ceo@borancare.com</a>
+            </div>
+
+            <div class="flex items-start gap-4 py-4 group cursor-pointer">
+              <span class="flex-shrink-0 w-10 h-10 rounded-full bg-[#F2E4C4] flex items-center justify-center group-hover:bg-[#B8863B] group-hover:shadow-lg group-hover:shadow-[#B8863B]/25 group-hover:scale-110 transition-all duration-300 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#B8863B] group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </span>
+              <p class="text-[#1F3A2E] font-medium group-hover:text-[#B8863B] transition-colors duration-300 leading-snug">
+                Pongro Village, Sangkat Kampong Svay, Serei Saophoan City,
+                Banteay Meanchey Province
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Map -->
-    <div class="contact-us__map">
-      <iframe
-        title="Office location"
-        src="https://www.google.com/maps?q=BORAN+CARE+ASIA+Co.,+LTD.,+Serei+Saophoan,+Cambodia&z=16&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      />
-      <div class="contact-us__map-card">
-        <span class="icon">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
-            <path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
-            <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.4" />
-          </svg>
-        </span>
-        <div>
-          <strong>Our Office</strong>
-          <p>Pongro Village, Sarei Saophoan City,<br />Banteay Meanchey</p>
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=BORAN+CARE+ASIA+Co.,+LTD.,+Serei+Saophoan,+Cambodia"
-            target="_blank"
-            rel="noopener"
-          >Get Directions →</a>
+      <!-- Map -->
+      <div class="relative mt-10 rounded-2xl overflow-hidden shadow-sm h-[420px]">
+        <iframe
+          class="w-full h-full border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Boran+Care+Asia+Co.,+Ltd,+Serei+Saophoan,+Cambodia&output=embed"
+        ></iframe>
+
+        <div class="absolute left-4 bottom-4 bg-white rounded-xl shadow-lg p-4 max-w-[260px]">
+          <div class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#F2E4C4] flex items-center justify-center mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#B8863B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <div>
+              <h3 class="font-semibold text-[#1F3A2E] mb-1">Our Office</h3>
+              <p class="text-sm text-[#1F3A2E]/80 leading-snug mb-2">
+                Pongro Village, Sarei Saophoan City, Banteay Meanchey
+              </p>
+              <a
+                :href="directionsUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm font-semibold text-[#B8863B] hover:underline"
+              >
+                Get Directions →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -165,335 +185,51 @@
 <script setup>
 const WEB3FORMS_ACCESS_KEY = 'e5d9ca62-cfb2-4eed-b7c8-ddfd488f3e7d'
 
+const directionsUrl =
+  'https://www.google.com/maps/dir/?api=1&destination=' +
+  encodeURIComponent(
+    'Boran Care Asia Co., Ltd, Pongro Village, Sangkat Kampong Svay, Serei Saophoan City, Banteay Meanchey Province, Cambodia'
+  )
+
 const form = reactive({
-  first_name: '',
-  last_name: '',
+  firstName: '',
+  lastName: '',
   email: '',
   phone: '',
   topic: '',
-  message: ''
+  message: '',
 })
 
-const status = ref('idle') // idle | sending | success | error
+const status = ref('idle')
 
 async function handleSubmit() {
   status.value = 'sending'
-
   try {
     const res = await $fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: {
         access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `New Contact Form Submission - ${form.topic || 'General'}`,
-        from_name: `${form.first_name} ${form.last_name}`.trim(),
-        name: `${form.first_name} ${form.last_name}`.trim(),
+        name: `${form.firstName} ${form.lastName}`.trim(),
         email: form.email,
         phone: form.phone,
-        topic: form.topic,
-        message: form.message
-      }
+        subject: form.topic ? `New Contact Topic: ${form.topic}` : 'New Contact Message',
+        message: form.message,
+      },
     })
 
-    if (res.success) {
+    if (res?.success) {
       status.value = 'success'
-      Object.assign(form, {
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone: '',
-        topic: '',
-        message: ''
-      })
+      form.firstName = ''
+      form.lastName = ''
+      form.email = ''
+      form.phone = ''
+      form.topic = ''
+      form.message = ''
     } else {
       status.value = 'error'
     }
-  } catch (err) {
+  } catch (e) {
     status.value = 'error'
   }
 }
 </script>
-
-<style scoped>
-.contact-us {
-  --gold: #b8863e;
-  --gold-dark: #9c6f2e;
-  --brown-dark: #4a3222;
-  --brown-text: #33241a;
-  --cream: #fbf6ec;
-  --green: #145a3a;
-  --green-dark: #0e4029;
-  background: var(--cream);
-  padding: 4rem 1.5rem;
-  font-family: 'Inter', sans-serif;
-  color: var(--brown-text);
-}
-
-.contact-us__title {
-  text-align: center;
-  color: var(--gold);
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  font-size: 2.6rem;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-.contact-us__grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  align-items: start;
-}
-
-@media (max-width: 860px) {
-  .contact-us__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.contact-us__card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 2.25rem;
-  box-shadow: 0 12px 32px rgba(74, 50, 34, 0.08);
-  border: 1px solid #f0e6d2;
-}
-
-
-.contact-us__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-@media (max-width: 500px) {
-  .contact-us__row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.25rem;
-}
-
-.field label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  margin-bottom: 0.45rem;
-  color: var(--green);
-}
-
-.field input,
-.field select,
-.field textarea {
-  border: 1px solid #e8ddc7;
-  background: #fbf9f4;
-  border-radius: 10px;
-  padding: 0.75rem 0.95rem;
-  font-size: 0.9rem;
-  color: var(--brown-text);
-  font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.field input::placeholder,
-.field textarea::placeholder {
-  color: #b6a88e;
-}
-
-.field input:hover,
-.field select:hover,
-.field textarea:hover {
-  border-color: #ddccaa;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--gold);
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(184, 134, 62, 0.15);
-}
-
-.field textarea {
-  resize: vertical;
-  line-height: 1.5;
-}
-
-.contact-us__submit {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  background: var(--gold);
-  color: #fff;
-  border: none;
-  padding: 0.85rem 2rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(184, 134, 62, 0.3);
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
-}
-
-.contact-us__submit svg {
-  transition: transform 0.2s ease;
-}
-
-.contact-us__submit:hover:not(:disabled) {
-  background: var(--gold-dark);
-  box-shadow: 0 8px 18px rgba(156, 111, 46, 0.35);
-  transform: translateY(-1px);
-}
-
-.contact-us__submit:hover:not(:disabled) svg {
-  transform: translate(2px, -2px);
-}
-
-.contact-us__submit:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.contact-us__submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.contact-us__note {
-  margin-top: 0.75rem;
-  font-size: 0.85rem;
-}
-
-.contact-us__note--ok {
-  color: #2f6a3f;
-}
-
-.contact-us__note--error {
-  color: #a33a2a;
-}
-
-.contact-us__info h3 {
-  color: var(--gold);
-  font-weight: 800;
-  font-size: 1.35rem;
-  margin-bottom: 0.85rem;
-}
-
-.contact-us__info p {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin-bottom: 1.75rem;
-  color: var(--green);
-}
-
-.contact-us__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
-}
-
-.contact-us__list li {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid #ecdfc4;
-  font-size: 0.9rem;
-}
-
-.contact-us__list li:last-child {
-  border-bottom: none;
-  align-items: flex-start;
-}
-
-.icon {
-  flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #f1e4cc;
-  color: var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.icon:hover {
-  background: var(--gold);
-  color: #fff;
-  transform: scale(1.08);
-}
-
-.contact-us__map {
-  position: relative;
-  max-width: 1100px;
-  margin: 3.5rem auto 0;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 16px 36px rgba(74, 50, 34, 0.1);
-}
-
-.contact-us__map iframe {
-  width: 100%;
-  height: 340px;
-  border: 0;
-  display: block;
-}
-
-.contact-us__map-card {
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1.5rem;
-  width: 260px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 1.25rem;
-  display: flex;
-  gap: 0.75rem;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-}
-
-.contact-us__map-card strong {
-  display: block;
-  margin-bottom: 0.3rem;
-  color: var(--brown-dark);
-}
-
-.contact-us__map-card p {
-  font-size: 0.82rem;
-  line-height: 1.4;
-  margin: 0 0 0.6rem;
-  color: #6b5c4a;
-}
-
-.contact-us__map-card a {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--gold);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-us__map-card a:hover {
-  color: var(--green-dark);
-}
-
-@media (max-width: 640px) {
-  .contact-us__map-card {
-    position: static;
-    width: auto;
-    margin: 1rem;
-  }
-}
-</style>
