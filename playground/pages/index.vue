@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <HeroSection />
     <ContactUs />
@@ -9,3 +10,7 @@
         <OurProduct/>
     </div>
 </template>
+=======
+    
+</template>
+>>>>>>> feat/chhai
