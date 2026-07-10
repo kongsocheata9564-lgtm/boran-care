@@ -4,8 +4,8 @@
     <ContactUs />
 
 
-        <Product/>
 
         <StoryAbout />
+        <OurProduct/>
     </div>
 </template>

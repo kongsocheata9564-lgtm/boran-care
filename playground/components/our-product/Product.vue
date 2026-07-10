@@ -11,8 +11,8 @@
           :key="product"
           @click="toggleCategory(product)"
           :class="[
-            'basis-[calc(40%-0.25rem)] sm:basis-[calc(33.333%-0.5rem)] md:basis-auto md:min-w-[140px] px-3 py-2 sm:px-5 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap',
-            activeCategory === product? 'bg-[#8C7654] text-white border-[#8C7654]' : 'bg-white text-[#8C7654] border-[#E5E0D8] hover:bg-[#FAF9F6]'
+            'basis-[calc(40%-0.25rem)] sm:basis-[calc(33.333%-0.5rem)] md:basis-auto md:min-w-[140px] px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap',
+            activeCategory === product? 'bg-[#8C7654] text-white border-[#8C7654]' : 'bg-white text-[#8C7654] border-[#9F7A45] hover:bg-[#FAF9F6]'
           ]"
         >
           {{ product}}
@@ -102,9 +102,7 @@
                 {{ selectedProduct.name }}
               </h2>
 
-              <p class="text-[#145A3A] font-semibold text-base mb-4">{{ selectedProduct.price }}</p>
-
-              <p class="text-[#145A3A] text-sm">
+              <p class="text-[#145A3A] pt-4 text-sm">
                 {{ selectedProduct.description }}
               </p>
             </div>
@@ -179,7 +177,6 @@ const products = ref([
     name: 'Natural Mini Soap 100g',
     category: 'FACIAL CARE',
     type: 'Handmade Soap',
-    price: '$6.00',
     image: imgSoap1,
     images: [imgSoap1, imgSpray2, imgSoap1, imgSoap1],
     description: 'Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.',
@@ -191,17 +188,18 @@ const products = ref([
   },
   {
     id: 1,
-    name: 'Herbal Hair Serum',
+    name: 'SILK SOAP 100g',
     category: 'FACIAL CARE',
-    type: 'Serum',
-    price: 'Ask in store',
+    type: 'Handmade Soap',
     image: imgSoap2,
     images: [imgSoap2, imgSoap2, imgSoap2, imgSoap2],
-    description: 'One of Boran Care’s original natural haircare products, developed alongside their hair treatment cream and conditioner using locally sourced herbal ingredients.',
-    benefits: ['Nourishes hair with herbal extracts', '100% natural formulation', 'No synthetic fragrance additives', 'Handmade in small batches'],
+    description: "Silk Soap is a handcrafted facial cleansing bar formulated with naturally derived ingredients to gently cleanse, refresh, and soften the skin. Its rich, creamy lather removes impurities while helping maintain the skin's natural moisture, leaving your complexion feeling clean, smooth, and revitalized after every wash.",
+    benefits: ['Gentle cleansing for daily facial care.', 'Helps remove dirt, oil, and impurities.', 'Leaves skin feeling soft and smooth.', 'Maintains the skins natural moisture balance.' ,'Suitable for most skin types.', 'Made with naturally derived ingredients.'],
     ingredients: [
-      { name: 'Herbal extract blend', desc: 'traditional Cambodian botanicals' },
-      { name: 'Natural carrier oils', desc: 'strengthens and conditions hair' }
+      { name: 'Natural Soap Base', desc: 'Gently cleanses the skin without harsh detergents.' },
+      { name: 'Silk Extract', desc: 'Helps keep the skin feeling soft and smooth.' },
+      { name: 'Natural Plant Oils', desc: 'Nourish and moisturize the skin.' },
+      { name: 'Glycerin', desc: 'Helps retain moisture and prevent dryness.' }
     ]
   },
   
@@ -210,7 +208,6 @@ const products = ref([
     name: 'Natural Shampoo 300ml',
     category: 'HAIR CARE',
     type: 'Shampoo',
-    price: '$15.00',
     image: imgHair1,
     images: [imgHair3, imgHair2, imgHair3, imgHair2],
     description: 'A natural shampoo formulated by Boran Care’s in-house team under certified organic skincare formulator Nhim Sorida, part of the hair care line transitioning under the brand’s SOURINA formulations.',
@@ -226,7 +223,6 @@ const products = ref([
     name: 'Natural Conditioner 300ml',
     category: 'PERSONAL CARE',
     type: 'Conditioner',
-    price: '$15.00',
     image: imgScrub1,
     images: [b16, imgScrub1, b15 , imgScrub1],
     description: ' A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.',
@@ -243,7 +239,6 @@ const products = ref([
     name: 'Natural Conditioner 300ml',
     category: 'PERSONAL CARE',
     type: 'Conditioner',
-    price: '$15.00',
     image: imgScrub2,
     images: [b16, imgScrub2, b15 , imgScrub2],
     description: ' A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.',
@@ -261,7 +256,6 @@ const products = ref([
     name: 'SOURINA Silk Face Serum',
     category: 'MAKEUP',
     type: 'Serum',
-    price: 'Ask in store',
     image: imgMake1,
     images: [imgMake1, imgMake1, imgMake1, imgMake1],
     description: 'Part of SOURINA, Boran Care’s dedicated silk-cocoon skincare range built around Silk Sericin — a locally sourced ingredient the brand has invested years of research into processing for skincare use.',
@@ -277,7 +271,6 @@ const products = ref([
     name: 'Natural Mosquito Repellent 120ml',
     category: 'SKIN CARE',
     type: 'Repellent Spray',
-    price: '$6.00',
     image: imgSpray2,
     images: [imgSpray2, imgSpray2, imgSpray2, imgSpray2],
     description: 'A natural insect-repellent spray formulated with essential oils instead of synthetic chemicals, part of Boran Care’s range of everyday natural household and personal care products.',
@@ -303,7 +296,6 @@ function openProduct(product) {
   selectedProduct.value = {
     ...product,
     type: product.type || 'Natural Care',
-    price: product.price || 'Ask in store',
     description: product.description || `Premium selection for your ${product.category.toLowerCase()} routine.`,
     benefits: product.benefits || ['Nourishes deep layers', 'Protects skin barrier', '100% Organic ingredients'],
     ingredients: product.ingredients || [{ name: 'Natural Extracts', desc: 'Sourced organically' }],
