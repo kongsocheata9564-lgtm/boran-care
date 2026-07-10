@@ -37,6 +37,7 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.0",
     "@nuxt/kit": "^4.4.8",
     "lucide-vue-next": "^1.0.0"
   },
