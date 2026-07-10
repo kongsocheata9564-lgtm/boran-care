@@ -1,8 +1,9 @@
 <template>
-  <div class="min-h-screen bg-[#FAF9F6] text-[#2C3E2B] font-sans p-4 sm:p-6">
+  
+  <div class="min-h-screen bg-[#FAF9F6] text-[#2C3E2B] font-['Inter'] p-4 sm:p-6">
     <main class="max-w-7xl mx-auto py-8 sm:py-12">
       <!-- Section Title -->
-      <h2 class="text-center font-serif text-3xl sm:text-4xl text-[#9F7A45] uppercase tracking-widest mb-8">Our Products</h2>
+      <h2 class="text-center font-['Oswald'] text-3xl sm:text-4xl text-[#9F7A45] uppercase tracking-widest mb-8">Our Products</h2>
 
       <!-- Category Filter Tabs -->
       <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-12 w-full max-w-3xl mx-auto">
@@ -29,7 +30,7 @@
         >
           <!-- Product Image Container -->
           <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
-            <span class="absolute top-4 left-4 bg-[#9F7A45]/70 backdrop-blur-sm text-white text-[10px] font-bold uppercase px-2.5 py-1 rounded shadow-sm z-10 tracking-wider min-w-[100px] text-center inline-block">
+            <span class="absolute top-4 left-4 bg-[#9F7A45]/70 backdrop-blur-sm text-white text-[12px] font-bold uppercase px-2.5 py-1 rounded shadow-sm z-10 tracking-wider min-w-[100px] text-center inline-block">
               {{ product.category }}
             </span>
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -98,7 +99,7 @@
                 </span>
               </div>
 
-              <h2 class="font-serif text-2xl sm:text-3xl text-[#9F7A45] font-medium tracking-wide mb-2">
+              <h2 class="font-['Oswald'] text-2xl sm:text-3xl text-[#9F7A45] font-medium tracking-wide mb-2">
                 {{ selectedProduct.name }}
               </h2>
 
@@ -112,7 +113,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 pt-8 border-t border-[#EBE7E0]">
             <!-- Left Grid Pane: Benefits -->
             <div>
-              <h3 class="font-serif text-lg text-[#9F7A45] font-medium mb-4">Benefits</h3>
+              <h3 class="font-['Oswald'] text-lg text-[#9F7A45] font-medium mb-4">Benefits</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(benefit, i) in selectedProduct.benefits"
@@ -127,7 +128,7 @@
 
             <!-- Right Grid Pane: Ingredients Profiles -->
             <div>
-              <h3 class="font-serif text-lg text-[#9F7A45] font-medium mb-4">Key Ingredients</h3>
+              <h3 class="font-['Oswald'] text-lg text-[#9F7A45] font-medium mb-4">Key Ingredients</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(ing, i) in selectedProduct.ingredients"
@@ -153,22 +154,29 @@ import { ref, computed } from 'vue'
 // 1. IMPORT ALL YOUR NEW PICTURES HERE:
 import imgSoap1 from '~/assets/images/b6.jpeg'
 import imgSoap2 from '~/assets/images/b18.jpeg'
-import imgSpray2 from '~/assets/images/b7.jpeg'
+import imgSink1 from '~/assets/images/b24.jpeg'
+import imgSink2 from '~/assets/images/b22.jpeg'
 import imgHair1 from '~/assets/images/b8.jpeg'
 import imgHair2 from '~/assets/images/b11.jpeg'
 import imgHair3 from '~/assets/images/b13.jpeg'
+import imgHair4 from '~/assets/images/b23.jpeg'
+import imgMake1 from '~/assets/images/b17.jpeg'
 import imgScrub1 from '~/assets/images/b14.jpeg'
 import imgScrub2 from '~/assets/images/b19.jpeg'
-import imgMake1 from '~/assets/images/b17.jpeg'
 import b15 from '~/assets/images/b15.jpeg'
 import b16 from '~/assets/images/16.jpeg'
+import b23 from '~/assets/images/b23.jpeg'
+
 
 const activeCategory = ref('')
 const isModalOpen = ref(false)
 const selectedProduct = ref(null)
 const activeImage = ref(null)
 
-const categories = ['FACIAL CARE', 'HAIR CARE', 'MAKEUP', 'PERSONAL CARE','SKIN CARE' ]
+// how many products to show by default, before a category is picked
+const DEFAULT_VISIBLE_COUNT = 5
+
+const categories = ['FACIAL CARE', 'HAIR CARE', 'SKIN CARE', 'MAKEUP', 'PERSONAL CARE' ]
 
 // 2. DATA PRODUCTS ARRAY
 const products = ref([
@@ -178,16 +186,93 @@ const products = ref([
     category: 'FACIAL CARE',
     type: 'Handmade Soap',
     image: imgSoap1,
-    images: [imgSoap1, imgSpray2, imgSoap1, imgSoap1],
+    images: [imgSoap1, imgSoap1, imgSoap1, imgSoap1],
     description: 'Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.',
-    benefits: ['100% natural ingredients', 'Free from harsh chemicals', 'Gently cleanses without stripping skin', 'Handcrafted in small batches'],
+    benefits: ['100% natural ingredients', 'Free from harsh chemicals', 'Suitable for everyday use', 'Handmade in Cambodia'],
     ingredients: [
       { name: 'Local botanical oils', desc: 'sustainably farmed by the community' },
       { name: 'Natural saponified base', desc: 'no synthetic detergents' }
     ]
   },
+  
+  
   {
-    id: 1,
+    id: 3,
+    name: 'Natural Shampoo 300ml',
+    category: 'HAIR CARE',
+    type: 'Shampoo',
+    image: imgHair1,
+    images: [imgHair3, imgHair4, imgHair3, imgHair2],
+    description: 'BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.',
+    benefits: ['Gently removes dirt and excess oil.', 'Leaves hair feeling soft and refreshed.', 'Suitable for daily hair care.', 'Made in Cambodia.'],
+    ingredients: [
+      { name: 'Natural plant extracts', desc: 'nourishes scalp and strands' },
+      { name: 'Silk-inspired formulation', desc: 'inspired by Boran Care’s silk sericin research' }
+    ]
+  },
+
+  {
+    id: 7,
+    name: 'Natural Mosquito Repellent 120ml',
+    category: 'SKIN CARE',
+    type: 'Repellent Spray',
+    image: imgSink1,
+    images: [imgSink2, imgSink2, imgSink2, imgSink1],
+    description: "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
+    benefits: ['Helps moisturize the skin.', 'Supports smoother-looking skin.', 'Lightweight texture.', 'Suitable for daily use.'],
+    ingredients: [
+      { name: 'Essential oil blend', desc: 'natural insect-deterring botanicals' },
+      { name: 'Aqueous base', desc: 'lightweight, fast-drying finish' }
+    ]
+  },
+
+
+  {
+    id: 6,
+    name: 'SOURINA Silk Face Serum',
+    category: 'MAKEUP',
+    type: 'Serum',
+    image: imgMake1,
+    images: [imgMake1, imgMake1, imgMake1, imgMake1],
+    description: 'BORAN CARE Lipstick delivers vibrant color with a smooth finish while helping keep lips comfortable throughout the day. The formula is designed for easy application and everyday wear',
+    benefits: ['Built around silk sericin extract', 'Lab-tested and formulated in Cambodia', 'Targets anti-aging and skin renewal', 'Backed by ITC lab quality testing'],
+    ingredients: [
+      { name: 'Vitamin E', desc: 'Helps keep lips soft and moisturized.' },
+      { name: 'Natural waxes', desc: 'Provide a smooth texture and comfortable application.' },
+      { name: 'Plant-based oils', desc: 'Help prevent lips from feeling dry.' }
+    ]
+  },
+
+
+  {
+    id: 5,
+    name: 'Natural Conditioner 300ml',
+    category: 'PERSONAL CARE',
+    type: 'Conditioner',
+    image: imgScrub2,
+    images: [b16, imgScrub2, b15 , imgScrub2],
+    description: ' BORAN CARE Coffee Lime Body Scrub combines natural coffee grounds with botanical ingredients to gently exfoliate dead skin cells and leave skin feeling smoother and refreshed after use.',
+    benefits: ['Gently exfoliates dead skin cells.', 'Leaves skin feeling soft', 'Refreshing coffee aroma', 'Suitable for regular body care'],
+    ingredients: [
+      { name: 'Ground Coffee', desc: 'natural exfoliant, stimulates blood flow' },
+      { name: 'Coconut Oil ', desc: 'deep moisture & skin softening' },
+      { name: 'Brown Sugar ', desc: 'gentle secondary exfoliant' },
+      { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
+    ]
+  },
+
+  
+
+ 
+
+
+
+
+
+
+
+  {
+    id: 2,
     name: 'SILK SOAP 100g',
     category: 'FACIAL CARE',
     type: 'Handmade Soap',
@@ -202,24 +287,9 @@ const products = ref([
       { name: 'Glycerin', desc: 'Helps retain moisture and prevent dryness.' }
     ]
   },
-  
-  {
-    id: 2,
-    name: 'Natural Shampoo 300ml',
-    category: 'HAIR CARE',
-    type: 'Shampoo',
-    image: imgHair1,
-    images: [imgHair3, imgHair2, imgHair3, imgHair2],
-    description: 'A natural shampoo formulated by Boran Care’s in-house team under certified organic skincare formulator Nhim Sorida, part of the hair care line transitioning under the brand’s SOURINA formulations.',
-    benefits: ['Naturally derived cleansing agents', 'Gentle on scalp and hair fibers', 'Free from harsh sulfates', 'Formulated and lab-tested'],
-    ingredients: [
-      { name: 'Natural plant extracts', desc: 'nourishes scalp and strands' },
-      { name: 'Silk-inspired formulation', desc: 'inspired by Boran Care’s silk sericin research' }
-    ]
-  },
 
-  {
-    id: 3,
+   {
+    id: 4,
     name: 'Natural Conditioner 300ml',
     category: 'PERSONAL CARE',
     type: 'Conditioner',
@@ -234,57 +304,13 @@ const products = ref([
       { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
     ]
   },
-  {
-    id: 3,
-    name: 'Natural Conditioner 300ml',
-    category: 'PERSONAL CARE',
-    type: 'Conditioner',
-    image: imgScrub2,
-    images: [b16, imgScrub2, b15 , imgScrub2],
-    description: ' A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.',
-    benefits: ['Exfoliates dead skin cells', 'Boosts circulation & reduces cellulite appearance', 'Deeply moisturizes & brightens skin', 'Leaves skin soft, smooth & glowing'],
-    ingredients: [
-      { name: 'Ground Coffee', desc: 'natural exfoliant, stimulates blood flow' },
-      { name: 'Coconut Oil ', desc: 'deep moisture & skin softening' },
-      { name: 'Brown Sugar ', desc: 'gentle secondary exfoliant' },
-      { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
-    ]
-  },
-
-  {
-    id: 4,
-    name: 'SOURINA Silk Face Serum',
-    category: 'MAKEUP',
-    type: 'Serum',
-    image: imgMake1,
-    images: [imgMake1, imgMake1, imgMake1, imgMake1],
-    description: 'Part of SOURINA, Boran Care’s dedicated silk-cocoon skincare range built around Silk Sericin — a locally sourced ingredient the brand has invested years of research into processing for skincare use.',
-    benefits: ['Built around silk sericin extract', 'Lab-tested and formulated in Cambodia', 'Targets anti-aging and skin renewal', 'Backed by ITC lab quality testing'],
-    ingredients: [
-      { name: 'Silk Sericin extract', desc: 'Boran Care’s signature natural active' },
-      { name: 'High-performance plant oils', desc: 'science-based botanical formulation' }
-    ]
-  },
-
-  {
-    id: 5,
-    name: 'Natural Mosquito Repellent 120ml',
-    category: 'SKIN CARE',
-    type: 'Repellent Spray',
-    image: imgSpray2,
-    images: [imgSpray2, imgSpray2, imgSpray2, imgSpray2],
-    description: 'A natural insect-repellent spray formulated with essential oils instead of synthetic chemicals, part of Boran Care’s range of everyday natural household and personal care products.',
-    benefits: ['Plant-based active ingredients', 'No harsh synthetic chemicals', 'Lightweight, non-greasy spray', 'Everyday outdoor protection'],
-    ingredients: [
-      { name: 'Essential oil blend', desc: 'natural insect-deterring botanicals' },
-      { name: 'Aqueous base', desc: 'lightweight, fast-drying finish' }
-    ]
-  },
   
 ])
 
+// Default view: only show the first N products.
+// Once a category is active, show ALL products in that category.
 const filteredProducts = computed(() => {
-  if (!activeCategory.value) return products.value
+  if (!activeCategory.value) return products.value.slice(0, DEFAULT_VISIBLE_COUNT)
   return products.value.filter(p => p.category === activeCategory.value)
 })
 
@@ -308,6 +334,8 @@ function openProduct(product) {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500&display=swap");
+
 .animate-fade-in {
   animation: fadeIn 0.25s ease-out forwards;
 }
