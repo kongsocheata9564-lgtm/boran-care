@@ -2,9 +2,11 @@
   <div>
     <HeroSection />
     <OurProduct/>
+    
     <StoryAbout />
     <ContactUs />
-    </div>
+
+   </div>
 </template>
     
 
