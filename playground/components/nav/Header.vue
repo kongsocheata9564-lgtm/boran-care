@@ -28,11 +28,11 @@ const products = [
 ];
 
 const abouts = [
-  { name: "Our History", link: "/Story" },
+  { name: "Our History", link: "/our-story" },
   { name: "Our Vision Mission & Core Value", link: "/vision-mission" },
-  { name: "Our Founder", link: "/our-founder" },
-  { name: "Our CSR", link: "/our-csr" },
-  { name: "Media", link: "/media" },
+  { name: "Our Founder", link: "/founder" },
+  { name: "Our CSR", link: "/csr" },
+  { name: "Our Media & Video", link: "/our-midea" },
 ];
 
 // Close dropdowns when clicking outside
@@ -181,7 +181,7 @@ onUnmounted(() => {
           </div>
 
             <NuxtLink
-               to="/contact"
+               to="/contact-us"
                class="relative inline-block text-white font-semibold uppercase
                      after:content-['']
                      after:absolute
