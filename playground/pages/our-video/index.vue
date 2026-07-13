@@ -95,7 +95,9 @@ const goMedia = () => {
           <!-- Play Icon -->
           
 
-          
+
+          <!-- Bottom Overlay -->
+          <div
             class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-4"
           >
 
