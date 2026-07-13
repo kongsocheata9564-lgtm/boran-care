@@ -3,7 +3,7 @@
   <div class="min-h-screen bg-[#FAF9F6] text-[#2C3E2B] font-['Inter'] p-4 sm:p-6">
     <main class="max-w-7xl mx-auto py-8 sm:py-12">
       <!-- Section Title -->
-      <h2 class="text-center font-['Oswald'] text-3xl sm:text-4xl text-[#9F7A45] uppercase tracking-widest mb-8">Our Products</h2>
+      <h2 class="text-center font-['Oswald'] text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-widest mb-8">Our Products</h2>
 
       <!-- Category Filter Tabs -->
       <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-12 w-full max-w-3xl mx-auto">
@@ -13,7 +13,7 @@
           @click="toggleCategory(product)"
           :class="[
             'basis-[calc(40%-0.25rem)] sm:basis-[calc(33.333%-0.5rem)] md:basis-auto md:min-w-[140px] px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap',
-            activeCategory === product? 'bg-[#8C7654] text-white border-[#8C7654]' : 'bg-white text-[#8C7654] border-[#9F7A45] hover:bg-[#FAF9F6]'
+            activeCategory === product? 'bg-[#AC8544] text-white border-[#AC8544]' : 'bg-white text-[#AC8544] border-[#AC8544] hover:bg-[#FAF9F6]'
           ]"
         >
           {{ product}}
@@ -30,7 +30,7 @@
         >
           <!-- Product Image Container -->
           <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
-            <span class="absolute top-4 left-4 bg-[#9F7A45]/70 backdrop-blur-sm text-white text-[12px] font-bold uppercase px-2.5 py-1 rounded shadow-sm z-10 tracking-wider min-w-[100px] text-center inline-block">
+            <span class="absolute top-4 left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-[15px] font-bold uppercase px-2.5 py-1.5 rounded shadow-sm z-10 tracking-wider min-w-[155px] text-center inline-block">
               {{ product.category }}
             </span>
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -94,12 +94,12 @@
             <!-- Right Side: Structured Specifications Content -->
             <div class="flex flex-col h-full justify-start pt-2">
               <div class="mb-3">
-                <span class="inline-block bg-[#8C7654] text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+                <span class="inline-block bg-[#AC8544] text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded">
                   {{ selectedProduct.type }}
                 </span>
               </div>
 
-              <h2 class="font-['Oswald'] text-2xl sm:text-3xl text-[#9F7A45] font-medium tracking-wide mb-2">
+              <h2 class="font-['Oswald'] text-2xl sm:text-3xl text-[#AC8544] font-medium tracking-wide mb-2">
                 {{ selectedProduct.name }}
               </h2>
 
@@ -113,7 +113,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 pt-8 border-t border-[#EBE7E0]">
             <!-- Left Grid Pane: Benefits -->
             <div>
-              <h3 class="font-['Oswald'] text-lg text-[#9F7A45] font-medium mb-4">Benefits</h3>
+              <h3 class="font-['Oswald'] text-lg text-[#AC8544] font-medium mb-4">Benefits</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(benefit, i) in selectedProduct.benefits"
@@ -128,7 +128,7 @@
 
             <!-- Right Grid Pane: Ingredients Profiles -->
             <div>
-              <h3 class="font-['Oswald'] text-lg text-[#9F7A45] font-medium mb-4">Key Ingredients</h3>
+              <h3 class="font-['Oswald'] text-lg text-[#AC8544] font-medium mb-4">Key Ingredients</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(ing, i) in selectedProduct.ingredients"
@@ -176,7 +176,7 @@ const activeImage = ref(null)
 // how many products to show by default, before a category is picked
 const DEFAULT_VISIBLE_COUNT = 5
 
-const categories = ['FACIAL CARE', 'HAIR CARE', 'SKIN CARE', 'MAKEUP', 'PERSONAL CARE' ]
+const categories = ['FACIAL CARE', 'HAIR CARE', 'SKIN CARE', 'PERSONAL CARE', 'MAKEUP' ]
 
 // 2. DATA PRODUCTS ARRAY
 const products = ref([
@@ -227,6 +227,23 @@ const products = ref([
   },
 
 
+   {
+    id: 5,
+    name: 'Natural Conditioner 300ml',
+    category: 'PERSONAL CARE',
+    type: 'Conditioner',
+    image: imgScrub2,
+    images: [b16, imgScrub2, b15 , imgScrub2],
+    description: ' BORAN CARE Coffee Lime Body Scrub combines natural coffee grounds with botanical ingredients to gently exfoliate dead skin cells and leave skin feeling smoother and refreshed after use.',
+    benefits: ['Gently exfoliates dead skin cells.', 'Leaves skin feeling soft', 'Refreshing coffee aroma', 'Suitable for regular body care'],
+    ingredients: [
+      { name: 'Ground Coffee', desc: 'natural exfoliant, stimulates blood flow' },
+      { name: 'Coconut Oil ', desc: 'deep moisture & skin softening' },
+      { name: 'Brown Sugar ', desc: 'gentle secondary exfoliant' },
+      { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
+    ]
+  },
+
   {
     id: 6,
     name: 'SOURINA Silk Face Serum',
@@ -244,27 +261,11 @@ const products = ref([
   },
 
 
-  {
-    id: 5,
-    name: 'Natural Conditioner 300ml',
-    category: 'PERSONAL CARE',
-    type: 'Conditioner',
-    image: imgScrub2,
-    images: [b16, imgScrub2, b15 , imgScrub2],
-    description: ' BORAN CARE Coffee Lime Body Scrub combines natural coffee grounds with botanical ingredients to gently exfoliate dead skin cells and leave skin feeling smoother and refreshed after use.',
-    benefits: ['Gently exfoliates dead skin cells.', 'Leaves skin feeling soft', 'Refreshing coffee aroma', 'Suitable for regular body care'],
-    ingredients: [
-      { name: 'Ground Coffee', desc: 'natural exfoliant, stimulates blood flow' },
-      { name: 'Coconut Oil ', desc: 'deep moisture & skin softening' },
-      { name: 'Brown Sugar ', desc: 'gentle secondary exfoliant' },
-      { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
-    ]
-  },
+ 
 
   
 
  
-
 
 
 
