@@ -93,11 +93,7 @@ const goMedia = () => {
 
 
           <!-- Play Icon -->
-          <div
-            class="absolute top-4 right-4 bg-white/90 rounded-full w-10 h-10 flex items-center justify-center text-[#A47B3B]"
-          >
-            <Play :size="18" fill="currentColor"/>
-          </div>
+          
 
 
           <!-- Bottom Overlay -->
