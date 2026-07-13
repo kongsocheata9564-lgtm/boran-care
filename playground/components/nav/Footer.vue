@@ -34,17 +34,17 @@ const socialLinks = [
   {
     name: "Facebook",
     icon: Facebook,
-    url: "https://facebook.com/",
+    url: "https://www.facebook.com/share/1Edy6i8RrF/?mibextid=wwXIfr",
   },
   {
     name: "TikTok",
     custom: true,
-    url: "https://tiktok.com/",
+    url: "https://www.tiktok.com/@borancare_official?_r=1&_t=ZS-97z9X813f76",
   },
   {
     name: "Instagram",
     icon: Instagram,
-    url: "https://instagram.com/",
+    url: "https://www.instagram.com/borancarekh?igsh=MWdlbzZlYWg1OGNmZA== ",
   },
   {
     name: "Telegram",
@@ -54,7 +54,7 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com/",
+    url: "https://www.linkedin.com/company/borancareasia",
   },
 ];
 
@@ -149,7 +149,7 @@ const openLink = (url) => {
       <!-- Follow -->
       <div class="col-span-2 sm:col-span-1 text-center lg:text-left">
         <h3
-          class="uppercase text-[20px] font-semibold tracking-wide text-[#B88A33] mb-3"
+          class="uppercase text-[20px] font-semibold tracking-wide text-[#B88A33] mb-10"
           style="font-family: 'Oswald', sans-serif"
         >
           Follow Us

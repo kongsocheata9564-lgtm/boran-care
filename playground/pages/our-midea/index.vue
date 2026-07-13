@@ -85,7 +85,7 @@ const goVideo = () => {
       <div class="flex justify-center gap-5 mt-8">
 
         <button
-          class="bg-[#E7A900] text-white px-10 py-3 rounded-lg font-medium transition"
+          class="bg-[#AC8544] text-white px-10 py-3 rounded-lg font-medium transition"
         >
           MEDIA
         </button>
@@ -93,7 +93,7 @@ const goVideo = () => {
 
         <button
           @click="goVideo"
-          class="border border-[#E7A900] text-[#D89C00] hover:bg-[#E7A900] hover:text-white px-10 py-3 rounded-lg font-medium transition"
+          class="border border-[#AC8544] text-[#AC8544] hover:bg-[#AC8544] hover:text-white px-10 py-3 rounded-lg font-medium transition"
         >
           VIDEO
         </button>

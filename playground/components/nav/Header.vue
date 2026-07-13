@@ -1,18 +1,23 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { Search, ChevronDown, Menu, X } from "lucide-vue-next";
 
 // Import logo
-import logo from "~/assets/images/logo.png";
+import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
 
 const mobileMenu = ref(false);
+// Desktop
 const productOpen = ref(false);
 const aboutOpen = ref(false);
+
+// Mobile
+const mobileProductOpen = ref(false);
+const mobileAboutOpen = ref(false);
 const languageOpen = ref(false);
 
-const language = ref("ENG");
+const language = ref("EN");
 
-const languages = ["ENG", "KH"];
+const languages = ["EN", "KH"];
 
 const products = [
   { name: "Facial Care", link: "/products/facial-care" },
@@ -23,7 +28,7 @@ const products = [
 ];
 
 const abouts = [
-  { name: "Our History", link: "/our-history" },
+  { name: "Our History", link: "/Story" },
   { name: "Our Vision Mission & Core Value", link: "/vision-mission" },
   { name: "Our Founder", link: "/our-founder" },
   { name: "Our CSR", link: "/our-csr" },
@@ -40,25 +45,28 @@ const onClickOutside = (e) => {
   }
 };
 
-if (typeof window !== "undefined") {
+
+onMounted(() => {
   document.addEventListener("click", onClickOutside);
-}
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", onClickOutside);
+});
 </script>
 
 <template>
   <div data-dropdown>
     <header
-      class="fixed top-0 left-0 w-full z-50 bg-white border-t border-b border-[#b78542] shadow-sm"
+      class="fixed top-0 left-0 w-full z-50  border-t border-b border-[#b78542] shadow-sm bg-[#AC8544]"
     >
-      <div
-        class="max-w-7xl mx-auto h-[70px] px-6 lg:px-10 flex items-center justify-between"
-      >
+      <div class="max-w-7xl mx-auto h-[70px] px-4 lg:px-10 flex items-center justify-between">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center">
           <img
             :src="logo"
             alt="BORAN CARE"
-            class="h-12 object-contain"
+            class="h-14 object-contain "
           />
         </NuxtLink>
 
@@ -68,9 +76,24 @@ if (typeof window !== "undefined") {
           <div class="relative" data-dropdown>
             <button
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-semibold tracking-wide hover:text-[#8d632d]"
+              class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
             >
-              PRODUCTS
+               <NuxtLink
+              
+               class="relative inline-block text-white font-semibold uppercase
+                     after:content-['']
+                     after:absolute
+                     after:left-0
+                     after:-bottom-1
+                     after:w-0
+                     after:h-[2px]
+                     after:bg-white
+                     after:transition-all
+                     after:duration-300
+                     hover:after:w-full"
+             >
+               PRODUCTS
+             </NuxtLink>
               <ChevronDown
                 :size="16"
                 class="duration-300"
@@ -88,14 +111,14 @@ if (typeof window !== "undefined") {
             >
               <div
                 v-if="productOpen"
-                class="absolute left-0 mt-5 w-56 bg-white rounded-xl shadow-xl border border-[#ecd9b8] overflow-hidden"
+                class="absolute left-0 mt-5 w-56 bg-[#AC8544] rounded-xl shadow-xl border border-[#ecd9b8] overflow-hidden"
                 data-dropdown
               >
                 <NuxtLink
                   v-for="item in products"
                   :key="item.name"
                   :to="item.link"
-                  class="block px-5 py-3 text-sm text-[#7d5a23] hover:bg-[#f8f5ef] transition-colors"
+                  class="block px-5 py-3 text-sm text-white hover:text-[#f5dfb5] transition-colors"
                 >
                   {{ item.name }}
                 </NuxtLink>
@@ -107,9 +130,24 @@ if (typeof window !== "undefined") {
           <div class="relative" data-dropdown>
             <button
               @click.stop="aboutOpen = !aboutOpen; productOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-semibold tracking-wide hover:text-[#8d632d]"
+              class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
             >
-              ABOUT US
+             <NuxtLink
+               
+               class="relative inline-block text-white font-semibold uppercase
+                     after:content-['']
+                     after:absolute
+                     after:left-0
+                     after:-bottom-1
+                     after:w-0
+                     after:h-[2px]
+                     after:bg-white
+                     after:transition-all
+                     after:duration-300
+                     hover:after:w-full"
+             >
+               ABOUT US
+             </NuxtLink>
               <ChevronDown
                 :size="16"
                 class="duration-300"
@@ -127,14 +165,14 @@ if (typeof window !== "undefined") {
             >
               <div
                 v-if="aboutOpen"
-                class="absolute left-0 mt-5 w-56 bg-white rounded-xl shadow-xl border border-[#ecd9b8] overflow-hidden"
+                class="absolute left-0 mt-5 w-56 bg-[#AC8544] rounded-xl shadow-xl border border-[#ecd9b8] overflow-hidden"
                 data-dropdown
               >
                 <NuxtLink
                   v-for="item in abouts"
                   :key="item.name"
                   :to="item.link"
-                  class="block px-5 py-3 text-sm text-[#7d5a23] hover:bg-[#f8f5ef] transition-colors"
+                  class="block px-5 py-3 text-sm text-white hover:text-[#f5dfb5] transition-colors"
                 >
                   {{ item.name }}
                 </NuxtLink>
@@ -142,29 +180,39 @@ if (typeof window !== "undefined") {
             </Transition>
           </div>
 
-          <NuxtLink
-            to="/contact"
-            class="font-semibold hover:text-[#8d632d] transition-colors"
-          >
-            CONTACT US
-          </NuxtLink>
+            <NuxtLink
+               to="/contact"
+               class="relative inline-block text-white font-semibold uppercase
+                     after:content-['']
+                     after:absolute
+                     after:left-0
+                     after:-bottom-1
+                     after:w-0
+                     after:h-[2px]
+                     after:bg-white
+                     after:transition-all
+                     after:duration-300
+                     hover:after:w-full"
+             >
+               CONTACT US
+             </NuxtLink>
         </nav>
 
         <!-- Desktop Right -->
         <div class="hidden lg:flex items-center gap-8">
-          <div class="flex items-center border border-[#B88B3D] rounded-full px-4 py-2">
-            <Search :size="18" class="text-[#B88B3D]" />
+          <div class="flex items-center border border-[white] rounded-full px-6 py-2">
+            <Search :size="18" class=" text-[white] " />
             <input
               type="text"
-              placeholder="Search"
-              class="ml-3 outline-none bg-transparent w-32"
+              placeholder="Search products"
+              class="ml-3 outline-none bg-transparent w-32  text-[white] text-[15px]"
             />
           </div>
 
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="w-[80px] h-[42px] rounded-full border border-[#B98A49] flex justify-center items-center gap-1 text-[#A87533] font-semibold"
+              class="w-[100px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1 text-[white] font-semibold"
             >
               {{ language }}
               <ChevronDown
@@ -184,14 +232,14 @@ if (typeof window !== "undefined") {
             >
               <div
                 v-if="languageOpen"
-                class="absolute right-0 mt-3 w-24 bg-white rounded-xl shadow-lg border border-[#ecd9b8]"
+                class="absolute right-0 mt-3 w-24 bg-[#AC8544] rounded-xl shadow-lg border border-[#ecd9b8]"
                 data-dropdown
               >
                 <button
                   v-for="lang in languages"
                   :key="lang"
                   @click="language = lang; languageOpen = false"
-                  class="block w-full py-3 hover:bg-[#faf4ec] text-[#A87533] transition-colors"
+                  class="block w-full py-1 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
                 >
                   {{ lang }}
                 </button>
@@ -200,22 +248,36 @@ if (typeof window !== "undefined") {
           </div>
         </div>
 
-        <!-- Mobile Button -->
-        <button
-          class="lg:hidden"
-          @click="mobileMenu = !mobileMenu"
-        >
-          <Menu
-            v-if="!mobileMenu"
-            :size="28"
-            class="text-[#A87533]"
-          />
-          <X
-            v-else
-            :size="28"
-            class="text-[#A87533]"
-          />
-        </button>
+        <!-- Mobile Logo + Button -->
+<div class="flex lg:hidden items-center gap-4">
+
+  <!-- Mobile Logo -->
+  <!-- Desktop Logo -->
+<NuxtLink to="/" class="hidden lg:flex items-center">
+  <img
+    :src="logo"
+    alt="BORAN CARE"
+    class="h-16 object-contain"
+  />
+</NuxtLink>
+
+  <!-- Menu Button -->
+  <button
+    @click="mobileMenu = !mobileMenu"
+  >
+    <Menu
+      v-if="!mobileMenu"
+      :size="28"
+      class="text-white"
+    />
+    <X
+      v-else
+      :size="28"
+      class="text-white"
+    />
+  </button>
+
+</div>
       </div>
     </header>
 
@@ -234,20 +296,23 @@ if (typeof window !== "undefined") {
   >
     <div
       v-if="mobileMenu"
-      class="fixed inset-0 z-40 lg:hidden"
-    >
+        class="fixed inset-0 z-[60] lg:hidden"    >
       <!-- Overlay -->
       <div
         class="absolute inset-0 bg-black/30"
-        @click="mobileMenu = false"
+        @click="
+          mobileMenu = false;
+          mobileProductOpen = false;
+          mobileAboutOpen = false;
+          "
       ></div>
 
       <!-- Panel -->
-      <div class="absolute top-0 left-0 h-full w-80 bg-white shadow-2xl overflow-y-auto">
-        <div class="h-[70px] px-6 flex items-center justify-between border-b border-[#ecd9b8]">
-          <img :src="logo" alt="BORAN CARE" class="h-10 object-contain" />
+      <div class="absolute top-0 left-0 h-full w-80 bg-[#AC8544] shadow-2xl overflow-y-auto">
+        <div class="h-[70px] px-6 flex items-center justify-between border-b border-white/30">
+          <img :src="logo" alt="BORAN CARE" class="h-16 object-contain" />
           <button @click="mobileMenu = false">
-            <X :size="24" class="text-[#A87533]" />
+            <X :size="24" class="text-white" />
           </button>
         </div>
 
@@ -255,49 +320,60 @@ if (typeof window !== "undefined") {
           <!-- Products -->
           <div>
             <button
-              @click="productOpen = !productOpen; aboutOpen = false"
-              class="w-full flex items-center justify-between py-3 text-[#A87533] font-semibold uppercase tracking-wide"
+              @click.stop="
+                mobileProductOpen = !mobileProductOpen;
+                mobileAboutOpen = false;
+                "
+              class="w-full flex items-center justify-between py-3 text-white font-semibold uppercase tracking-wide"
             >
               Products
               <ChevronDown
-                :size="16"
-                class="duration-300"
-                :class="{ 'rotate-180': productOpen }"
-              />
+  :size="16"
+  class="duration-300 text-white"
+  :class="{ 'rotate-180': mobileProductOpen }"
+/>
             </button>
-            <div v-if="productOpen" class="pl-4 pb-2 space-y-1">
-              <NuxtLink
-                v-for="item in products"
-                :key="item.name"
-                :to="item.link"
-                @click="mobileMenu = false"
-                class="block py-2.5 text-sm text-[#7d5a23] hover:text-[#A87533] transition-colors"
-              >
-                {{ item.name }}
-              </NuxtLink>
+              <div
+                  v-if="mobileProductOpen"
+                  class="pl-4 pb-2 space-y-1"
+              >    
+               <NuxtLink
+  v-for="item in products"
+  :key="item.name"
+  :to="item.link"
+  @click="mobileMenu = false"
+  class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
+>
+  {{ item.name }}
+</NuxtLink>
             </div>
           </div>
 
           <!-- About -->
           <div>
             <button
-              @click="aboutOpen = !aboutOpen; productOpen = false"
-              class="w-full flex items-center justify-between py-3 text-[#A87533] font-semibold uppercase tracking-wide"
+              @click.stop="
+              mobileAboutOpen = !mobileAboutOpen;
+              mobileProductOpen = false;
+              "
+              class="w-full flex items-center justify-between py-3 text-white font-semibold uppercase tracking-wide"
             >
               About Us
               <ChevronDown
-                :size="16"
-                class="duration-300"
-                :class="{ 'rotate-180': aboutOpen }"
-              />
+  :size="16"
+  class="duration-300 text-white"
+  :class="{ 'rotate-180': mobileAboutOpen }"
+/>
             </button>
-            <div v-if="aboutOpen" class="pl-4 pb-2 space-y-1">
-              <NuxtLink
+              <div
+                  v-if="mobileAboutOpen"
+                  class="pl-4 pb-2 space-y-1"
+              >              <NuxtLink
                 v-for="item in abouts"
                 :key="item.name"
                 :to="item.link"
                 @click="mobileMenu = false"
-                class="block py-2.5 text-sm text-[#7d5a23] hover:text-[#A87533] transition-colors"
+                class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
               >
                 {{ item.name }}
               </NuxtLink>
@@ -308,21 +384,21 @@ if (typeof window !== "undefined") {
           <NuxtLink
             to="/contact"
             @click="mobileMenu = false"
-            class="block py-3 text-[#A87533] font-semibold uppercase tracking-wide hover:text-[#8d632d] transition-colors"
+            class="block py-3 text-white font-semibold uppercase tracking-wide hover:text-[#f5dfb5] transition-colors"
           >
             Contact Us
           </NuxtLink>
 
           <!-- Divider -->
-          <div class="border-t border-[#ecd9b8] my-4"></div>
+          <div class="border-t border-white/30 my-4"></div>
 
           <!-- Search -->
-          <div class="flex items-center border border-[#B88B3D] rounded-full px-4 py-2.5">
-            <Search :size="18" class="text-[#B88B3D]" />
+          <div class="flex items-center border border-white rounded-full px-4 py-2.5">
+            <Search :size="18" class="text-white" />
             <input
               type="text"
               placeholder="Search"
-              class="ml-3 outline-none bg-transparent w-full text-sm"
+              class="ml-3 outline-none bg-transparent w-full text-sm text-white"
             />
           </div>
 
@@ -334,10 +410,10 @@ if (typeof window !== "undefined") {
               @click="language = lang"
               class="px-5 py-2 rounded-full text-sm font-semibold transition-colors"
               :class="
-                language === lang
-                  ? 'bg-[#A87533] text-white'
-                  : 'border border-[#B98A49] text-[#A87533] hover:bg-[#faf4ec]'
-              "
+ language === lang
+ ? 'bg-white text-[#AC8544]'
+ : 'border border-white text-white hover:text-white/20'
+"
             >
               {{ lang }}
             </button>
@@ -362,6 +438,7 @@ a {
 }
 
 input::placeholder {
-  color: #c7a97a;
+  color: white;
+  opacity: 0.8;
 }
 </style>
