@@ -4,9 +4,9 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const quickLinks = [
-  { name: "Products", path: "/our-product" },
-  { name: "About Us", path: "/about" },
-  { name: "Contact Us", path: "/contact" },
+  { name: "Products", path: "/product" },
+  { name: "About Us", path: "/our-story" },
+  { name: "Contact Us", path: "/contact-us" },
 ];
 
 const products = [
@@ -18,10 +18,11 @@ const products = [
 ];
 
 const aboutLinks = [
-  { name: "Our Mission", path: "/mission" },
-  { name: "Our Vision", path: "/vision" },
-  { name: "Our History", path: "/history" },
-  { name: "CSR", path: "/csr" },
+  { name: "Our History", path: "/our-story" },
+  { name: "Our Vision Mission & Core Value", path: "/vision-mission" },
+  { name: "Our Founder", path: "/founder" },
+  { name: "Our CSR", path: "/csr" },
+  { name: "Our Media & Video", path: "/our-midea" },
 ];
 
 
