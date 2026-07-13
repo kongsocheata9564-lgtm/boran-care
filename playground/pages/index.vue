@@ -1,16 +1,12 @@
 <template>
-<<<<<<< HEAD
   <div>
     <HeroSection />
+    <OurProduct/>
+    
+    <StoryAbout />
     <ContactUs />
 
-
-
-        <StoryAbout />
-        <OurProduct/>
-    </div>
+   </div>
 </template>
-=======
     
-</template>
->>>>>>> feat/chhai
+
