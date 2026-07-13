@@ -52,7 +52,7 @@ const mediaItems = [
 ];
 
 const goVideo = () => {
-  router.push("/video");
+  router.push("/our-video");
 };
 </script>
 

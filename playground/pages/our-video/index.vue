@@ -22,7 +22,7 @@ const videoItems = [
 ];
 
 const goMedia = () => {
-  router.push("/media");
+  router.push("/our-midea");
 };
 </script>
 
