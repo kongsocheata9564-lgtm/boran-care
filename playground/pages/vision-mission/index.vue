@@ -46,7 +46,7 @@
         <h2
           class="font-bebas text-3xl md:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
         >
-          CORE VALUE
+          CORE VALUES
         </h2>
 
         <!-- Cards Grid -->
