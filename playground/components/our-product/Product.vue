@@ -1,18 +1,18 @@
 <template>
   
-  <div class="min-h-screen bg-[#FAF9F6] text-[#2C3E2B] font-['Inter'] p-4 sm:p-6">
-    <main class="max-w-7xl mx-auto py-8 sm:py-12">
+  <div class="min-h-screen bg-[#FAF9F6] text-[#2C3E2B] font-['Inter'] px-4 sm:px-6">
+    <main class="max-w-7xl mx-auto pt-8 sm:pt-10 pb-8 sm:pb-12">
       <!-- Section Title -->
       <h2 class="text-center font-['Oswald'] text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-widest mb-8">Our Products</h2>
 
       <!-- Category Filter Tabs -->
-      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-12 w-full max-w-3xl mx-auto">
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 w-full max-w-3xl mx-auto">
         <button
           v-for="product in categories"
           :key="product"
           @click="toggleCategory(product)"
           :class="[
-            'basis-[calc(40%-0.25rem)] sm:basis-[calc(33.333%-0.5rem)] md:basis-auto md:min-w-[140px] px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap',
+            'basis-[calc(40%-0.25rem)] sm:basis-[calc(33.333%-0.5rem)] md:basis-auto md:min-w-[140px] px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap font-[\'Oswald\']',
             activeCategory === product? 'bg-[#AC8544] text-white border-[#AC8544]' : 'bg-white text-[#AC8544] border-[#AC8544] hover:bg-[#FAF9F6]'
           ]"
         >
@@ -21,7 +21,7 @@
       </div>
 
       <!-- Product Cards Grid Matrix -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           v-for="product in filteredProducts"
           :key="product.id"
@@ -30,7 +30,7 @@
         >
           <!-- Product Image Container -->
           <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
-            <span class="absolute top-4 left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-[15px] font-bold uppercase px-2.5 py-1.5 rounded shadow-sm z-10 tracking-wider min-w-[155px] text-center inline-block">
+            <span class="absolute top-4 left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-[15px] font-['Oswald'] font-bold uppercase px-2.5 py-1.5 rounded shadow-sm z-10 tracking-wider min-w-[155px] text-center inline-block">
               {{ product.category }}
             </span>
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -94,7 +94,7 @@
             <!-- Right Side: Structured Specifications Content -->
             <div class="flex flex-col h-full justify-start pt-2">
               <div class="mb-3">
-                <span class="inline-block bg-[#AC8544] text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded">
+                <span class="inline-block bg-[#AC8544] text-white text-[11px] font-['Oswald'] font-semibold uppercase tracking-wider px-3 py-1 rounded">
                   {{ selectedProduct.type }}
                 </span>
               </div>
@@ -184,7 +184,7 @@ const products = ref([
     id: 1,
     name: 'Natural Mini Soap 100g',
     category: 'FACIAL CARE',
-    type: 'Handmade Soap',
+    type: 'FACIAL CARE',
     image: imgSoap1,
     images: [imgSoap1, imgSoap1, imgSoap1, imgSoap1],
     description: 'Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.',
@@ -200,7 +200,7 @@ const products = ref([
     id: 3,
     name: 'Natural Shampoo 300ml',
     category: 'HAIR CARE',
-    type: 'Shampoo',
+    type: 'HAIR CARE',
     image: imgHair1,
     images: [imgHair3, imgHair4, imgHair3, imgHair2],
     description: 'BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.',
@@ -213,42 +213,43 @@ const products = ref([
 
   {
     id: 7,
-    name: 'Natural Mosquito Repellent 120ml',
+    name: 'Anti Wrinkle Cream',
     category: 'SKIN CARE',
-    type: 'Repellent Spray',
+    type: 'SKIN CARE',
     image: imgSink1,
     images: [imgSink2, imgSink2, imgSink2, imgSink1],
     description: "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
     benefits: ['Helps moisturize the skin.', 'Supports smoother-looking skin.', 'Lightweight texture.', 'Suitable for daily use.'],
     ingredients: [
-      { name: 'Essential oil blend', desc: 'natural insect-deterring botanicals' },
-      { name: 'Aqueous base', desc: 'lightweight, fast-drying finish' }
+      { name: 'Hyaluronic Acid', desc: 'A powerful humectant that draws deep moisture into the skin barrier, keeping it plump and highly hydrated.' },
+      { name: 'Collagen', desc: "Works to support the skin's natural framework, visibly improving firmness, springiness, and texture." },
+      { name: 'Silk Cocoon Extract (SOURINA Line)', desc: 'Rich in natural sericin protein to form a protective moisture shield and noticeably soften aging skin.' }
     ]
   },
 
 
    {
     id: 5,
-    name: 'Natural Conditioner 300ml',
+    name: 'Kaffir Lime Scrub 300ml',
     category: 'PERSONAL CARE',
-    type: 'Conditioner',
+    type: 'PERSONAL CARE',
     image: imgScrub2,
     images: [b16, imgScrub2, b15 , imgScrub2],
-    description: ' BORAN CARE Coffee Lime Body Scrub combines natural coffee grounds with botanical ingredients to gently exfoliate dead skin cells and leave skin feeling smoother and refreshed after use.',
+    description: ' EK Beauty Kaffir Lime Body Scrub combines the potent cleansing power of natural Cambodian kaffir lime with skin-polishing botanical extracts. It naturally lifts away dead skin cells, targets uneven tone, and reveals intensely soft, glowing skin with a lingering fresh, refreshing herbal aroma.',
     benefits: ['Gently exfoliates dead skin cells.', 'Leaves skin feeling soft', 'Refreshing coffee aroma', 'Suitable for regular body care'],
     ingredients: [
-      { name: 'Ground Coffee', desc: 'natural exfoliant, stimulates blood flow' },
-      { name: 'Coconut Oil ', desc: 'deep moisture & skin softening' },
-      { name: 'Brown Sugar ', desc: 'gentle secondary exfoliant' },
-      { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
+      { name: 'Kaffir Lime Peel & Extract:', desc: 'High in volatile oils and natural AHAs to safely brighten, deeply cleanse, and refine skin texture.' },
+      { name: 'Honey: ', desc: 'Actively locks in hydration, acts as a natural antibacterial barrier, and ensures the skin feels silky post-scrub.' },
+      { name: 'Botanical Seed Oils: ', desc: 'Deeply nourishes the skin layer so it feels intensely conditioned and flexible, rather than stripped or tight.' }
     ]
   },
 
+  
   {
     id: 6,
-    name: 'SOURINA Silk Face Serum',
+    name: 'natural Lip Balm 5g',
     category: 'MAKEUP',
-    type: 'Serum',
+    type: 'MAKEUP',
     image: imgMake1,
     images: [imgMake1, imgMake1, imgMake1, imgMake1],
     description: 'BORAN CARE Lipstick delivers vibrant color with a smooth finish while helping keep lips comfortable throughout the day. The formula is designed for easy application and everyday wear',
