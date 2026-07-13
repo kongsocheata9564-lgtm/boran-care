@@ -244,6 +244,7 @@ const products = ref([
     ]
   },
 
+  
   {
     id: 6,
     name: 'natural Lip Balm 5g',
