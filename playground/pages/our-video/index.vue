@@ -54,13 +54,13 @@ const goMedia = () => {
 
         <button
           @click="goMedia"
-          class="border border-[#E7A900] text-[#D89C00] hover:bg-[#E7A900] hover:text-white px-10 py-3 rounded-lg font-medium transition"
+          class="border border-[#AC8544] text-[#AC8544] hover:bg-[#AC8544] hover:text-white px-10 py-3 rounded-lg font-medium transition"
         >
           MEDIA
         </button>
 
         <button
-          class="bg-[#E7A900] hover:bg-[#C78D00] text-white px-10 py-3 rounded-lg font-medium transition"
+          class="bg-[#AC8544] hover:bg-[#AC8544] text-white px-10 py-3 rounded-lg font-medium transition"
         >
           VIDEO
         </button>
