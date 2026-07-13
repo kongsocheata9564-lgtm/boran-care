@@ -21,8 +21,8 @@
           <div class="absolute inset-0 bg-black/20"></div>
 
           <!-- Text -->
-          <div class="absolute inset-0 z-10 flex items-center justify-center px-3">
-            <h2 class="hero-title uppercase text-white text-center whitespace-nowrap">
+          <div class="absolute inset-0 z-10 flex items-center justify-center px-2">
+            <h2 class="hero-title uppercase text-white text-center">
               {{ panel.text }}
             </h2>
           </div>
@@ -55,19 +55,19 @@ const panels = [
   {
     id: 3,
     image: templeImg,
-    alt: 'Bayon temple face carving',
+    alt: 'Bayon temple',
     text: 'PERFECTED'
   },
   {
     id: 4,
     image: aloeImg,
-    alt: 'Aloe vera plant',
+    alt: 'Aloe vera',
     text: 'BY'
   },
   {
     id: 5,
     image: turmericImg,
-    alt: 'Fresh turmeric root',
+    alt: 'Turmeric',
     text: 'INNOVATION'
   }
 ]
@@ -84,6 +84,7 @@ const panels = [
   letter-spacing: 0.02em;
   white-space: nowrap;
 
+  /* Desktop position (same as your original) */
   transform: translateY(18vh);
 
   text-shadow:
@@ -91,19 +92,36 @@ const panels = [
     0 0 12px rgba(0, 0, 0, 0.4);
 
   transition:
-    transform 0.3s ease,
-    font-size 0.3s ease;
+    transform .3s ease,
+    font-size .3s ease;
 }
 
+/* Laptop */
 @media (max-width: 1024px) {
   .hero-title {
     transform: translateY(16vh);
+    font-size: clamp(1.2rem, 3vw, 3rem);
   }
 }
 
+/* Mobile */
 @media (max-width: 640px) {
   .hero-title {
-    transform: translateY(14vh);
+    /* Much smaller font */
+    font-size: clamp(0.55rem, 2.5vw, 0.8rem);
+
+    /* Allow wrapping */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+
+    /* Fit inside each narrow panel */
+    max-width: 90%;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+
+    /* Move text a little higher */
+    transform: translateY(11vh);
   }
 }
 </style>
