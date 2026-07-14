@@ -10,55 +10,11 @@ const quickLinks = [
 ];
 
 const products = [
-  {
-    name: "Facial Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "FACIAL CARE",
-      },
-    },
-  },
-
-  {
-    name: "Hair Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "HAIR CARE",
-      },
-    },
-  },
-
-  {
-    name: "Skin Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "SKIN CARE",
-      },
-    },
-  },
-
-  {
-    name: "Personal Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "PERSONAL CARE",
-      },
-    },
-  },
-
-  {
-    name: "Make Up",
-    link: {
-      path: "/product",
-      query: {
-        category: "MAKEUP",
-      },
-    },
-  },
+  { name: "Facial Care" },
+  { name: "Skin Care" },
+  { name: "Hair Care" },
+  { name: "Personal Care" },
+  { name: "Make Up" },
 ];
 
 const aboutLinks = [
@@ -147,17 +103,6 @@ style="font-family:'Poppins',sans-serif"
 class="max-w-[1280px] mx-auto px-8 py-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8"
 >
 
-        <ul class="space-y-1">
-          <li v-for="item in products" :key="item.name">
-            <button
-              @click="goTo(item.link)"
-              class="text-[13px] text-[#9B7B3A] hover:text-[#C99A2C] transition-all duration-300 rounded-md"
-            >
-              {{ item.name }}
-            </button>
-          </li>
-        </ul>
-      </div>
 
 <!-- Logo -->
 <!-- Logo -->
@@ -322,6 +267,13 @@ v-html="social.icon"
 </div>
 
 </div>
+
+
+</div>
+
+
+
+
 
 <!-- Bottom -->
 

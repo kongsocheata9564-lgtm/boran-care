@@ -1,6 +1,6 @@
 <template>
   
-  <div class="min-h-screen  text-[#2C3E2B] font-['Inter'] px-4 sm:px-32">
+  <div class="min-h-screen bg-[#FAF9F6] text-[#2C3E2B] font-['Inter'] px-4 sm:px-6">
     <main class="max-w-7xl mx-auto pt-8 sm:pt-10 pb-8 sm:pb-12">
       <!-- Section Title -->
       <h2 class="text-center font-['Oswald'] text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-widest mb-8">Our Products</h2>
@@ -21,7 +21,7 @@
       </div>
 
       <!-- Product Cards Grid Matrix -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1198px] mx-auto gap-5 sm:gap-8 ">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           v-for="product in filteredProducts"
           :key="product.id"
@@ -29,8 +29,8 @@
           @click="openProduct(product)"
         >
           <!-- Product Image Container -->
-          <div class="relative aspect-square   bg-[#F3F1ED] overflow-hidden  flex items-center justify-center">
-            <span class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-[10px] sm:text-[15px] font-['Oswald'] font-bold uppercase px-2 py-1 sm:px-2.5 sm:py-1.5 rounded shadow-sm z-10 tracking-wider min-w-[90px] sm:min-w-[155px] text-center inline-block">
+          <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
+            <span class="absolute top-4 left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-[15px] font-['Oswald'] font-bold uppercase px-2.5 py-1.5 rounded shadow-sm z-10 tracking-wider min-w-[155px] text-center inline-block">
               {{ product.category }}
             </span>
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -56,7 +56,7 @@
       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4 animate-fade-in"
       @click.self="isModalOpen = false"
     >
-      <div class="bg-white rounded-3xl w-full max-w-3xl relative max-h-[95vh] sm:max-h-[92vh] overflow-y-auto shadow-2xl border border-[#EBE7E0]">
+      <div class="bg-white rounded-3xl w-full max-w-3xl relative max-h-[92vh] overflow-y-auto shadow-2xl border border-[#EBE7E0]">
         
         <!-- Standard Close Button Minimalist Icon -->
         <button
@@ -69,7 +69,7 @@
         </button>
 
         
-        <div class=" p-6 sm:p-10">
+        <div class=" p-12 sm:p-10">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             
             <!-- Left Side: Interactive Gallery Viewports -->
@@ -149,8 +149,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import { useRoute } from "vue-router";
+import { ref, computed } from 'vue'
 
 // 1. IMPORT ALL YOUR NEW PICTURES HERE:
 import imgSoap1 from '~/assets/images/b6.jpeg'
@@ -170,7 +169,6 @@ import b23 from '~/assets/images/b23.jpeg'
 
 
 const activeCategory = ref('')
-const route = useRoute();
 const isModalOpen = ref(false)
 const selectedProduct = ref(null)
 const activeImage = ref(null)
@@ -179,18 +177,6 @@ const activeImage = ref(null)
 const DEFAULT_VISIBLE_COUNT = 5
 
 const categories = ['FACIAL CARE', 'HAIR CARE', 'SKIN CARE', 'PERSONAL CARE', 'MAKEUP' ]
-
-watch(
-  () => route.query.category,
-  (category) => {
-    if (category && categories.includes(category)) {
-      activeCategory.value = category;
-    } else {
-      activeCategory.value = "";
-    }
-  },
-  { immediate: true }
-);
 
 // 2. DATA PRODUCTS ARRAY
 const products = ref([
