@@ -33,44 +33,56 @@
 </template>
 
 <script setup>
+
+import { computed } from 'vue'
+
 import cocoonsImg from '~/assets/images/dn1.jpg'
 import herbsImg from '~/assets/images/kroch-serj.jpg'
 import templeImg from '~/assets/images/br1.jpg'
 import aloeImg from '~/assets/images/p3.png'
 import turmericImg from '~/assets/images/lap.jpg'
 
-const panels = [
+
+const { t } = useI18n()
+
+
+const panels = computed(() => [
   {
     id: 1,
     image: cocoonsImg,
     alt: 'Silk cocoons',
-    text: 'INSPIRED'
+    text: t('hero.panels.inspired')
   },
+
   {
     id: 2,
     image: herbsImg,
     alt: 'Bergamot and Khmer herbs',
-    text: 'BY NATURE'
+    text: t('hero.panels.nature')
   },
+
   {
     id: 3,
     image: templeImg,
     alt: 'Bayon temple',
-    text: 'PERFECTED'
+    text: t('hero.panels.perfected')
   },
+
   {
     id: 4,
     image: aloeImg,
     alt: 'Aloe vera',
-    text: 'BY'
+    text: t('hero.panels.by')
   },
+
   {
     id: 5,
     image: turmericImg,
     alt: 'Turmeric',
-    text: 'INNOVATION'
+    text: t('hero.panels.innovation')
   }
-]
+])
+
 </script>
 
 <style scoped>

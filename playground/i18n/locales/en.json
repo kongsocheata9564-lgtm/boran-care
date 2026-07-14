@@ -20,5 +20,15 @@
 
     "khmer": "ខ្មែរ",
     "english": "English"
+  },
+
+  "hero": {
+  "panels": {
+    "inspired": "INSPIRED",
+    "nature": "BY NATURE",
+    "perfected": "PERFECTED",
+    "by": "BY",
+    "innovation": "INNOVATION"
   }
+}
 }

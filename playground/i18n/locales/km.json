@@ -20,5 +20,17 @@
 
     "khmer": "ខ្មែរ",
     "english": "English"
+  },
+
+  "hero": {
+  "panels": {
+    "inspired": "បំផុសគំនិត",
+    "nature": "ពីធម្មជាតិ",
+    "perfected": "ភាពល្អឥតខ្ចោះ",
+    "by": "ដោយ",
+    "innovation": "ការច្នៃប្រឌិត"
   }
+}
+
+  
 }
