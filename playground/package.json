@@ -8,7 +8,13 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.0",
+    "@nuxtjs/i18n": "^10.4.1",
+    "lucide-vue-next": "^1.0.0",
     "my-module": "latest",
     "nuxt": "^4.4.8"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.14.0"
   }
 }

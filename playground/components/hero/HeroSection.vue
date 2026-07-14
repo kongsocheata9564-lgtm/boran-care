@@ -52,24 +52,28 @@ const panels = computed(() => [
     alt: 'Silk cocoons',
     text: t('hero.panels.inspired')
   },
+
   {
     id: 2,
     image: herbsImg,
     alt: 'Bergamot and Khmer herbs',
     text: t('hero.panels.nature')
   },
+
   {
     id: 3,
     image: templeImg,
     alt: 'Bayon temple',
     text: t('hero.panels.perfected')
   },
+
   {
     id: 4,
     image: aloeImg,
     alt: 'Aloe vera',
     text: t('hero.panels.by')
   },
+
   {
     id: 5,
     image: turmericImg,
