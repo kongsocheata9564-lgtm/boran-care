@@ -30,5 +30,43 @@
     "by": "BY",
     "innovation": "INNOVATION"
   }
+},
+
+"contact": {
+    "title": "Contact Us",
+
+    "firstName": "First Name",
+    "lastName": "Last Name",
+
+    "email": "Email",
+    "phone": "Phone",
+
+    "yourFirstName": "Enter your first name",
+    "yourLastName": "Enter your last name",
+    "yourEmail": "Enter your email",
+    "yourPhone": "Enter your phone number",
+
+    "topic": "Topic",
+    "selectTopic": "Select your topic",
+
+    "productInquiry": "Product Inquiry",
+    "partnership": "OEM/ODM Partnership",
+    "support": "Support",
+    "other": "Other",
+
+    "message": "Message",
+    "writeMessage": "Write your message",
+
+    "send": "Send",
+    "sending": "Sending...",
+
+    "success": "Message sent successfully",
+    "error": "Something went wrong. Please try again",
+
+    "location": "Location",
+    "office": "Our Office",
+    "direction": "Get Directions",
+    "address": "Pongro Village, Sangkat Kampong Svay, Serei Saophoan City, Banteay Meanchey Province"
+  }
 }
 }

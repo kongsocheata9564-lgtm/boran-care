@@ -33,7 +33,6 @@
 </template>
 
 <script setup>
-
 import { computed } from 'vue'
 
 import cocoonsImg from '~/assets/images/dn1.jpg'
@@ -82,7 +81,6 @@ const panels = computed(() => [
     text: t('hero.panels.innovation')
   }
 ])
-
 </script>
 
 <style scoped>
