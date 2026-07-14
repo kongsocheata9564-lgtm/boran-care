@@ -16,11 +16,55 @@ const quickLinks = [
 ];
 
 const products = [
-  { name: "Facial Care" },
-  { name: "Skin Care" },
-  { name: "Hair Care" },
-  { name: "Personal Care" },
-  { name: "Make Up" },
+  {
+    name: "Facial Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "FACIAL CARE",
+      },
+    },
+  },
+
+  {
+    name: "Hair Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "HAIR CARE",
+      },
+    },
+  },
+
+  {
+    name: "Skin Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "SKIN CARE",
+      },
+    },
+  },
+
+  {
+    name: "Personal Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "PERSONAL CARE",
+      },
+    },
+  },
+
+  {
+    name: "Make Up",
+    link: {
+      path: "/product",
+      query: {
+        category: "MAKEUP",
+      },
+    },
+  },
 ];
 
 const aboutLinks = [
@@ -118,6 +162,7 @@ const openLink = (url) => {
         <ul class="space-y-1">
           <li v-for="item in products" :key="item.name">
             <button
+              @click="goTo(item.link)"
               class="text-[13px] text-[#9B7B3A] hover:text-[#C99A2C] transition-all duration-300 rounded-md"
             >
               {{ item.name }}
@@ -216,4 +261,3 @@ const openLink = (url) => {
     </div>
   </footer>
 </template>
-
