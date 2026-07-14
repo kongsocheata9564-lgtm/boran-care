@@ -1,32 +1,76 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { Search, ChevronDown, Menu, X } from "lucide-vue-next";
-
+ 
 // Import logo
 import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
-
+ 
 const mobileMenu = ref(false);
 // Desktop
 const productOpen = ref(false);
 const aboutOpen = ref(false);
-
+ 
 // Mobile
 const mobileProductOpen = ref(false);
 const mobileAboutOpen = ref(false);
 const languageOpen = ref(false);
-
+ 
 const language = ref("EN");
-
+ 
 const languages = ["EN", "KH"];
-
+ 
 const products = [
-  { name: "Facial Care", link: "/products/facial-care" },
-  { name: "Skin Care", link: "/products/skin-care" },
-  { name: "Hair Care", link: "/products/hair-care" },
-  { name: "Personal Care", link: "/products/personal-care" },
-  { name: "Make Up", link: "/products/make-up" },
+  {
+    name: "Facial Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "FACIAL CARE",
+      },
+    },
+  },
+ 
+  {
+    name: "Hair Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "HAIR CARE",
+      },
+    },
+  },
+ 
+  {
+    name: "Skin Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "SKIN CARE",
+      },
+    },
+  },
+ 
+  {
+    name: "Personal Care",
+    link: {
+      path: "/product",
+      query: {
+        category: "PERSONAL CARE",
+      },
+    },
+  },
+ 
+  {
+    name: "Make Up",
+    link: {
+      path: "/product",
+      query: {
+        category: "MAKEUP",
+      },
+    },
+  },
 ];
-
+ 
 const abouts = [
   { name: "Our History", link: "/our-story" },
   { name: "Our Vision Mission & Core Value", link: "/vision-mission" },
@@ -34,7 +78,7 @@ const abouts = [
   { name: "Our CSR", link: "/csr" },
   { name: "Our Media & Video", link: "/our-midea" },
 ];
-
+ 
 // Close dropdowns when clicking outside
 const onClickOutside = (e) => {
   const target = e.target;
@@ -44,12 +88,12 @@ const onClickOutside = (e) => {
     languageOpen.value = false;
   }
 };
-
-
+ 
+ 
 onMounted(() => {
   document.addEventListener("click", onClickOutside);
 });
-
+ 
 onUnmounted(() => {
   document.removeEventListener("click", onClickOutside);
 });
