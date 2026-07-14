@@ -1,0 +1,24 @@
+{
+  "header": {
+    "product": "Product",
+    "facialCare": "Facial Care",
+    "hairCare": "Hair Care",
+    "skinCare": "Skincare",
+    "personalCare": "Personal Care",
+    "makeup": "Makeup",
+
+    "about": "About Us",
+    "story": "Our Story",
+    "vision": "Our Vision, Mission & Core Value",
+    "founder": "Our Founder",
+    "csr": "Our CSR",
+    "media": "Our Media & Video",
+
+    "contact": "Contact Us",
+
+    "search": "Search",
+
+    "khmer": "ខ្មែរ",
+    "english": "English"
+  }
+}
