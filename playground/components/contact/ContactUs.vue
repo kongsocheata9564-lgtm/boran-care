@@ -5,7 +5,7 @@
         class="text-center text-4xl sm:text-5xl font-extrabold mb-12"
         style="font-family: 'Oswald', sans-serif; color: #A57E45; letter-spacing: 0.08em;"
       >
-        CONTACT US
+        {{ $t('contact.title') }}
       </h1>
 
       <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
@@ -14,23 +14,28 @@
           <form @submit.prevent="handleSubmit">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">First Name</label>
+                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">{{ $t('contact.firstName') }}</label>
                 <input
                   v-model="form.firstName"
                   type="text"
                   required
-                  placeholder="Your first name"
+                  :placeholder="$t('contact.yourFirstName')"
                   class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
               </div>
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">Last Name</label>
+                <label
+                  class="block text-[0.82rem] font-semibold mb-2"
+                  style="color: #A57E45;"
+                >
+                  {{ $t('contact.lastName') }}
+                </label>
                 <input
                   v-model="form.lastName"
                   type="text"
                   required
-                  placeholder="Your last name"
+                  :placeholder="$t('contact.yourLastName')"
                   class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
@@ -39,22 +44,22 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">Email Address</label>
+                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">{{ $t('contact.email') }}</label>
                 <input
                   v-model="form.email"
                   type="email"
                   required
-                  placeholder="you@gmail.com"
+                  :placeholder="$t('contact.yourEmail')"
                   class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
               </div>
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">Phone Number</label>
+                <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">{{ $t('contact.phone') }}</label>
                 <input
                   v-model="form.phone"
                   type="tel"
-                  placeholder="+855 XX XXX XXXX"
+                  :placeholder="$t('contact.yourPhone')"
                   class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
@@ -62,28 +67,28 @@
             </div>
 
             <div class="mb-5">
-              <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">Topic</label>
+              <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">{{ $t('contact.topic') }}</label>
               <select
                 v-model="form.topic"
                 required
                 class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                 style="font-family: 'Inter', sans-serif;"
               >
-                <option value="" disabled selected>Select your topic</option>
-                <option value="Product Inquiry">Product Inquiry</option>
-                <option value="OEM/ODM Partnership">OEM/ODM Partnership</option>
-                <option value="Support">Support</option>
-                <option value="Other">Other</option>
+                <option value="" disabled selected>{{ $t('contact.selectTopic') }}</option>
+                <option value="Product Inquiry">{{ $t('contact.topicProduct') }}</option>
+                <option value="OEM/ODM Partnership">{{ $t('contact.topicPartnership') }}</option>
+                <option value="Support">{{ $t('contact.topicSupport') }}</option>
+                <option value="Other">{{ $t('contact.topicOther') }}</option>
               </select>
             </div>
 
             <div class="mb-7">
-              <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">Message</label>
+              <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">{{ $t('contact.message') }}</label>
               <textarea
                 v-model="form.message"
                 required
                 rows="5"
-                placeholder="Write your message here"
+                :placeholder="$t('contact.writeMessage')"
                 class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] resize-y leading-relaxed transition-all duration-200"
                 style="font-family: 'Inter', sans-serif;"
               ></textarea>
@@ -95,17 +100,20 @@
               class="inline-flex items-center gap-2.5 rounded-full bg-[#A57E45] px-8 py-3.5 text-white text-[0.95rem] font-semibold shadow-[0_8px_18px_rgba(165,126,69,0.3)] hover:bg-[#8d6a37] hover:shadow-[0_12px_28px_rgba(141,106,55,0.4)] hover:-translate-y-0.5 hover:scale-[1.05] active:translate-y-0 active:scale-[0.98] active:shadow-[0_4px_12px_rgba(141,106,55,0.3)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-[0_8px_18px_rgba(165,126,69,0.3)]"
               style="font-family: 'Inter', sans-serif;"
             >
-              {{ status === 'sending' ? 'Sending...' : 'Send Message' }}
+              {{ status === 'sending'
+                ? $t('contact.sending')
+                : $t('contact.send')
+                }}
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" class="transition-transform duration-200">
                 <path d="M3 12l18-8-8 18-2-8-8-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
               </svg>
             </button>
 
             <p v-if="status === 'success'" class="mt-3 text-[0.85rem] text-[#2f6a3f]">
-              Thanks! Your message has been sent — we'll get back to you soon.
+              {{ $t('contact.success') }}
             </p>
             <p v-if="status === 'error'" class="mt-3 text-[0.85rem] text-[#a33a2a]">
-              Something went wrong. Please try again in a moment.
+              {{ $t('contact.error') }}
             </p>
           </form>
         </div>
@@ -120,7 +128,7 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">Phone</p>
+                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">{{ $t('contact.phone') }}</p>
                 <a href="tel:+85512973500" class="text-[#1F3A2E] font-semibold group-hover:text-[#A57E45] transition-colors duration-300" style="font-family: 'Inter', sans-serif;">+855 12 973 500</a>
               </div>
             </div>
@@ -133,7 +141,7 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">Email</p>
+                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">{{ $t('contact.email') }}</p>
                 <a href="mailto:ceo@borancare.com" class="text-[#1F3A2E] font-semibold group-hover:text-[#A57E45] transition-colors duration-300" style="font-family: 'Inter', sans-serif;">ceo@borancare.com</a>
               </div>
             </div>
@@ -146,10 +154,9 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">Location</p>
+                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">{{ $t('contact.location') }}</p>
                 <p class="text-[#1F3A2E] font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug" style="font-family: 'Inter', sans-serif;">
-                  Pongro Village, Sangkat Kampong Svay,<br>
-                  Serei Saophoan City, Banteay Meanchey Province
+                  {{ $t('contact.address') }}
                 </p>
               </div>
             </div>
@@ -175,9 +182,9 @@
               </svg>
             </span>
             <div>
-              <h3 class="font-semibold text-[#1F3A2E] mb-1" style="font-family: 'Inter', sans-serif;">Our Office</h3>
+              <h3 class="font-semibold text-[#1F3A2E] mb-1" style="font-family: 'Inter', sans-serif;">{{ $t('contact.office') }}</h3>
               <p class="text-sm text-[#1F3A2E]/80 leading-snug mb-2" style="font-family: 'Inter', sans-serif;">
-                Pongro Village, Sarei Saophoan City, Banteay Meanchey
+                {{ $t('contact.address') }}
               </p>
               <a
                 :href="directionsUrl"
@@ -186,7 +193,7 @@
                 class="text-sm font-semibold hover:underline"
                 style="color: #A57E45; font-family: 'Inter', sans-serif;"
               >
-                Get Directions →
+                {{ $t('contact.direction') }}
               </a>
             </div>
           </div>
