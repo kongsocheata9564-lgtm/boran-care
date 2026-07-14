@@ -29,7 +29,7 @@ const products = [
 
 const abouts = [
   { name: "Our History", link: "/our-story" },
-  { name: "Our Vision Mission & Core Value", link: "/vision-mission" },
+  { name: "Our Vision Mission & Core Values", link: "/vision-mission" },
   { name: "Our Founder", link: "/founder" },
   { name: "Our CSR", link: "/csr" },
   { name: "Our Media & Video", link: "/our-midea" },
