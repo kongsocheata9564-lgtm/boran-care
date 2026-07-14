@@ -8,6 +8,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.0",
     "my-module": "latest",
     "nuxt": "^4.4.8"
   },
