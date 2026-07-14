@@ -1,7 +1,12 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/i18n'
+  ],
 
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true
+  },
 
   compatibilityDate: '2025-06-30',
 
@@ -13,5 +18,23 @@ export default defineNuxtConfig({
 
   css: [
     '@fortawesome/fontawesome-free/css/all.min.css'
-  ]
+  ],
+
+  i18n: {
+    defaultLocale: 'km',
+
+    locales: [
+      {
+        code: 'km',
+        name: 'Khmer',
+        file: 'km.json'
+      },
+      {
+        code: 'en',
+        name: 'English',
+        file: 'en.json'
+      }
+    ],
+
+    langDir: 'locales/'  }
 })
