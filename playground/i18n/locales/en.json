@@ -20,5 +20,56 @@
 
     "khmer": "ខ្មែរ",
     "english": "English"
+  },
+  "mediaPage": {
+    "title": "MEDIA",
+    "video": "VIDEO",
+    "description": "At BORAN CARE ASIA, we are committed to creating innovative, high-quality, and sustainable skincare solutions inspired by Khmer nature and backed by modern science.",
+    "opening": "Opening Ceremony",
+    "date1": "March 12, 2025",
+    "date2": "March 13, 2025",
+    "date3": "March 14, 2025"
+  },
+  "videoPage": {
+    "title": "VIDEO",
+    "media": "MEDIA",
+    "description": "At BORAN CARE ASIA, we share our journey through videos, showcasing our innovative skincare solutions inspired by Khmer nature and modern science.",
+
+    "opening": "Opening Ceremony",
+
+    "date1": "March 12, 2025"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "products": "Products",
+    "aboutUs": "About Us",
+    "followUs": "Follow Us",
+
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Condition",
+
+    "copyright": "© 2026 Boran Care. All Rights Reserved",
+
+    "product": {
+      "facial": "Facial Care",
+      "skin": "Skin Care",
+      "hair": "Hair Care",
+      "personal": "Personal Care",
+      "makeup": "Make Up"
+    },
+
+    "quick": {
+      "products": "Products",
+      "about": "About Us",
+      "contact": "Contact Us"
+    },
+
+    "about": {
+      "history": "Our History",
+      "vision": "Our Vision Mission & Core Values",
+      "founder": "Our Founder",
+      "csr": "Our CSR",
+      "media": "Our Media & Video"
+    }
   }
 }

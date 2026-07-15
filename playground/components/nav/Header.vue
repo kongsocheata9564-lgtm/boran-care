@@ -1,11 +1,12 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { Search, ChevronDown, Menu, X } from "lucide-vue-next";
+import { Search, ChevronDown, Menu, X, Globe } from "lucide-vue-next";
 
 // Import logo
 import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
 
 const mobileMenu = ref(false);
+
 // Desktop
 const productOpen = ref(false);
 const aboutOpen = ref(false);
@@ -17,7 +18,7 @@ const languageOpen = ref(false);
 
 const language = ref("EN");
 
-const languages = ["EN", "KH"];
+const languages = ["EN", "ខ្មែរ"];
 
 const products = [
   { name: "Facial Care", link: "/products/facial-care" },
@@ -29,7 +30,7 @@ const products = [
 
 const abouts = [
   { name: "Our History", link: "/our-story" },
-  { name: "Our Vision Mission & Core Value", link: "/vision-mission" },
+  { name: "Our Vision Mission & Core Values", link: "/vision-mission" },
   { name: "Our Founder", link: "/founder" },
   { name: "Our CSR", link: "/csr" },
   { name: "Our Media & Video", link: "/our-midea" },
@@ -45,7 +46,6 @@ const onClickOutside = (e) => {
   }
 };
 
-
 onMounted(() => {
   document.addEventListener("click", onClickOutside);
 });
@@ -58,7 +58,7 @@ onUnmounted(() => {
 <template>
   <div data-dropdown>
     <header
-      class="fixed top-0 left-0 w-full z-50  border-t border-b border-[#b78542] shadow-sm bg-[#AC8544]"
+      class="fixed top-0 left-0 w-full z-50  border-t border-b border-[white] shadow-sm bg-[#AC8544]"
     >
       <div class="max-w-7xl mx-auto h-[70px] px-4 lg:px-10 flex items-center justify-between">
         <!-- Logo -->
@@ -76,11 +76,11 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase  tracking-wide  text-[white]"
             >
                <NuxtLink
               
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white  uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -130,11 +130,11 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="aboutOpen = !aboutOpen; productOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase tracking-wide  text-[white]"
             >
              <NuxtLink
                
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white  uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -182,7 +182,7 @@ onUnmounted(() => {
 
             <NuxtLink
                to="/contact-us"
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white  uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -212,9 +212,12 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="w-[100px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1 text-[white] font-semibold"
+              class="w-[100px] h-[42px] rounded-full border border-white flex justify-center items-center gap-2 text-white"
             >
-              {{ language }}
+              <Globe :size="16" />
+
+              <span>{{ language }}</span>
+
               <ChevronDown
                 :size="15"
                 class="duration-300"
@@ -239,7 +242,7 @@ onUnmounted(() => {
                   v-for="lang in languages"
                   :key="lang"
                   @click="language = lang; languageOpen = false"
-                  class="block w-full py-1 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
+                  class="block w-full py-2 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
                 >
                   {{ lang }}
                 </button>

@@ -3,51 +3,52 @@ import { useRouter } from "vue-router";
 import { CalendarDays } from "lucide-vue-next";
 
 // Import images/videos
-import media1 from "~/assets/images/media1.jpg";
-import media2 from "~/assets/images/media2.jpg";
-import media3 from "~/assets/images/media3.jpg";
-import media4 from "~/assets/images/media4.jpg";
-import media5 from "~/assets/images/media5.jpg";
-import media6 from "~/assets/images/media6.jpg";
+import media1 from "~/assets/images/pic1.jpg";
+import media2 from "~/assets/images/pic1.jpg";
+import media3 from "~/assets/images/pic1.jpg";
+import media4 from "~/assets/images/pic1.jpg";
+import media5 from "~/assets/images/pic1.jpg";
+import media6 from "~/assets/images/pic1.jpg";
 
 const router = useRouter();
+const { t, d } = useI18n();
 
 const mediaItems = [
   {
     image: media1,
     type: "image",
-    date: "March 12, 2025",
-    title: "Opening Ceremony",
+    date: "mediaPage.date1",
+    title: "mediaPage.opening"
   },
   {
     image: media2,
     type: "image",
-    date: "March 12, 2025",
-    title: "Opening Ceremony",
+     date: "mediaPage.date1",
+    title: "mediaPage.opening"
   },
   {
     image: media3,
     type: "image",
-    date: "March 12, 2025",
-    title: "Opening Ceremony",
+    date: "mediaPage.date1",
+    title: "mediaPage.opening"
   },
   {
     image: media4,
     type: "image",
-    date: "March 12, 2025",
-    title: "Opening Ceremony",
+    date: "mediaPage.date1",
+    title: "mediaPage.opening"
   },
   {
     image: media5,
     type: "image",
-    date: "March 12, 2025",
-    title: "Opening Ceremony",
+    date: "mediaPage.date1",
+    title: "mediaPage.opening"
   },
   {
     image: media6,
     type: "image",
-    date: "March 12, 2025",
-    title: "Opening Ceremony",
+    date: "mediaPage.date1",
+    title: "mediaPage.opening"
   },
 ];
 
@@ -68,16 +69,14 @@ const goVideo = () => {
       <h1
         class="text-[#A47B3B] text-4xl md:text-5xl font-semibold tracking-wider"
       >
-        MEDIA
+          {{ t("mediaPage.title") }}
       </h1>
 
 
       <p
         class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto"
       >
-        At BORAN CARE ASIA, we are committed to creating innovative,
-        high-quality, and sustainable skincare solutions inspired by Khmer
-        nature and backed by modern science.
+         {{ t("mediaPage.description") }}
       </p>
 
 
@@ -87,7 +86,7 @@ const goVideo = () => {
         <button
           class="bg-[#AC8544] text-white px-10 py-3 rounded-lg font-medium transition"
         >
-          MEDIA
+         {{ t("mediaPage.title") }}
         </button>
 
 
@@ -95,7 +94,7 @@ const goVideo = () => {
           @click="goVideo"
           class="border border-[#AC8544] text-[#AC8544] hover:bg-[#AC8544] hover:text-white px-10 py-3 rounded-lg font-medium transition"
         >
-          VIDEO
+           {{ t("mediaPage.video") }}
         </button>
 
       </div>
@@ -138,7 +137,7 @@ const goVideo = () => {
 
           <!-- Bottom Overlay -->
           <div
-            class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-4"
+            class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2"
           >
 
             <div class="flex items-center gap-2 text-xs opacity-95">
@@ -146,14 +145,14 @@ const goVideo = () => {
               <CalendarDays :size="14"/>
 
               <span>
-                {{ item.date }}
+              {{ t(item.date) }}
               </span>
 
             </div>
 
 
             <h3 class="mt-1 text-xl font-semibold">
-              {{ item.title }}
+              {{ t(item.title) }}
             </h3>
 
           </div>
