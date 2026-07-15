@@ -23,6 +23,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'km',
 
+    detectBrowserLanguage: false,
+
     locales: [
       {
         code: 'km',
@@ -36,5 +38,6 @@ export default defineNuxtConfig({
       }
     ],
 
-    langDir: 'locales/'  }
+    langDir: 'locales/'
+  }
 })

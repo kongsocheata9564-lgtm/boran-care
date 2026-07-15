@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-[#F8F3E7] py-16 px-4 sm:px-6 lg:px-8" style="font-family: 'Inter', sans-serif;">
+  <section class="bg-[#FFFFFF] py-16 px-4 sm:px-6 lg:px-8" style="font-family: 'Inter', sans-serif;">
     <div class="max-w-6xl mx-auto">
       <h1
         class="text-center text-4xl sm:text-5xl font-extrabold mb-12"
@@ -20,7 +20,7 @@
                   type="text"
                   required
                   :placeholder="$t('contact.yourFirstName')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
               </div>
@@ -36,7 +36,7 @@
                   type="text"
                   required
                   :placeholder="$t('contact.yourLastName')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
               </div>
@@ -50,7 +50,7 @@
                   type="email"
                   required
                   :placeholder="$t('contact.yourEmail')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
               </div>
@@ -60,7 +60,7 @@
                   v-model="form.phone"
                   type="tel"
                   :placeholder="$t('contact.yourPhone')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                   style="font-family: 'Inter', sans-serif;"
                 />
               </div>
@@ -68,18 +68,14 @@
 
             <div class="mb-5">
               <label class="block text-[0.82rem] font-semibold mb-2" style="color: #A57E45;">{{ $t('contact.topic') }}</label>
-              <select
+              <input
                 v-model="form.topic"
+                type="text"
                 required
-                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                :placeholder="$t('contact.selectTopic')"
+                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                 style="font-family: 'Inter', sans-serif;"
-              >
-                <option value="" disabled selected>{{ $t('contact.selectTopic') }}</option>
-                <option value="Product Inquiry">{{ $t('contact.topicProduct') }}</option>
-                <option value="OEM/ODM Partnership">{{ $t('contact.topicPartnership') }}</option>
-                <option value="Support">{{ $t('contact.topicSupport') }}</option>
-                <option value="Other">{{ $t('contact.topicOther') }}</option>
-              </select>
+              />
             </div>
 
             <div class="mb-7">
@@ -89,7 +85,7 @@
                 required
                 rows="5"
                 :placeholder="$t('contact.writeMessage')"
-                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#b6a88e] hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] resize-y leading-relaxed transition-all duration-200"
+                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] resize-y leading-relaxed transition-all duration-200"
                 style="font-family: 'Inter', sans-serif;"
               ></textarea>
             </div>
@@ -128,8 +124,8 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">{{ $t('contact.phone') }}</p>
-                <a href="tel:+85512973500" class="text-[#1F3A2E] font-semibold group-hover:text-[#A57E45] transition-colors duration-300" style="font-family: 'Inter', sans-serif;">+855 12 973 500</a>
+                <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300" style="font-family: 'Inter', sans-serif;">{{ $t('contact.phone') }}</p>
+                <a href="tel:+85512973500" class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300" style="color: #145A3A; font-family: 'Inter', sans-serif;">+855 12 973 500</a>
               </div>
             </div>
 
@@ -141,8 +137,8 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">{{ $t('contact.email') }}</p>
-                <a href="mailto:ceo@borancare.com" class="text-[#1F3A2E] font-semibold group-hover:text-[#A57E45] transition-colors duration-300" style="font-family: 'Inter', sans-serif;">ceo@borancare.com</a>
+                <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300" style="font-family: 'Inter', sans-serif;">{{ $t('contact.email') }}</p>
+                <a href="mailto:ceo@borancare.com" class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300" style="color: #145A3A; font-family: 'Inter', sans-serif;">ceo@borancare.com</a>
               </div>
             </div>
 
@@ -154,8 +150,8 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] mb-0.5" style="font-family: 'Inter', sans-serif;">{{ $t('contact.location') }}</p>
-                <p class="text-[#1F3A2E] font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug" style="font-family: 'Inter', sans-serif;">
+                <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300" style="font-family: 'Inter', sans-serif;">{{ $t('contact.location') }}</p>
+                <p class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug" style="color: #145A3A; font-family: 'Inter', sans-serif;">
                   {{ $t('contact.address') }}
                 </p>
               </div>
@@ -172,32 +168,6 @@
           referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=Boran+Care+Asia+Co.,+Ltd,+Serei+Saophoan,+Cambodia&output=embed"
         ></iframe>
-
-        <div class="absolute left-4 bottom-4 bg-white rounded-xl shadow-lg p-4 max-w-[260px]">
-          <div class="flex items-start gap-3">
-            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#F2E4C4] flex items-center justify-center mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#A57E45]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </span>
-            <div>
-              <h3 class="font-semibold text-[#1F3A2E] mb-1" style="font-family: 'Inter', sans-serif;">{{ $t('contact.office') }}</h3>
-              <p class="text-sm text-[#1F3A2E]/80 leading-snug mb-2" style="font-family: 'Inter', sans-serif;">
-                {{ $t('contact.address') }}
-              </p>
-              <a
-                :href="directionsUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-sm font-semibold hover:underline"
-                style="color: #A57E45; font-family: 'Inter', sans-serif;"
-              >
-                {{ $t('contact.direction') }}
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -205,12 +175,6 @@
 
 <script setup>
 const WEB3FORMS_ACCESS_KEY = 'e5d9ca62-cfb2-4eed-b7c8-ddfd488f3e7d'
-
-const directionsUrl =
-  'https://www.google.com/maps/dir/?api=1&destination=' +
-  encodeURIComponent(
-    'Boran Care Asia Co., Ltd, Pongro Village, Sangkat Kampong Svay, Serei Saophoan City, Banteay Meanchey Province, Cambodia'
-  )
 
 const form = reactive({
   firstName: '',

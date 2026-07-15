@@ -1,85 +1,164 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { Search, ChevronDown, Menu, X } from "lucide-vue-next";
- 
-// Import logo
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { Search, ChevronDown, Menu, X, Globe } from "lucide-vue-next";
+
 import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
- 
+
+const { locale, setLocale, t, getLocaleMessage } = useI18n();
+const router = useRouter();
+
 const mobileMenu = ref(false);
-// Desktop
 const productOpen = ref(false);
 const aboutOpen = ref(false);
- 
-// Mobile
+
 const mobileProductOpen = ref(false);
 const mobileAboutOpen = ref(false);
 const languageOpen = ref(false);
- 
-const language = ref("EN");
- 
-const languages = ["EN", "KH"];
- 
+
+const searchQuery = ref("");
+const mobileSearchQuery = ref("");
+
+const languages = [
+  { code: "en", label: "EN" },
+  { code: "km", label: "ខ្មែរ" },
+];
+
+const currentLangLabel = computed(() => {
+  return languages.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase();
+});
+
 const products = [
   {
-    name: "Facial Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "FACIAL CARE",
-      },
-    },
+    key: "header.facialCare",
+    link: { path: "/product", query: { category: "FACIAL CARE" } },
   },
- 
   {
-    name: "Hair Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "HAIR CARE",
-      },
-    },
+    key: "header.hairCare",
+    link: { path: "/product", query: { category: "HAIR CARE" } },
   },
- 
   {
-    name: "Skin Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "SKIN CARE",
-      },
-    },
+    key: "header.skinCare",
+    link: { path: "/product", query: { category: "SKIN CARE" } },
   },
- 
   {
-    name: "Personal Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "PERSONAL CARE",
-      },
-    },
+    key: "header.personalCare",
+    link: { path: "/product", query: { category: "PERSONAL CARE" } },
   },
- 
   {
-    name: "Make Up",
-    link: {
-      path: "/product",
-      query: {
-        category: "MAKEUP",
-      },
-    },
+    key: "header.makeup",
+    link: { path: "/product", query: { category: "MAKEUP" } },
   },
 ];
- 
+
 const abouts = [
-  { name: "Our History", link: "/our-story" },
-  { name: "Our Vision Mission & Core Values", link: "/vision-mission" },
-  { name: "Our Founder", link: "/founder" },
-  { name: "Our CSR", link: "/csr" },
-  { name: "Our Media & Video", link: "/our-midea" },
+  { key: "header.story", link: "/our-story" },
+  { key: "header.vision", link: "/vision-mission" },
+  { key: "header.founder", link: "/founder" },
+  { key: "header.csr", link: "/csr" },
+  { key: "header.media", link: "/our-midea" },
 ];
- 
-// Close dropdowns when clicking outside
+
+// --- Search: match across product categories, about pages, contact,
+// in both English and Khmer, regardless of which language is active ---
+const translateAllLocales = (key) => {
+  return ["en", "km"]
+    .map((loc) => {
+      try {
+        const parts = key.split(".");
+        let value = getLocaleMessage(loc);
+        for (const part of parts) value = value?.[part];
+        return typeof value === "string" ? value : null;
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean);
+};
+
+const EXTRA_KEYWORDS = {
+  "header.facialCare": ["facial care", "facial"],
+  "header.hairCare": ["hair care", "hair"],
+  "header.skinCare": ["skin care", "skin"],
+  "header.personalCare": ["personal care", "personal"],
+  "header.makeup": ["makeup", "make up"],
+  "header.story": ["our story", "story"],
+  "header.vision": [
+    "vision",
+    "mission",
+    "vision mission",
+    "our vision",
+    "core values",
+    "mission core values",
+  ],
+  "header.founder": ["founder", "our founder"],
+  "header.csr": ["csr", "our csr"],
+  "header.media": ["media", "video", "our media", "media and video"],
+  "header.about": ["about", "about us"],
+  "header.contact": ["contact", "contact us"],
+};
+
+const searchTargets = computed(() => {
+  const items = products.map((p) => ({
+    keywords: [
+      ...translateAllLocales(p.key),
+      ...(EXTRA_KEYWORDS[p.key] ?? []),
+      p.link.query?.category,
+    ],
+    to: p.link,
+  }));
+
+  abouts.forEach((a) => {
+    items.push({
+      keywords: [...translateAllLocales(a.key), ...(EXTRA_KEYWORDS[a.key] ?? [])],
+      to: a.link,
+    });
+  });
+
+  items.push({
+    keywords: [
+      ...translateAllLocales("header.about"),
+      ...EXTRA_KEYWORDS["header.about"],
+    ],
+    to: abouts[0]?.link ?? "/our-story",
+  });
+
+  items.push({
+    keywords: [
+      ...translateAllLocales("header.contact"),
+      ...EXTRA_KEYWORDS["header.contact"],
+    ],
+    to: "/contact-us",
+  });
+
+  return items;
+});
+
+const normalize = (str) => str.toLowerCase().trim();
+
+const findMatch = (query) => {
+  const q = normalize(query);
+  return searchTargets.value.find((item) =>
+    item.keywords.some((k) => k && normalize(k).includes(q))
+  );
+};
+
+const goToSearchResult = (query) => {
+  const trimmed = query.trim();
+  if (!trimmed) return;
+  const match = findMatch(trimmed);
+  if (match) {
+    router.push(match.to);
+  } else {
+    router.push({ path: "/product", query: { search: trimmed } });
+  }
+};
+
+const handleSearch = () => goToSearchResult(searchQuery.value);
+const handleMobileSearch = () => {
+  mobileMenu.value = false;
+  goToSearchResult(mobileSearchQuery.value);
+};
+
 const onClickOutside = (e) => {
   const target = e.target;
   if (!target.closest("[data-dropdown]")) {
@@ -88,12 +167,11 @@ const onClickOutside = (e) => {
     languageOpen.value = false;
   }
 };
- 
- 
+
 onMounted(() => {
   document.addEventListener("click", onClickOutside);
 });
- 
+
 onUnmounted(() => {
   document.removeEventListener("click", onClickOutside);
 });
@@ -123,7 +201,6 @@ onUnmounted(() => {
               class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
             >
                <NuxtLink
-              
                class="relative inline-block text-white font-semibold uppercase
                      after:content-['']
                      after:absolute
@@ -136,7 +213,7 @@ onUnmounted(() => {
                      after:duration-300
                      hover:after:w-full"
              >
-               PRODUCTS
+               {{ t('header.product') }}
              </NuxtLink>
               <ChevronDown
                 :size="16"
@@ -160,11 +237,11 @@ onUnmounted(() => {
               >
                 <NuxtLink
                   v-for="item in products"
-                  :key="item.name"
+                  :key="item.key"
                   :to="item.link"
                   class="block px-5 py-3 text-sm text-white hover:text-[#f5dfb5] transition-colors"
                 >
-                  {{ item.name }}
+                  {{ t(item.key) }}
                 </NuxtLink>
               </div>
             </Transition>
@@ -177,7 +254,6 @@ onUnmounted(() => {
               class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
             >
              <NuxtLink
-               
                class="relative inline-block text-white font-semibold uppercase
                      after:content-['']
                      after:absolute
@@ -190,7 +266,7 @@ onUnmounted(() => {
                      after:duration-300
                      hover:after:w-full"
              >
-               ABOUT US
+               {{ t('header.about') }}
              </NuxtLink>
               <ChevronDown
                 :size="16"
@@ -214,11 +290,11 @@ onUnmounted(() => {
               >
                 <NuxtLink
                   v-for="item in abouts"
-                  :key="item.name"
+                  :key="item.key"
                   :to="item.link"
                   class="block px-5 py-3 text-sm text-white hover:text-[#f5dfb5] transition-colors"
                 >
-                  {{ item.name }}
+                  {{ t(item.key) }}
                 </NuxtLink>
               </div>
             </Transition>
@@ -238,17 +314,26 @@ onUnmounted(() => {
                      after:duration-300
                      hover:after:w-full"
              >
-               CONTACT US
+               {{ t('header.contact') }}
              </NuxtLink>
         </nav>
 
         <!-- Desktop Right -->
         <div class="hidden lg:flex items-center gap-8">
           <div class="flex items-center border border-[white] rounded-full px-6 py-2">
-            <Search :size="18" class=" text-[white] " />
+            <button
+              type="button"
+              @click="handleSearch"
+              class="shrink-0"
+              :aria-label="t('header.search')"
+            >
+              <Search :size="18" class=" text-[white] " />
+            </button>
             <input
+              v-model="searchQuery"
               type="text"
-              placeholder="Search products"
+              :placeholder="t('header.search')"
+              @keyup.enter="handleSearch"
               class="ml-3 outline-none bg-transparent w-32  text-[white] text-[15px]"
             />
           </div>
@@ -256,9 +341,10 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="w-[100px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1 text-[white] font-semibold"
+              class="w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-semibold"
             >
-              {{ language }}
+              <Globe :size="16" class="text-white" />
+              {{ currentLangLabel }}
               <ChevronDown
                 :size="15"
                 class="duration-300"
@@ -281,11 +367,11 @@ onUnmounted(() => {
               >
                 <button
                   v-for="lang in languages"
-                  :key="lang"
-                  @click="language = lang; languageOpen = false"
+                  :key="lang.code"
+                  @click="setLocale(lang.code); languageOpen = false"
                   class="block w-full py-1 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
                 >
-                  {{ lang }}
+                  {{ lang.label }}
                 </button>
               </div>
             </Transition>
@@ -295,8 +381,6 @@ onUnmounted(() => {
         <!-- Mobile Logo + Button -->
 <div class="flex lg:hidden items-center gap-4">
 
-  <!-- Mobile Logo -->
-  <!-- Desktop Logo -->
 <NuxtLink to="/" class="hidden lg:flex items-center">
   <img
     :src="logo"
@@ -305,7 +389,6 @@ onUnmounted(() => {
   />
 </NuxtLink>
 
-  <!-- Menu Button -->
   <button
     @click="mobileMenu = !mobileMenu"
   >
@@ -325,11 +408,10 @@ onUnmounted(() => {
       </div>
     </header>
 
-    <!-- ✅ This spacer pushes all page content below the fixed header -->
     <div class="h-[70px]"></div>
   </div>
 
-  <!-- ✅ Mobile Menu Panel -->
+  <!-- Mobile Menu Panel -->
   <Transition
     enter-active-class="transition duration-300 ease-out"
     enter-from-class="opacity-0 -translate-x-full"
@@ -341,7 +423,6 @@ onUnmounted(() => {
     <div
       v-if="mobileMenu"
         class="fixed inset-0 z-[60] lg:hidden"    >
-      <!-- Overlay -->
       <div
         class="absolute inset-0 bg-black/30"
         @click="
@@ -351,7 +432,6 @@ onUnmounted(() => {
           "
       ></div>
 
-      <!-- Panel -->
       <div class="absolute top-0 left-0 h-full w-80 bg-[#AC8544] shadow-2xl overflow-y-auto">
         <div class="h-[70px] px-6 flex items-center justify-between border-b border-white/30">
           <img :src="logo" alt="BORAN CARE" class="h-16 object-contain" />
@@ -370,7 +450,7 @@ onUnmounted(() => {
                 "
               class="w-full flex items-center justify-between py-3 text-white font-semibold uppercase tracking-wide"
             >
-              Products
+              {{ t('header.product') }}
               <ChevronDown
   :size="16"
   class="duration-300 text-white"
@@ -383,12 +463,12 @@ onUnmounted(() => {
               >    
                <NuxtLink
   v-for="item in products"
-  :key="item.name"
+  :key="item.key"
   :to="item.link"
   @click="mobileMenu = false"
   class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
 >
-  {{ item.name }}
+  {{ t(item.key) }}
 </NuxtLink>
             </div>
           </div>
@@ -402,7 +482,7 @@ onUnmounted(() => {
               "
               class="w-full flex items-center justify-between py-3 text-white font-semibold uppercase tracking-wide"
             >
-              About Us
+              {{ t('header.about') }}
               <ChevronDown
   :size="16"
   class="duration-300 text-white"
@@ -414,12 +494,12 @@ onUnmounted(() => {
                   class="pl-4 pb-2 space-y-1"
               >              <NuxtLink
                 v-for="item in abouts"
-                :key="item.name"
+                :key="item.key"
                 :to="item.link"
                 @click="mobileMenu = false"
                 class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
               >
-                {{ item.name }}
+                {{ t(item.key) }}
               </NuxtLink>
             </div>
           </div>
@@ -430,37 +510,50 @@ onUnmounted(() => {
             @click="mobileMenu = false"
             class="block py-3 text-white font-semibold uppercase tracking-wide hover:text-[#f5dfb5] transition-colors"
           >
-            Contact Us
+            {{ t('header.contact') }}
           </NuxtLink>
 
-          <!-- Divider -->
           <div class="border-t border-white/30 my-4"></div>
 
           <!-- Search -->
           <div class="flex items-center border border-white rounded-full px-4 py-2.5">
-            <Search :size="18" class="text-white" />
+            <button
+              type="button"
+              @click="handleMobileSearch"
+              :aria-label="t('header.search')"
+            >
+              <Search :size="18" class="text-white" />
+            </button>
             <input
+              v-model="mobileSearchQuery"
               type="text"
-              placeholder="Search"
+              :placeholder="t('header.search')"
+              @keyup.enter="handleMobileSearch"
               class="ml-3 outline-none bg-transparent w-full text-sm text-white"
             />
           </div>
 
           <!-- Language -->
-          <div class="flex items-center gap-3 pt-2">
-            <button
-              v-for="lang in languages"
-              :key="lang"
-              @click="language = lang"
-              class="px-5 py-2 rounded-full text-sm font-semibold transition-colors"
-              :class="
- language === lang
- ? 'bg-white text-[#AC8544]'
- : 'border border-white text-white hover:text-white/20'
-"
-            >
-              {{ lang }}
-            </button>
+          <div class="pt-4">
+            <div class="flex items-center gap-2 text-white mb-2">
+              <Globe :size="16" class="text-white" />
+              <span class="text-sm font-semibold uppercase tracking-wide">{{ t('header.language') }}</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <button
+                v-for="lang in languages"
+                :key="lang.code"
+                @click="setLocale(lang.code)"
+                class="px-5 py-2 rounded-full text-sm font-semibold transition-colors"
+                :class="
+   locale === lang.code
+   ? 'bg-white text-[#AC8544]'
+   : 'border border-white text-white hover:text-white/20'
+  "
+              >
+                {{ lang.label }}
+              </button>
+            </div>
           </div>
         </nav>
       </div>
@@ -470,6 +563,7 @@ onUnmounted(() => {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@500;600;700&display=swap");
 
 header {
   font-family: "Inter", sans-serif;
@@ -478,7 +572,7 @@ header {
 nav,
 button,
 a {
-  font-family: "Oswald", sans-serif;
+  font-family: "Oswald", 'Noto Sans Khmer', sans-serif;
 }
 
 input::placeholder {
