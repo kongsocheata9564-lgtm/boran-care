@@ -71,5 +71,44 @@
       "csr": "Our CSR",
       "media": "Our Media & Video"
     }
+  },
+
+
+  "hero": {
+  "panels": {
+    "inspired": "INSPIRED",
+    "nature": "BY NATURE",
+    "perfected": "PERFECTED",
+    "by": "BY",
+    "innovation": "INNOVATION"
   }
+},
+"contact": {
+  "title": "Contact Us",
+
+  "firstName": "First Name",
+  "yourFirstName": "Your first name",
+  "lastName": "Last Name",
+  "yourLastName": "Your last name",
+
+  "email": "Email",
+  "yourEmail": "Your email address",
+  "phone": "Phone",
+  "yourPhone": "Your phone number",
+
+  "topic": "Topic",
+  "selectTopic": "Write your topic",
+  
+
+  "message": "Message",
+  "writeMessage": "Write your message",
+
+  "send": "Send Message",
+  "sending": "Sending...",
+  "success": "Thank you! Your message has been sent successfully.",
+  "error": "Something went wrong. Please try again.",
+
+  "location": "Location",
+  "address": "Pongro Village, Sangkat Kampong Svay, Serei Saophoan City, Banteay Meanchey Province, Cambodia"
+}
 }

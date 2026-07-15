@@ -174,7 +174,7 @@ style="font-family:'Oswald',sans-serif">
 <li v-for="item in products" :key="item.name">
 
 <button
-  @click="goTo(item.path)"
+  @click="goTo(item.link)"
   class="relative text-[13px] text-white transition
          after:absolute after:left-0 after:-bottom-1
          after:h-[1px] after:w-0
