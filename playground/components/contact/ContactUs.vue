@@ -2,7 +2,7 @@
   <section class="bg-[#FFFFFF] py-16 px-4 sm:px-6 lg:px-8" style="font-family: 'Inter', sans-serif;">
     <div class="max-w-6xl mx-auto">
       <h1
-        class="text-center text-4xl sm:text-5xl font-extrabold mb-12"
+        class="text-center text-3xl sm:text-4xl font-normal mb-12"
         style="font-family: 'Oswald', sans-serif; color: #A57E45; letter-spacing: 0.08em;"
       >
         {{ $t('contact.title') }}
