@@ -197,7 +197,7 @@ onUnmounted(() => {
       class="fixed top-0 left-0 w-full z-50  border-t border-b border-[#b78542] shadow-sm bg-[#AC8544]"
     >
       <div
-        class="max-w-7xl mx-auto h-[70px] flex items-center justify-between"
+        class="w-full h-[70px] flex items-center justify-between"
         style="padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem);"
       >
         <!-- Logo -->
@@ -574,8 +574,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@500;600;700&display=swap");
+
 
 header {
   font-family: "Inter", sans-serif;
