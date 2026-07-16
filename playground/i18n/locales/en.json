@@ -21,7 +21,6 @@
     "khmer": "ខ្មែរ",
     "english": "English"
   },
-<<<<<<< HEAD
 
   "hero": {
   "panels": {
@@ -59,7 +58,7 @@
 
   "location": "Location",
   "address": "Pongro Village, Sangkat Kampong Svay, Serei Saophoan City, Banteay Meanchey Province, Cambodia"
-=======
+},
   "about": {
   "heading": "ABOUT US",
   "intro": "We work with entrepreneurs, brands, and organizations to bring their product ideas to life through a structured and scalable manufacturing process.",
@@ -68,7 +67,7 @@
     "people": "People",
     "health": "Health",
     "future": "Future"
-  },
+  }},
   "founder": {
   "heading": "FOUNDER & CEO",
   "subHeading": "Our Chairwoman of the Boran Care Company",
@@ -103,7 +102,5 @@
       "text2": "Together with our employees and partners, we strive to build a healthier, stronger, and more caring community."
     }
   ]
-}
->>>>>>> feat/punloeu
 }
 }
