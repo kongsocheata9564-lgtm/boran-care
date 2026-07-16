@@ -215,10 +215,10 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
             >
                <NuxtLink
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -268,10 +268,10 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="aboutOpen = !aboutOpen; productOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-semibold tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
             >
              <NuxtLink
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -319,7 +319,7 @@ onUnmounted(() => {
 
             <NuxtLink
                :to="localePath('/contact-us')"
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -358,7 +358,7 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-semibold"
+              class="w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-normal"
             >
               <Globe :size="16" class="text-white" />
               {{ currentLangLabel }}
