@@ -151,7 +151,9 @@
               </span>
               <div>
                 <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300" style="font-family: 'Inter', sans-serif;">{{ $t('contact.location') }}</p>
-                <p class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug" style="color: #145A3A; font-family: 'Inter', sans-serif;">
+                
+                <!-- whitespace-pre-line forces the text to break exactly where you put \n in your JSON file -->
+                <p class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug whitespace-pre-line" style="color: #145A3A; font-family: 'Inter', sans-serif;">
                   {{ $t('contact.address') }}
                 </p>
               </div>

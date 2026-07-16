@@ -88,8 +88,7 @@ const panels = [
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@500;600;700&display=swap');
+
 
 .hero-title {
   font-family: 'Oswald', 'Noto Sans Khmer', 'Inter', sans-serif;
