@@ -1,46 +1,43 @@
 <template>
-  
-  <div class="min-h-screen  text-[#2C3E2B] font-['Inter'] px-4 sm:px-32">
+  <div class="font-inter min-h-screen text-[#2C3E2B] px-4 sm:px-32">
     <main class="max-w-7xl mx-auto pt-8 sm:pt-10 pb-8 sm:pb-12">
-      <!-- Section Title -->
-      <h2 class="text-center font-['Oswald'] text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-widest mb-8">Our Products</h2>
+      <h2 class="font-oswald text-center text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-widest mb-8">
+        {{ t('productPage.ourProducts') }}
+      </h2>
 
-      <!-- Category Filter Tabs -->
-      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 w-full max-w-3xl mx-auto">
+      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 mb-10 w-full max-w-3xl mx-auto">
         <button
-          v-for="product in categories"
-          :key="product"
-          @click="toggleCategory(product)"
+          v-for="(catKey, index) in categories"
+          :key="catKey"
+          @click="toggleCategory(catKey)"
           :class="[
-            'basis-[calc(40%-0.25rem)] sm:basis-[calc(33.333%-0.5rem)] md:basis-auto md:min-w-[140px] px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap font-[\'Oswald\']',
-            activeCategory === product? 'bg-[#AC8544] text-white border-[#AC8544]' : 'bg-white text-[#AC8544] border-[#AC8544] hover:bg-[#FAF9F6]'
+            'font-oswald px-3 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap sm:basis-auto sm:min-w-[140px]',
+            index === categories.length - 1 && categories.length % 2 !== 0 ? 'col-span-2 sm:col-span-1' : '',
+            activeCategory === catKey ? 'bg-[#AC8544] text-white border-[#AC8544]' : 'bg-white text-[#AC8544] border-[#AC8544] hover:bg-[#FAF9F6]'
           ]"
         >
-          {{ product}}
+          {{ getCategoryLabel(catKey) }}
         </button>
       </div>
 
-      <!-- Product Cards Grid Matrix -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1198px] mx-auto gap-5 sm:gap-8 ">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1198px] mx-auto gap-5 sm:gap-8">
         <div
           v-for="product in filteredProducts"
           :key="product.id"
           class="bg-white rounded-2xl shadow-sm border border-[#EBE7E0] overflow-hidden flex flex-col group cursor-pointer hover:shadow-md transition-all duration-300"
           @click="openProduct(product)"
         >
-          <!-- Product Image Container -->
-          <div class="relative aspect-square   bg-[#F3F1ED] overflow-hidden  flex items-center justify-center">
-            <span class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-[10px] sm:text-[15px] font-['Oswald'] font-bold uppercase px-2 py-1 sm:px-2.5 sm:py-1.5 rounded shadow-sm z-10 tracking-wider min-w-[90px] sm:min-w-[155px] text-center inline-block">
-              {{ product.category }}
+          <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
+            <span class="font-oswald absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-base font-bold uppercase px-3 py-2 rounded shadow-sm z-10 tracking-wider text-center whitespace-nowrap inline-flex items-center justify-center min-w-[140px]">
+              {{ getCategoryLabel(product.category) }}
             </span>
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <span v-else class="text-xs text-gray-400">No Image</span>
+            <span v-else class="text-xs text-gray-400">{{ t('productPage.noImage') }}</span>
           </div>
 
-          <!-- Card Actions Row -->
           <div class="p-5 flex justify-between items-center mt-auto border-t border-[#F5F2EC]">
             <span class="text-[#145A3A] font-medium tracking-wide text-base group-hover:text-[#8C7654] transition-colors">
-              View Details
+             {{ t('productPage.viewDetails') }}
             </span>
             <svg class="w-5 h-5 text-[#145A3A] transform transition-transform group-hover:translate-x-1.5 group-hover:text-[#8C7654] duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -50,29 +47,26 @@
       </div>
     </main>
 
-    <!-- BEAUTIFIED PRODUCT DETAIL MODAL -->
     <div
-      v-if="isModalOpen"
+      v-if="isModalOpen && selectedProduct"
       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4 animate-fade-in"
       @click.self="isModalOpen = false"
     >
-      <div class="bg-white rounded-3xl w-full max-w-3xl relative max-h-[95vh] sm:max-h-[92vh] overflow-y-auto shadow-2xl border border-[#EBE7E0]">
-        
-        <!-- Standard Close Button Minimalist Icon -->
+      <div class="bg-white rounded-3xl w-full max-w-3xl relative max-h-[95vh] sm:max-h-[92vh] overflow-hidden shadow-2xl border border-[#EBE7E0] flex flex-col">
+
         <button
           @click="isModalOpen = false"
-          class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors z-10"
+          class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors z-20 bg-white/80 backdrop-blur-sm"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        
-        <div class=" p-6 sm:p-10">
+        <div class="overflow-y-auto">
+        <div class="p-8 sm:p-10">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             
-            <!-- Left Side: Interactive Gallery Viewports -->
             <div>
               <div class="aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden bg-[#F3F1ED] shadow-sm">
                 <img :src="activeImage" :alt="selectedProduct.name" class="w-full h-full object-cover" />
@@ -91,57 +85,54 @@
               </div>
             </div>
 
-            <!-- Right Side: Structured Specifications Content -->
             <div class="flex flex-col h-full justify-start pt-2">
               <div class="mb-3">
-                <span class="inline-block bg-[#AC8544] text-white text-[11px] font-['Oswald'] font-semibold uppercase tracking-wider px-3 py-1 rounded">
+                <span class="font-oswald inline-block bg-[#AC8544] text-white text-[16px] font-semibold uppercase tracking-wider px-3 py-1 rounded">
                   {{ selectedProduct.type }}
                 </span>
               </div>
 
-              <h2 class="font-['Oswald'] text-2xl sm:text-3xl text-[#AC8544] font-medium tracking-wide mb-2">
+              <h2 class="font-oswald text-[20px] sm:text-[24px] text-[#AC8544] font-medium tracking-wide mb-2">
                 {{ selectedProduct.name }}
               </h2>
 
-              <p class="text-[#145A3A] pt-4 text-sm">
+              <p class="text-[#145A3A] pt-4 text-[16px] leading-relaxed">
                 {{ selectedProduct.description }}
               </p>
             </div>
           </div>
 
-          <!-- Grid Separator Block -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 pt-8 border-t border-[#EBE7E0]">
-            <!-- Left Grid Pane: Benefits -->
             <div>
-              <h3 class="font-['Oswald'] text-lg text-[#AC8544] font-medium mb-4">Benefits</h3>
+              <h3 class="font-oswald text-[21px] text-[#AC8544] font-medium mb-4">{{ t('productPage.benefits') }}</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(benefit, i) in selectedProduct.benefits"
                   :key="i"
-                  class="flex items-start gap-2.5 text-sm text-[#145A3A]"
+                  class="flex items-start gap-2.5 text-[16px] text-[#145A3A]"
                 >
-                  <span class="text-[#145A3A] text-xs mt-0.5">•</span>
+                  <span class="text-[#145A3A] text-[16px] mt-0.5">•</span>
                   <span>{{ benefit }}</span>
                 </li>
               </ul>
             </div>
 
-            <!-- Right Grid Pane: Ingredients Profiles -->
             <div>
-              <h3 class="font-['Oswald'] text-lg text-[#AC8544] font-medium mb-4">Key Ingredients</h3>
+              <h3 class="font-oswald text-[21px] text-[#AC8544] font-medium mb-4">{{ t('productPage.keyIngredients') }}</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(ing, i) in selectedProduct.ingredients"
                   :key="i"
-                  class="flex items-start gap-2.5 text-sm text-[#145A3A]"
+                  class="flex items-start gap-2.5 text-[16px] text-[#145A3A]"
                 >
-                  <span class="text-[#145A3A] text-xs mt-0.5">•</span>
+                  <span class="text-[#145A3A] text-[16px] mt-0.5">•</span>
                   <span><strong class="font-medium text-[#145A3A]">{{ ing.name }}</strong> — {{ ing.desc }}</span>
                 </li>
               </ul>
             </div>
           </div>
 
+        </div>
         </div>
       </div>
     </div>
@@ -151,10 +142,20 @@
 <script setup>
 import { ref, computed, watch } from "vue";
 import { useRoute } from "vue-router";
+import { useI18n } from 'vue-i18n';
 
-// 1. IMPORT ALL YOUR NEW PICTURES HERE:
+// Import all product images
 import imgSoap1 from '~/assets/images/b6.jpeg'
-import imgSoap2 from '~/assets/images/b18.jpeg'
+import imgSoap2 from '~/assets/images/b29.jpeg'
+import imgSoap3 from '~/assets/images/b27.jpeg'
+import imgSoap4 from '~/assets/images/b28.jpeg'
+
+import imgSoap5 from '~/assets/images/b18.jpeg'
+import imgSoap6 from '~/assets/images/30.jpeg'
+import imgSoap7 from '~/assets/images/31.jpeg'
+import imgSoap8 from '~/assets/images/b30.jpeg'
+
+
 import imgSink1 from '~/assets/images/b24.jpeg'
 import imgSink2 from '~/assets/images/b22.jpeg'
 import imgHair1 from '~/assets/images/b8.jpeg'
@@ -164,21 +165,35 @@ import imgHair4 from '~/assets/images/b23.jpeg'
 import imgMake1 from '~/assets/images/b17.jpeg'
 import imgScrub1 from '~/assets/images/b14.jpeg'
 import imgScrub2 from '~/assets/images/b19.jpeg'
+import imgScrub3 from '~/assets/images/b31.jpeg'
+import imgScrub4 from '~/assets/images/b32.jpeg'
 import b15 from '~/assets/images/b15.jpeg'
 import b16 from '~/assets/images/16.jpeg'
-import b23 from '~/assets/images/b23.jpeg'
 
-
-const activeCategory = ref('')
+const { t, tm } = useI18n();
 const route = useRoute();
-const isModalOpen = ref(false)
-const selectedProduct = ref(null)
-const activeImage = ref(null)
 
-// how many products to show by default, before a category is picked
-const DEFAULT_VISIBLE_COUNT = 5
+const activeCategory = ref('');
+const isModalOpen = ref(false);
+const selectedProductId = ref(null);
+const activeImage = ref(null);
 
-const categories = ['FACIAL CARE', 'HAIR CARE', 'SKIN CARE', 'PERSONAL CARE', 'MAKEUP' ]
+const DEFAULT_VISIBLE_COUNT = 5;
+
+// Unified Category IDs corresponding to translation key mappings
+const categories = ['FACIAL_CARE', 'HAIR_CARE', 'SKIN_CARE', 'PERSONAL_CARE', 'MAKEUP'];
+
+// Category Mapping helper for i18n
+const getCategoryLabel = (catKey) => {
+  const mapping = {
+    'FACIAL_CARE': 'facialCare',
+    'HAIR_CARE': 'hairCare',
+    'SKIN_CARE': 'skinCare',
+    'PERSONAL_CARE': 'personalCare',
+    'MAKEUP': 'makeup'
+  };
+  return t(`productPage.categories.${mapping[catKey] || 'facialCare'}`);
+};
 
 watch(
   () => route.query.category,
@@ -192,165 +207,133 @@ watch(
   { immediate: true }
 );
 
-// 2. DATA PRODUCTS ARRAY
-const products = ref([
+// Static Product Metadata
+const productMetadata = [
   {
     id: 1,
-    name: 'Natural Mini Soap 100g',
-    category: 'FACIAL CARE',
-    type: 'FACIAL CARE',
+    key: 'p1',
+    category: 'FACIAL_CARE',
     image: imgSoap1,
-    images: [imgSoap1, imgSoap1, imgSoap1, imgSoap1],
-    description: 'Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.',
-    benefits: ['100% natural ingredients', 'Free from harsh chemicals', 'Suitable for everyday use', 'Handmade in Cambodia'],
-    ingredients: [
-      { name: 'Local botanical oils', desc: 'sustainably farmed by the community' },
-      { name: 'Natural saponified base', desc: 'no synthetic detergents' }
-    ]
+    images: [imgSoap1, imgSoap3, imgSoap2, imgSoap4]
   },
-  
-  
   {
     id: 3,
-    name: 'Natural Shampoo 300ml',
-    category: 'HAIR CARE',
-    type: 'HAIR CARE',
+    key: 'p3',
+    category: 'HAIR_CARE',
     image: imgHair1,
-    images: [imgHair3, imgHair4, imgHair3, imgHair2],
-    description: 'BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.',
-    benefits: ['Gently removes dirt and excess oil.', 'Leaves hair feeling soft and refreshed.', 'Suitable for daily hair care.', 'Made in Cambodia.'],
-    ingredients: [
-      { name: 'Natural plant extracts', desc: 'nourishes scalp and strands' },
-      { name: 'Silk-inspired formulation', desc: 'inspired by Boran Care’s silk sericin research' }
-    ]
+    images: [imgHair1, imgHair4, imgHair3, imgHair2]
   },
-
   {
     id: 7,
-    name: 'Anti Wrinkle Cream',
-    category: 'SKIN CARE',
-    type: 'SKIN CARE',
+    key: 'p7',
+    category: 'SKIN_CARE',
     image: imgSink1,
-    images: [imgSink2, imgSink2, imgSink2, imgSink1],
-    description: "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
-    benefits: ['Helps moisturize the skin.', 'Supports smoother-looking skin.', 'Lightweight texture.', 'Suitable for daily use.'],
-    ingredients: [
-      { name: 'Hyaluronic Acid', desc: 'A powerful humectant that draws deep moisture into the skin barrier, keeping it plump and highly hydrated.' },
-      { name: 'Collagen', desc: "Works to support the skin's natural framework, visibly improving firmness, springiness, and texture." },
-      { name: 'Silk Cocoon Extract (SOURINA Line)', desc: 'Rich in natural sericin protein to form a protective moisture shield and noticeably soften aging skin.' }
-    ]
+    images: [imgSink2, imgSink2, imgSink2, imgSink1]
   },
-
-
-   {
+  {
     id: 5,
-    name: 'Kaffir Lime Scrub 300ml',
-    category: 'PERSONAL CARE',
-    type: 'PERSONAL CARE',
+    key: 'p5',
+    category: 'PERSONAL_CARE',
     image: imgScrub2,
-    images: [b16, imgScrub2, b15 , imgScrub2],
-    description: ' EK Beauty Kaffir Lime Body Scrub combines the potent cleansing power of natural Cambodian kaffir lime with skin-polishing botanical extracts. It naturally lifts away dead skin cells, targets uneven tone, and reveals intensely soft, glowing skin with a lingering fresh, refreshing herbal aroma.',
-    benefits: ['Gently exfoliates dead skin cells.', 'Leaves skin feeling soft', 'Refreshing coffee aroma', 'Suitable for regular body care'],
-    ingredients: [
-      { name: 'Kaffir Lime Peel & Extract:', desc: 'High in volatile oils and natural AHAs to safely brighten, deeply cleanse, and refine skin texture.' },
-      { name: 'Honey: ', desc: 'Actively locks in hydration, acts as a natural antibacterial barrier, and ensures the skin feels silky post-scrub.' },
-      { name: 'Botanical Seed Oils: ', desc: 'Deeply nourishes the skin layer so it feels intensely conditioned and flexible, rather than stripped or tight.' }
-    ]
+    images: [imgScrub2, imgScrub4, b15, imgScrub3]
   },
-
-  
   {
     id: 6,
-    name: 'natural Lip Balm 5g',
+    key: 'p6',
     category: 'MAKEUP',
-    type: 'MAKEUP',
     image: imgMake1,
-    images: [imgMake1, imgMake1, imgMake1, imgMake1],
-    description: 'BORAN CARE Lipstick delivers vibrant color with a smooth finish while helping keep lips comfortable throughout the day. The formula is designed for easy application and everyday wear',
-    benefits: ['Built around silk sericin extract', 'Lab-tested and formulated in Cambodia', 'Targets anti-aging and skin renewal', 'Backed by ITC lab quality testing'],
-    ingredients: [
-      { name: 'Vitamin E', desc: 'Helps keep lips soft and moisturized.' },
-      { name: 'Natural waxes', desc: 'Provide a smooth texture and comfortable application.' },
-      { name: 'Plant-based oils', desc: 'Help prevent lips from feeling dry.' }
-    ]
+    images: [imgMake1, imgMake1, imgMake1, imgMake1]
   },
-
-
- 
-
-  
-
- 
-
-
-
-
 
 
   {
     id: 2,
-    name: 'SILK SOAP 100g',
-    category: 'FACIAL CARE',
-    type: 'Handmade Soap',
-    image: imgSoap2,
-    images: [imgSoap2, imgSoap2, imgSoap2, imgSoap2],
-    description: "Silk Soap is a handcrafted facial cleansing bar formulated with naturally derived ingredients to gently cleanse, refresh, and soften the skin. Its rich, creamy lather removes impurities while helping maintain the skin's natural moisture, leaving your complexion feeling clean, smooth, and revitalized after every wash.",
-    benefits: ['Gentle cleansing for daily facial care.', 'Helps remove dirt, oil, and impurities.', 'Leaves skin feeling soft and smooth.', 'Maintains the skins natural moisture balance.' ,'Suitable for most skin types.', 'Made with naturally derived ingredients.'],
-    ingredients: [
-      { name: 'Natural Soap Base', desc: 'Gently cleanses the skin without harsh detergents.' },
-      { name: 'Silk Extract', desc: 'Helps keep the skin feeling soft and smooth.' },
-      { name: 'Natural Plant Oils', desc: 'Nourish and moisturize the skin.' },
-      { name: 'Glycerin', desc: 'Helps retain moisture and prevent dryness.' }
-    ]
+    key: 'p2',
+    category: 'FACIAL_CARE',
+    image: imgSoap5,
+    images: [imgSoap5, imgSoap6, imgSoap7, imgSoap8]
   },
-
-   {
+  {
     id: 4,
-    name: 'Natural Conditioner 300ml',
-    category: 'PERSONAL CARE',
-    type: 'Conditioner',
+    key: 'p4',
+    category: 'PERSONAL_CARE',
     image: imgScrub1,
-    images: [b16, imgScrub1, b15 , imgScrub1],
-    description: ' A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.',
-    benefits: ['Exfoliates dead skin cells', 'Boosts circulation & reduces cellulite appearance', 'Deeply moisturizes & brightens skin', 'Leaves skin soft, smooth & glowing'],
-    ingredients: [
-      { name: 'Ground Coffee', desc: 'natural exfoliant, stimulates blood flow' },
-      { name: 'Coconut Oil ', desc: 'deep moisture & skin softening' },
-      { name: 'Brown Sugar ', desc: 'gentle secondary exfoliant' },
-      { name: 'Vanilla Extract ', desc: 'antioxidant & soothing scent' }
-    ]
-  },
-  
-])
+    images: [imgScrub1, b16, b15, imgScrub1]
+  }
+];
 
-// Default view: only show the first N products.
-// Once a category is active, show ALL products in that category.
+// Computed translation data dynamic parsing to bypass AST nodes
+const products = computed(() => {
+  return productMetadata.map(p => {
+    const rawBenefits = tm(`productPage.productsData.${p.key}.benefits`) || [];
+    const rawIngredients = tm(`productPage.productsData.${p.key}.ingredients`) || [];
+
+    // Safely map values into concrete string evaluations
+    const benefits = Array.isArray(rawBenefits) 
+      ? rawBenefits.map((_, index) => t(`productPage.productsData.${p.key}.benefits[${index}]`))
+      : [];
+
+    const ingredients = Array.isArray(rawIngredients)
+      ? rawIngredients.map((_, index) => ({
+          name: t(`productPage.productsData.${p.key}.ingredients[${index}].name`),
+          desc: t(`productPage.productsData.${p.key}.ingredients[${index}].desc`)
+        }))
+      : [];
+
+    return {
+      id: p.id,
+      category: p.category,
+      image: p.image,
+      images: p.images,
+      name: t(`productPage.productsData.${p.key}.name`),
+      type: t(`productPage.productsData.${p.key}.type`),
+      description: t(`productPage.productsData.${p.key}.description`),
+      benefits,
+      ingredients
+    };
+  });
+});
+
+// Reactively resolves the active product upon language change
+const selectedProduct = computed(() => {
+  if (!selectedProductId.value) return null;
+  return products.value.find(p => p.id === selectedProductId.value);
+});
+
+// Default filtering matrix behavior
 const filteredProducts = computed(() => {
-  if (!activeCategory.value) return products.value.slice(0, DEFAULT_VISIBLE_COUNT)
-  return products.value.filter(p => p.category === activeCategory.value)
-})
+  if (!activeCategory.value) return products.value.slice(0, DEFAULT_VISIBLE_COUNT);
+  return products.value.filter(p => p.category === activeCategory.value);
+});
 
 function toggleCategory(cat) {
-  activeCategory.value = activeCategory.value === cat ? '' : cat
+  activeCategory.value = activeCategory.value === cat ? '' : cat;
 }
 
 function openProduct(product) {
-  selectedProduct.value = {
-    ...product,
-    type: product.type || 'Natural Care',
-    description: product.description || `Premium selection for your ${product.category.toLowerCase()} routine.`,
-    benefits: product.benefits || ['Nourishes deep layers', 'Protects skin barrier', '100% Organic ingredients'],
-    ingredients: product.ingredients || [{ name: 'Natural Extracts', desc: 'Sourced organically' }],
-    image: product.image,
-    images: product.images || [product.image, product.image, product.image, product.image]
-  }
-  activeImage.value = selectedProduct.value.image
-  isModalOpen.value = true
+  selectedProductId.value = product.id;
+  activeImage.value = product.image;
+  isModalOpen.value = true;
 }
+
+// Reset tracker when modal is closed
+watch(isModalOpen, (isOpen) => {
+  if (!isOpen) {
+    selectedProductId.value = null;
+  }
+});
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500&display=swap");
+
+.font-oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
 
 .animate-fade-in {
   animation: fadeIn 0.25s ease-out forwards;

@@ -102,5 +102,141 @@
       "text2": "Together with our employees and partners, we strive to build a healthier, stronger, and more caring community."
     }
   ]
-}
+},
+    
+
+  
+  
+  
+  "productPage": {
+    "ourProducts": "Our Products",
+    "viewDetails": "View Details",
+    "benefits": "Benefits",
+    "keyIngredients": "Key Ingredients",
+    "noImage": "No Image",
+    "categories": {
+      "facialCare": "FACIAL CARE",
+      "hairCare": "HAIR CARE",
+      "skinCare": "SKIN CARE",
+      "personalCare": "PERSONAL CARE",
+      "makeup": "MAKEUP"
+    },
+    "productsData": {
+      "p1": {
+        "name": "Natural Mini Soap 100g",
+        "type": "FACIAL CARE",
+        "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
+        "benefits": [
+          "100% natural ingredients",
+          "Free from harsh chemicals",
+          "Suitable for everyday use",
+          "Handmade in Cambodia"
+        ],
+        "ingredients": [
+          { "name": "Local botanical oils", "desc": "sustainably farmed by the community" },
+          { "name": "Natural saponified base", "desc": "no synthetic detergents" }
+        ]
+      },
+      "p3": {
+        "name": "Natural Shampoo 300ml",
+        "type": "HAIR CARE",
+        "description": "BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.",
+        "benefits": [
+          "Gently removes dirt and excess oil.",
+          "Leaves hair feeling soft and refreshed.",
+          "Suitable for daily hair care.",
+          "Made in Cambodia."
+        ],
+        "ingredients": [
+          { "name": "Natural plant extracts", "desc": "nourishes scalp and strands" },
+          { "name": "Silk-inspired formulation", "desc": "inspired by Boran Care’s silk sericin research" }
+        ]
+      },
+      "p7": {
+        "name": "Anti Wrinkle Cream",
+        "type": "SKIN CARE",
+        "description": "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
+        "benefits": [
+          "Helps moisturize the skin.",
+          "Supports smoother-looking skin.",
+          "Lightweight texture.",
+          "Suitable for daily use."
+        ],
+        "ingredients": [
+          { "name": "Hyaluronic Acid", "desc": "A powerful humectant that draws deep moisture into the skin barrier, keeping it plump and highly hydrated." },
+          { "name": "Collagen", "desc": "Works to support the skin's natural framework, visibly improving firmness, springiness, and texture." },
+          { "name": "Silk Cocoon Extract (SOURINA Line)", "desc": "Rich in natural sericin protein to form a protective moisture shield and noticeably soften aging skin." }
+        ]
+      },
+      "p5": {
+        "name": "Kaffir Lime Scrub 300g",
+        "type": "PERSONAL CARE",
+        "description": "EK Beauty Kaffir Lime Body Scrub combines the potent cleansing power of natural Cambodian kaffir lime with skin-polishing botanical extracts. It naturally lifts away dead skin cells, targets uneven tone, and reveals intensely soft, glowing skin with a lingering fresh, refreshing herbal aroma.",
+        "benefits": [
+          "Gently exfoliates dead skin cells.",
+          "Leaves skin feeling soft",
+          "Refreshing coffee aroma",
+          "Suitable for regular body care"
+        ],
+        "ingredients": [
+          { "name": "Kaffir Lime Peel & Extract:", "desc": "High in volatile oils and natural AHAs to safely brighten, deeply cleanse, and refine skin texture." },
+          { "name": "Honey: ", "desc": "Actively locks in hydration, acts as a natural antibacterial barrier, and ensures the skin feels silky post-scrub." },
+          { "name": "Botanical Seed Oils: ", "desc": "Deeply nourishes the skin layer so it feels intensely conditioned and flexible, rather than stripped or tight." }
+        ]
+      },
+      "p6": {
+        "name": "natural Lip Balm 5g",
+        "type": "MAKEUP",
+        "description": "BORAN CARE Lipstick delivers vibrant color with a smooth finish while helping keep lips comfortable throughout the day. The formula is designed for easy application and everyday wear",
+        "benefits": [
+          "Built around silk sericin extract",
+          "Lab-tested and formulated in Cambodia",
+          "Targets anti-aging and skin renewal",
+          "Backed by ITC lab quality testing"
+        ],
+        "ingredients": [
+          { "name": "Vitamin E", "desc": "Helps keep lips soft and moisturized." },
+          { "name": "Natural waxes", "desc": "Provide a smooth texture and comfortable application." },
+          { "name": "Plant-based oils", "desc": "Help prevent lips from feeling dry." }
+        ]
+      },
+      "p2": {
+        "name": "SILK SOAP 100g",
+        "type": "Handmade Soap",
+        "description": "Silk Soap is a handcrafted facial cleansing bar formulated with naturally derived ingredients to gently cleanse, refresh, and soften the skin. Its rich, creamy lather removes impurities while helping maintain the skin's natural moisture, leaving your complexion feeling clean, smooth, and revitalized after every wash.",
+        "benefits": [
+          "Gentle cleansing for daily facial care.",
+          "Helps remove dirt, oil, and impurities.",
+          "Leaves skin feeling soft and smooth.",
+          "Maintains the skins natural moisture balance.",
+          "Suitable for most skin types.",
+          "Made with naturally derived ingredients."
+        ],
+        "ingredients": [
+          { "name": "Natural Soap Base", "desc": "Gently cleanses the skin without harsh detergents." },
+          { "name": "Silk Extract", "desc": "Helps keep the skin feeling soft and smooth." },
+          { "name": "Natural Plant Oils", "desc": "Nourish and moisturize the skin." },
+          { "name": "Glycerin", "desc": "Helps retain moisture and prevent dryness." }
+        ]
+      },
+      "p4": {
+        "name": "Coffee Body Scrub 300g",
+        "type": "PERSONAL CARE",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      }
+    }
+  }
+
 }
