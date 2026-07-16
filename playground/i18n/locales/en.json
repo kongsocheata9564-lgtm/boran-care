@@ -302,15 +302,14 @@
     "terms": "Terms & Condition",
 
     "copyright": "© 2026 Boran Care. All Rights Reserved",
-
-    "product": {
-      "facial": "Facial Care",
-      "skin": "Skin Care",
-      "hair": "Hair Care",
-      "personal": "Personal Care",
-      "makeup": "Make Up"
-    },
-
+    
+    "product": "Product",
+    "facialCare": "Facial Care",
+    "hairCare": "Hair Care",
+    "skinCare": "Skincare",
+    "personalCare": "Personal Care",
+    "makeup": "Makeup",
+    
     "quick": {
       "products": "Products",
       "about": "About Us",
