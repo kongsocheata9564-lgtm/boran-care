@@ -174,7 +174,7 @@
 </template>
 
 <script setup>
-const WEB3FORMS_ACCESS_KEY = 'e5d9ca62-cfb2-4eed-b7c8-ddfd488f3e7d'
+const config = useRuntimeConfig()
 
 const form = reactive({
   firstName: '',
@@ -193,7 +193,7 @@ async function handleSubmit() {
     const res = await $fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: {
-        access_key: WEB3FORMS_ACCESS_KEY,
+        access_key: config.public.web3formsKey,
         name: `${form.firstName} ${form.lastName}`.trim(),
         email: form.email,
         phone: form.phone,
