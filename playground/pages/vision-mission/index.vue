@@ -8,7 +8,7 @@
         <h2
           class="font-bebas text-3xl md:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
         >
-          VISION &amp; MISSION
+           {{ $t('visionMission.visionSectionTitle') }}
         </h2>
 
         <!-- Cards Grid -->
@@ -89,6 +89,7 @@
 }
 </style>
 <script setup>
+const { t } = useI18n()
 /**
  * Inline SVG icons so they inherit no external assets.
  * Replace title/description per card as needed.
@@ -164,41 +165,36 @@ const handshakeIcon = `
 </svg>
 `
 
-const visionMission = [
+const visionMission = computed(() => [
   {
     icon: eyeIcon,
-    title: 'OUR VISION',
-    description:
-      "To become Cambodia's leading green beauty manufacturer, inspiring the world with innovative, sustainable, and premium skincare products rooted in Khmer nature.",
+    title: t('visionMission.vision.title'),
+    description: t('visionMission.vision.description'),
   },
   {
     icon: targetIcon,
-    title: 'OUR MISSION',
-    description:
-      'To create safe, high-quality skincare products by combining natural ingredients with modern science while delivering trusted OEM/ODM solutions that empower brands to grow.',
+    title: t('visionMission.mission.title'),
+    description: t('visionMission.mission.description'),
   },
-]
-
-const coreValues = [
+  
+])
+const coreValues = computed(() => [
   {
     icon: leafIcon,
-    title: 'NATURAL PURITY',
-    description:
-      'We harness the power of natural, ethically-sourced ingredients, blending traditional Cambodian botanicals with modern skincare science.',
+    title: t('visionMission.naturalPurity.title'),
+    description: t('visionMission.naturalPurity.description'),
   },
   {
     icon: shieldIcon,
-    title: 'TRUSTED QUALITY',
-    description:
-      'Every formula is rigorously tested to meet international safety and quality standards, so brands and consumers can trust what goes on their skin.',
+    title: t('visionMission.trustedQuality.title'),
+    description: t('visionMission.trustedQuality.description'),
   },
   {
     icon: handshakeIcon,
-    title: 'PARTNERSHIP GROWTH',
-    description:
-      'Through reliable OEM/ODM solutions, we empower partner brands to grow with flexible, scalable manufacturing support.',
+    title: t('visionMission.partnershipGrowth.title'),
+    description: t('visionMission.partnershipGrowth.description'),
   },
-]
+])
 </script>
 
 <style scoped>
