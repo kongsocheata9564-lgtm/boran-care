@@ -9,12 +9,12 @@
       class="text-3xl sm:text-4xl tracking-wide text-amber-600"
       style="font-family: 'Bebas Neue', sans-serif ;color: #A57E45"
     >
-      FOUNDER &amp; CEO
+   {{ $t('founder.heading') }}
     </h2>
     <p
       class="mt-2 text-teal-800/80 text-sm sm:text-base"
     >
-      Our Chairwoman of the Boran Care Company
+  {{ $t('founder.subHeading') }}
     </p>
   </div>
 
@@ -47,7 +47,7 @@
           class="text-xl sm:text-2xl tracking-wide text-amber-600 mb-8"
           style="font-family: 'Bebas Neue', sans-serif ;color: #A57E45"
         >
-          QUOTE of founder
+        {{ $t('founder.quoteTitle') }}
         </h3>
         <p class="text-teal-800 text-sm sm:text-sm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          leading-relaxed">
           {{ founder.quote }}
@@ -59,12 +59,12 @@
 </template>
 
 <script setup>
-const founder = {
-  name: "Nhim sorida",
+const { t } = useI18n()
+const founder = computed(() => ({
+  name: t('founder.name'),
   photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTia1knsdXgOh8XgYTK3nYhrGDExt7TyExI3dZ9JHRkaafCXz-sx05_vYmU&s=10",
-  quote:
-    " A genuine Cambodian brand should never rely on pity or understanding by casting itself as the underdog. Rather, it should be founded on confidence and command authentic respect .",
-};
+  quote: t('founder.quote')
+}))
 </script>
 
 <style scoped>

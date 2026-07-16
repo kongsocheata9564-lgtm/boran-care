@@ -9,12 +9,10 @@
   class="text-3xl sm:text-4xl tracking-wide"
   style="font-family: 'Bebas Neue', sans-serif; color: #A57E45"
 >
-  ABOUT US
+ {{ $t('csr.aboutHeading') }}
 </h2>
       <p class="mt-3 text-teal-800/80 text-sm sm:text-base leading-relaxed">
-        At BORAN CARE ASIA, we are committed to creating innovative,
-        high-quality, and sustainable skincare solutions inspired by Khmer
-        nature and backed by modern science.
+       {{ $t('csr.aboutDescription') }}
       </p>
     </div>
 
@@ -24,13 +22,11 @@
         class="text-3xl sm:text-3xl tracking-wide text-amber-600 mb-3"
         style="font-family: 'Bebas Neue', sans-serif; color: #A57E45"
       >
-        CORPORATE SOCIAL RESPONSIBILITY
+         {{ $t('csr.heading') }}
       </h3>
       <p class="text-teal-800/80 text-sm sm:text-base leading-relaxed">
-        Care &amp; Share" event represents a local business giving back to
-        the community by providing students with essential school supplies,
-        educational materials, or care packages to support their learning and
-        well-being.
+       
+        {{ $t('csr.description') }}
       </p>
     </div>
 
@@ -70,29 +66,30 @@
 </template>
 
 <script setup>
+const { t } = useI18n()
 const csrText =
   'Care & Share" event represents a local business giving back to the community by providing students with essential school supplies, educational materials, or care packages to support their learning and well-being.';
 
-const csrItems = [
+const csrItems = computed(() => [
   {
-    image: "https://i.postimg.cc/8P1dNXg5/p1.jpg",
-    alt: "Care & Share event with students",
-    text1: csrText,
-    text2: csrText,
+    image: "https://i.postimg.cc/xdw7rcpR/Borancare-csr.jpg",
+    alt: t("csr.items.0.alt"),
+    text1: t("csr.items.0.text1"),
+    text2: t("csr.items.0.text2"),
   },
   {
     image: "https://i.postimg.cc/8P1dNXg5/p1.jpg",
-    alt: "Care & Share donation packages",
-    text1: csrText,
-    text2: csrText,
+    alt: t("csr.items.1.alt"),
+    text1: t("csr.items.1.text1"),
+    text2: t("csr.items.1.text2"),
   },
   {
-    image: "https://i.postimg.cc/8P1dNXg5/p1.jpg",
-    alt: "Care & Share community event",
-    text1: csrText,
-    text2: csrText,
-  },
-];
+    image: "https://i.postimg.cc/25Qd6y87/borancare-csr2.jpg",
+    alt: t("csr.items.2.alt"),
+    text1: t("csr.items.2.text1"),
+    text2: t("csr.items.2.text2"),
+  }
+])
 </script>
 
 <style scoped>
