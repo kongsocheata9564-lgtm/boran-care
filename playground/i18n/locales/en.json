@@ -115,16 +115,17 @@
     "keyIngredients": "Key Ingredients",
     "noImage": "No Image",
     "categories": {
-      "facialCare": "FACIAL CARE",
-      "hairCare": "HAIR CARE",
-      "skinCare": "SKIN CARE",
-      "personalCare": "PERSONAL CARE",
-      "makeup": "MAKEUP"
+      "facialCare": "Facial Care",
+      "hairCare": "Hair Care",
+      "skinCare": "Skin Care",
+      "personalCare": "Personal Care",
+      "makeup": "Makeup"
     },
     "productsData": {
       "p1": {
         "name": "Natural Mini Soap 100g",
         "type": "FACIAL CARE",
+        "badge": "Mini Soap",
         "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
         "benefits": [
           "100% natural ingredients",
@@ -140,6 +141,7 @@
       "p3": {
         "name": "Natural Shampoo 300ml",
         "type": "HAIR CARE",
+        "badge": "Natural Shampoo",
         "description": "BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.",
         "benefits": [
           "Gently removes dirt and excess oil.",
@@ -155,6 +157,7 @@
       "p7": {
         "name": "Anti Wrinkle Cream",
         "type": "SKIN CARE",
+        "badge": "Anti Wrinkle Cream",
         "description": "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
         "benefits": [
           "Helps moisturize the skin.",
@@ -171,6 +174,7 @@
       "p5": {
         "name": "Kaffir Lime Scrub 300g",
         "type": "PERSONAL CARE",
+        "badge": "Kaffir Lime Scrub",
         "description": "EK Beauty Kaffir Lime Body Scrub combines the potent cleansing power of natural Cambodian kaffir lime with skin-polishing botanical extracts. It naturally lifts away dead skin cells, targets uneven tone, and reveals intensely soft, glowing skin with a lingering fresh, refreshing herbal aroma.",
         "benefits": [
           "Gently exfoliates dead skin cells.",
@@ -187,6 +191,7 @@
       "p6": {
         "name": "natural Lip Balm 5g",
         "type": "MAKEUP",
+        "badge": "Natural Lip Balm",
         "description": "BORAN CARE Lipstick delivers vibrant color with a smooth finish while helping keep lips comfortable throughout the day. The formula is designed for easy application and everyday wear",
         "benefits": [
           "Built around silk sericin extract",
@@ -201,8 +206,9 @@
         ]
       },
       "p2": {
-        "name": "SILK SOAP 100g",
-        "type": "Handmade Soap",
+        "name": "SILK SOAP 75g & 100g",
+        "type": "FACIAL CARE ",
+        "badge": "Silk Soap",
         "description": "Silk Soap is a handcrafted facial cleansing bar formulated with naturally derived ingredients to gently cleanse, refresh, and soften the skin. Its rich, creamy lather removes impurities while helping maintain the skin's natural moisture, leaving your complexion feeling clean, smooth, and revitalized after every wash.",
         "benefits": [
           "Gentle cleansing for daily facial care.",
@@ -222,6 +228,7 @@
       "p4": {
         "name": "Coffee Body Scrub 300g",
         "type": "PERSONAL CARE",
+        "badge": "Coffee Body Scrub",
         "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
         "benefits": [
           "Exfoliates dead skin cells",
