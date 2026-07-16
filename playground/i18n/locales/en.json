@@ -31,6 +31,35 @@
     "innovation": "INNOVATION"
   }
 },
+"visionMission": {
+  "visionSectionTitle": "Vision & Mission",
+  "coreValueSectionTitle": "Core Values",
+
+  "vision": {
+    "title": "Our Vision",
+    "description": "To become Cambodia's leading green beauty manufacturer by creating innovative, high-quality, and sustainable skincare products inspired by Cambodia's natural resources."
+  },
+
+  "mission": {
+    "title": "Our Mission",
+    "description": "To develop safe and high-quality skincare products by combining natural ingredients with modern science, while providing reliable OEM/ODM services that empower brands to grow successfully."
+  },
+
+  "naturalPurity": {
+    "title": "Natural Purity",
+    "description": "We use carefully selected, ethically sourced natural ingredients, combining Cambodia's botanical resources with advanced skincare technology to create safe and effective beauty solutions."
+  },
+
+  "trustedQuality": {
+    "title": "Trusted Quality",
+    "description": "Every product formula undergoes rigorous testing to meet international standards of safety and quality, ensuring confidence for both our business partners and consumers."
+  },
+
+  "partnershipGrowth": {
+    "title": "Partnership Growth",
+    "description": "Through our reliable OEM/ODM services, we support our partners' success by delivering flexible, scalable, and innovative manufacturing solutions."
+  }
+},
 "contact": {
   "title": "Contact Us",
 
