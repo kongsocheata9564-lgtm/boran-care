@@ -5,13 +5,13 @@
         {{ t('productPage.ourProducts') }}
       </h2>
 
-      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 mb-10 w-full max-w-3xl mx-auto">
+      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-5 mb-10 w-full max-w-4xl mx-auto">
         <button
           v-for="(catKey, index) in categories"
           :key="catKey"
           @click="toggleCategory(catKey)"
           :class="[
-            'font-oswald px-3 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-sm sm:text-base font-medium tracking-wider uppercase border transition-all text-center whitespace-nowrap sm:basis-auto sm:min-w-[140px]',
+            'font-oswald px-3 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-sm sm:text-base  tracking-wider uppercase border transition-all text-center whitespace-nowrap sm:basis-auto sm:min-w-[140px]',
             index === categories.length - 1 && categories.length % 2 !== 0 ? 'col-span-2 sm:col-span-1' : '',
             activeCategory === catKey ? 'bg-[#AC8544] text-white border-[#AC8544]' : 'bg-white text-[#AC8544] border-[#AC8544] hover:bg-[#FAF9F6]'
           ]"
@@ -20,29 +20,30 @@
         </button>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1198px] mx-auto gap-5 sm:gap-8">
+      <div :class="['grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-[1198px] mx-auto gap-5 sm:gap-8', isModalOpen ? 'pointer-events-none' : '']">
         <div
           v-for="product in filteredProducts"
           :key="product.id"
-          class="bg-white rounded-2xl shadow-sm border border-[#EBE7E0] overflow-hidden flex flex-col group cursor-pointer hover:shadow-md transition-all duration-300"
+          class="bg-white rounded-2xl border border-[#AC8544] overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl   active:translate-y-0 active:shadow-sm active:ring-0 tap-transparent"
           @click="openProduct(product)"
         >
           <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
-            <span class="font-oswald absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-base font-bold uppercase px-3 py-2 rounded shadow-sm z-10 tracking-wider text-center whitespace-nowrap inline-flex items-center justify-center min-w-[140px]">
-              {{ getCategoryLabel(product.category) }}
+            <span class="font-oswald absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-sm font-medium uppercase px-3 py-2 rounded shadow-sm z-10 tracking-wide text-center leading-snug flex items-center justify-center w-[150px] sm:w-[160px] min-h-[38px]">
+              {{ product.badge }}
             </span>
-            <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
             <span v-else class="text-xs text-gray-400">{{ t('productPage.noImage') }}</span>
           </div>
 
-          <div class="p-5 flex justify-between items-center mt-auto border-t border-[#F5F2EC]">
+          <!-- <div class="p-5 flex justify-between items-center mt-auto border-t border-[#F5F2EC]">
             <span class="text-[#145A3A] font-medium tracking-wide text-base group-hover:text-[#8C7654] transition-colors">
              {{ t('productPage.viewDetails') }}
             </span>
             <svg class="w-5 h-5 text-[#145A3A] transform transition-transform group-hover:translate-x-1.5 group-hover:text-[#8C7654] duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
-          </div>
+          </div> -->
+          
         </div>
       </div>
     </main>
@@ -183,17 +184,20 @@ const DEFAULT_VISIBLE_COUNT = 5;
 // Unified Category IDs corresponding to translation key mappings
 const categories = ['FACIAL_CARE', 'HAIR_CARE', 'SKIN_CARE', 'PERSONAL_CARE', 'MAKEUP'];
 
-// Category Mapping helper for i18n
-const getCategoryLabel = (catKey) => {
-  const mapping = {
-    'FACIAL_CARE': 'facialCare',
-    'HAIR_CARE': 'hairCare',
-    'SKIN_CARE': 'skinCare',
-    'PERSONAL_CARE': 'personalCare',
-    'MAKEUP': 'makeup'
-  };
-  return t(`productPage.categories.${mapping[catKey] || 'facialCare'}`);
+// Shared key mapping used by both label helpers below
+const CATEGORY_KEY_MAP = {
+  'FACIAL_CARE': 'facialCare',
+  'HAIR_CARE': 'hairCare',
+  'SKIN_CARE': 'skinCare',
+  'PERSONAL_CARE': 'personalCare',
+  'MAKEUP': 'makeup'
 };
+
+// Label used on the CATEGORY FILTER BUTTONS (e.g. "Facial Care")
+const getCategoryLabel = (catKey) => {
+  return t(`productPage.categories.${CATEGORY_KEY_MAP[catKey] || 'facialCare'}`);
+};
+
 
 watch(
   () => route.query.category,
@@ -287,6 +291,7 @@ const products = computed(() => {
       images: p.images,
       name: t(`productPage.productsData.${p.key}.name`),
       type: t(`productPage.productsData.${p.key}.type`),
+      badge: t(`productPage.productsData.${p.key}.badge`),
       description: t(`productPage.productsData.${p.key}.description`),
       benefits,
       ingredients
@@ -337,6 +342,10 @@ watch(isModalOpen, (isOpen) => {
 
 .animate-fade-in {
   animation: fadeIn 0.25s ease-out forwards;
+}
+
+.tap-transparent {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes fadeIn {

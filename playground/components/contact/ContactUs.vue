@@ -2,7 +2,7 @@
   <section class="bg-[#FFFFFF] py-16 px-4 sm:px-6 lg:px-8" style="font-family: 'Inter', sans-serif;">
     <div class="max-w-6xl mx-auto">
       <h1
-        class="text-center text-4xl sm:text-5xl font-extrabold mb-12"
+        class="text-center text-3xl sm:text-4xl font-normal mb-12"
         style="font-family: 'Oswald', sans-serif; color: #A57E45; letter-spacing: 0.08em;"
       >
         {{ $t('contact.title') }}
@@ -151,7 +151,9 @@
               </span>
               <div>
                 <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300" style="font-family: 'Inter', sans-serif;">{{ $t('contact.location') }}</p>
-                <p class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug" style="color: #145A3A; font-family: 'Inter', sans-serif;">
+                
+                <!-- whitespace-pre-line forces the text to break exactly where you put \n in your JSON file -->
+                <p class="font-semibold group-hover:text-[#A57E45] transition-colors duration-300 leading-snug whitespace-pre-line" style="color: #145A3A; font-family: 'Inter', sans-serif;">
                   {{ $t('contact.address') }}
                 </p>
               </div>

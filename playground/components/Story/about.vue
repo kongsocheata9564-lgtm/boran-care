@@ -6,8 +6,8 @@
     <!-- Heading -->
     <div class="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
       <h2
-        class="text-4xl sm:text-5xl tracking-wide text-amber-600"
-        style="font-family: 'Bebas Neue', sans-serif; color: #A57E45  "
+        class="text-center text-3xl sm:text-4xl font-normal mb-12"
+        style="font-family: 'Oswald', sans-serif; color: #A57E45; letter-spacing: 0.08em;  "
       >
         {{ t('about.heading') }}
       </h2>
@@ -16,7 +16,6 @@
       >
         {{ t('about.intro') }}
       </p>
-      <div class="w-14 h-px bg-amber-300 mx-auto mt-6 sm:mt-8" />
     </div>
 
     <!-- Card -->
@@ -107,6 +106,3 @@ const features = computed(() => [
 ])
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
-</style>
