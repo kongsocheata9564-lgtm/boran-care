@@ -240,35 +240,7 @@ const goTo = async (item) => {
       </div>
 
       <!-- Language Switcher -->
-      <div class="mt-6 flex justify-center">
-        <button 
-          @click="toggleLangMenu" 
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/50 text-white text-sm hover:bg-white/10 transition"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20" />
-          </svg>
-          {{ currentLanguage.label }}
-        </button>
-        
-        <div
-          v-show="isLangOpen"
-          class="absolute mt-12 w-40 rounded-lg overflow-hidden
-            border border-[#E8DFC8] bg-[#AC8544] shadow-lg z-10"
-        >
-          <button
-            v-for="lang in languages"
-            :key="lang.code"
-            @click="setLanguage(lang.code)"
-            class="w-full text-left px-4 py-2 text-[13px] text-white/85
-              hover:bg-white/10 hover:text-white transition"
-            :class="{ 'font-semibold text-white': lang.code === locale }"
-          >
-            {{ lang.label }}
-          </button>
-        </div>
-      </div>
+      
     </div>
 
     <div class="border-t border-[#C9A86A]">
