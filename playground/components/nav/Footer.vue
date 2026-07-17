@@ -5,6 +5,8 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute(); // <-- Added useRoute to track the current path
 const { t, locale } = useI18n();
+const localePath = useLocalePath(); // <--- ADDED THIS
+
 
 const openSection = ref(null);
 const toggleSection = (name) => {
@@ -144,12 +146,12 @@ const goTo = async (item) => {
 
   // 1. Update the route/query first
   if (typeof item === "string") {
-    await router.push(item);
+    await router.push(localePath(item)); // <--- UPDATED THIS
   } else {
-    await router.push({
+    await router.push(localePath({       // <--- UPDATED THIS
       path: item.path,
       query: item.query
-    });
+    }));
   }
 
   // 2. Wait for Vue to actually finish re-rendering the new category

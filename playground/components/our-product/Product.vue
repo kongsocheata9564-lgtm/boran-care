@@ -145,6 +145,7 @@ import { ref, computed, watch, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useI18n } from 'vue-i18n';
 
+
 // Import all product images
 import imgSoap1 from '~/assets/images/b6.jpeg'
 import imgSoap2 from '~/assets/images/b29.jpeg'
@@ -174,6 +175,8 @@ import b16 from '~/assets/images/16.jpeg'
 const { t, tm } = useI18n();
 const route = useRoute();
 const router = useRouter();
+const localePath = useLocalePath(); // <--- ADDED THIS
+
 
 const activeCategory = ref('');
 const isModalOpen = ref(false);
@@ -200,6 +203,7 @@ const getCategoryLabel = (catKey) => {
 };
 
 
+// NEW
 watch(
   () => route.query.category,
   (category) => {
@@ -208,8 +212,10 @@ watch(
     } else {
       activeCategory.value = "";
     }
-    // Ensure we start at top whenever the category changes
-    nextTick(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    // Ensure we start at top whenever the category changes — client only
+    if (import.meta.client) {
+      nextTick(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
   },
   { immediate: true }
 );
@@ -318,11 +324,11 @@ function toggleCategory(cat) {
   if (activeCategory.value === cat) {
     // Deselect — clear the query
     activeCategory.value = '';
-    router.replace({ path: '/product', query: {} });
+    router.replace(localePath({ path: '/product', query: {} })); // <--- UPDATED THIS
   } else {
     // Select — push category into the URL
     activeCategory.value = cat;
-    router.replace({ path: '/product', query: { category: cat } });
+    router.replace(localePath({ path: '/product', query: { category: cat } })); // <--- UPDATED THIS
   }
 }
 
