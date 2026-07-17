@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { Search, ChevronDown, Menu, X, Globe } from "lucide-vue-next";
 
 import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
@@ -10,6 +10,8 @@ const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 
 const mobileMenu = ref(false);
+
+// Desktop
 const productOpen = ref(false);
 const aboutOpen = ref(false);
 
@@ -20,25 +22,7 @@ const languageOpen = ref(false);
 const searchQuery = ref("");
 const mobileSearchQuery = ref("");
 
-const languages = computed(() => [
-  { code: "en", label: t("header.english") },
-  { code: "km", label: t("header.khmer") },
-]);
-
-const currentLangLabel = computed(() => {
-  return languages.value.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase();
-});
-const route = useRoute();
-
-const isProductActive = computed(
-  () => productOpen.value || route.path.includes("/product")
-);
-
-const isAboutActive = computed(
-  () => aboutOpen.value || abouts.some((a) => route.path.includes(a.link))
-);
-
-const isContactActive = computed(() => route.path.includes("/contact-us"));
+const languages = ["EN", "ខ្មែរ"];
 
 const products = [
   {
@@ -64,11 +48,11 @@ const products = [
 ];
 
 const abouts = [
-  { key: "header.story", link: "/our-story" },
-  { key: "header.vision", link: "/vision-mission" },
-  { key: "header.founder", link: "/founder" },
-  { key: "header.csr", link: "/csr" },
-  { key: "header.media", link: "/our-midea" },
+  { name: "Our History", link: "/our-story" },
+  { name: "Our Vision Mission & Core Values", link: "/vision-mission" },
+  { name: "Our Founder", link: "/founder" },
+  { name: "Our CSR", link: "/csr" },
+  { name: "Our Media & Video", link: "/our-midea" },
 ];
 
 // --- Search: match across product categories, about pages, contact,
@@ -205,7 +189,7 @@ onUnmounted(() => {
 <template>
   <div data-dropdown>
     <header
-      class="fixed top-0 left-0 w-full z-50  border-t border-b border-[#b78542] shadow-sm bg-[#AC8544]"
+      class="fixed top-0 left-0 w-full z-50  border-t border-b border-[white] shadow-sm bg-[#AC8544]"
     >
       <div
         class="w-full h-[70px] flex items-center justify-between"
@@ -226,10 +210,11 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase  tracking-wide  text-[white]"
             >
-              <NuxtLink
-               class="relative inline-block text-white font-normal uppercase
+               <NuxtLink
+              
+               class="relative inline-block text-white  uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -278,10 +263,11 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="aboutOpen = !aboutOpen; productOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase tracking-wide  text-[white]"
             >
              <NuxtLink
-               class="relative inline-block text-white font-normal uppercase
+               
+               class="relative inline-block text-white  uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -327,8 +313,8 @@ onUnmounted(() => {
           </div>
 
             <NuxtLink
-               :to="localePath('/contact-us')"
-               class="relative inline-block text-white font-normal uppercase
+               to="/contact-us"
+               class="relative inline-block text-white  uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
@@ -366,10 +352,12 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-normal"
+              class="w-[100px] h-[42px] rounded-full border border-white flex justify-center items-center gap-2 text-white"
             >
-              <Globe :size="16" class="text-white" />
-              {{ currentLangLabel }}
+              <Globe :size="16" />
+
+              <span>{{ language }}</span>
+
               <ChevronDown
                 :size="15"
                 class="duration-300"
@@ -392,9 +380,9 @@ onUnmounted(() => {
               >
                 <button
                   v-for="lang in languages"
-                  :key="lang.code"
-                  @click="switchLocale(lang.code)"
-                  class="block w-full py-1 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
+                  :key="lang"
+                  @click="language = lang; languageOpen = false"
+                  class="block w-full py-2 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
                 >
                   {{ lang.label }}
                 </button>

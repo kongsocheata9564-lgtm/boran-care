@@ -11,14 +11,38 @@ import video5 from "~/assets/videos/boran.mp4";
 import video6 from "~/assets/videos/boran.mp4";
 
 const router = useRouter();
-
+const { t } = useI18n();
 const videoItems = [
-  { video: video1, date: "March 12, 2025", title: "Opening Ceremony" },
-  { video: video2, date: "March 12, 2025", title: "Opening Ceremony" },
-  { video: video3, date: "March 12, 2025", title: "Opening Ceremony" },
-  { video: video4, date: "March 12, 2025", title: "Opening Ceremony" },
-  { video: video5, date: "March 12, 2025", title: "Opening Ceremony" },
-  { video: video6, date: "March 12, 2025", title: "Opening Ceremony" },
+  {
+    video: video1,
+    date: "videoPage.date1",
+    title: "videoPage.opening",
+  },
+  {
+    video: video2,
+    date: "videoPage.date1",
+    title: "videoPage.opening",
+  },
+  {
+    video: video3,
+    date: "videoPage.date1",
+    title: "videoPage.opening",
+  },
+  {
+    video: video4,
+    date: "videoPage.date1",
+    title: "videoPage.opening",
+  },
+  {
+    video: video5,
+    date: "videoPage.date1",
+    title: "videoPage.opening",
+  },
+  {
+    video: video6,
+    date: "videoPage.date1",
+    title: "videoPage.opening",
+  },
 ];
 
 const goMedia = () => {
@@ -37,15 +61,13 @@ const goMedia = () => {
       <h1
         class="text-[#A47B3B] text-4xl md:text-5xl font-semibold tracking-wider"
       >
-        VIDEO
+        {{ t("videoPage.title") }}
       </h1>
 
       <p
         class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto"
       >
-        At BORAN CARE ASIA, we share our journey through videos,
-        showcasing our innovative skincare solutions inspired by Khmer
-        nature and modern science.
+        {{ t("videoPage.description") }}
       </p>
 
 
@@ -56,13 +78,13 @@ const goMedia = () => {
           @click="goMedia"
           class="border border-[#AC8544] text-[#AC8544] hover:bg-[#AC8544] hover:text-white px-10 py-3 rounded-lg font-medium transition"
         >
-          MEDIA
+          {{ t("videoPage.media") }}
         </button>
 
         <button
           class="bg-[#AC8544] hover:bg-[#AC8544] text-white px-10 py-3 rounded-lg font-medium transition"
         >
-          VIDEO
+          {{ t("videoPage.title") }}
         </button>
 
       </div>
@@ -98,7 +120,7 @@ const goMedia = () => {
 
           <!-- Bottom Overlay -->
           <div
-            class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-4"
+            class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2"
           >
 
             <div class="flex items-center gap-2 text-xs opacity-95">
@@ -106,14 +128,14 @@ const goMedia = () => {
               <CalendarDays :size="14"/>
 
               <span>
-                {{ item.date }}
+                {{ t(item.date) }}
               </span>
 
             </div>
 
 
             <h3 class="mt-1 text-xl font-semibold">
-              {{ item.title }}
+              {{ t(item.title) }}
             </h3>
 
           </div>

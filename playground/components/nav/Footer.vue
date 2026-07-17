@@ -2,71 +2,28 @@
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+const { t } = useI18n()
 
 const quickLinks = [
-  { name: "Products", path: "/product" },
-  { name: "About Us", path: "/our-story" },
-  { name: "Contact Us", path: "/contact-us" },
+  { key: "footer.quick.products", path: "/product" },
+  { key: "footer.quick.about", path: "/our-story" },
+  { key: "footer.quick.contact", path: "/contact-us" }
 ];
 
 const products = [
-  {
-    name: "Facial Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "FACIAL CARE",
-      },
-    },
-  },
-
-  {
-    name: "Hair Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "HAIR CARE",
-      },
-    },
-  },
-
-  {
-    name: "Skin Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "SKIN CARE",
-      },
-    },
-  },
-
-  {
-    name: "Personal Care",
-    link: {
-      path: "/product",
-      query: {
-        category: "PERSONAL CARE",
-      },
-    },
-  },
-
-  {
-    name: "Make Up",
-    link: {
-      path: "/product",
-      query: {
-        category: "MAKEUP",
-      },
-    },
-  },
+  { key: "footer.product.facial" },
+  { key: "footer.product.skin" },
+  { key: "footer.product.hair" },
+  { key: "footer.product.personal" },
+  { key: "footer.product.makeup" }
 ];
 
 const aboutLinks = [
-  { name: "Our History", path: "/our-story" },
-  { name: "Our Vision Mission & Core Value", path: "/vision-mission" },
-  { name: "Our Founder", path: "/founder" },
-  { name: "Our CSR", path: "/csr" },
-  { name: "Our Media & Video", path: "/our-midea" },
+  { key: "footer.about.history", path: "/our-story" },
+  { key: "footer.about.vision", path: "/vision-mission" },
+  { key: "footer.about.founder", path: "/founder" },
+  { key: "footer.about.csr", path: "/csr" },
+  { key: "footer.about.media", path: "/our-media" }
 ];
 
 
@@ -144,20 +101,28 @@ style="font-family:'Poppins',sans-serif"
 
 
 <div
-class="max-w-[1280px] mx-auto px-8 py-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8"
+class="max-w-[1280px] mx-auto
+px-6 sm:px-8
+py-12
+grid
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-5
+gap-10"
 >
 
-
 <!-- Logo -->
 <!-- Logo -->
-<div class="col-span-2 sm:col-span-3 lg:col-span-1 flex items-start justify-center lg:justify-start pt-1">
+<div
+class="flex justify-center lg:justify-start
+lg:pt-1"
+>
 
   <img
-    src="assets/images/boran_care_logo-removebg-preview.png"
-    alt="Boran Care"
-    class="w-[160px] object-contain"
-  />
-
+src="assets/images/boran_care_logo-removebg-preview.png"
+alt="Boran Care"
+class="w-[150px] sm:w-[170px] lg:w-[180px] object-contain"
+/>
 </div>
 
 
@@ -167,7 +132,7 @@ class="max-w-[1280px] mx-auto px-8 py-10 grid grid-cols-2 sm:grid-cols-3 lg:grid
 
 <h3 class="uppercase text-[20px] font-semibold text-white mb-3"
 style="font-family:'Oswald',sans-serif">
-Quick Links
+{{ t('footer.quickLinks') }}
 </h3>
 
 
@@ -184,7 +149,7 @@ Quick Links
          after:transition-all after:duration-300
          hover:after:w-full"
 >
-  {{ item.name }}
+  {{ t(item.key) }}
 </button>
 
 </li>
@@ -200,7 +165,7 @@ Quick Links
 
 <h3 class="uppercase text-[20px] font-semibold text-white mb-3"
 style="font-family:'Oswald',sans-serif">
-Products
+{{ t('footer.products') }}
 </h3>
 
 
@@ -217,7 +182,7 @@ Products
          after:transition-all after:duration-300
          hover:after:w-full"
 >
-  {{ item.name }}
+  {{ t(item.key) }}
 </button>
 
 </li>
@@ -235,7 +200,7 @@ Products
 
 <h3 class="uppercase text-[20px] font-semibold text-white mb-3"
 style="font-family:'Oswald',sans-serif">
-About Us
+{{ t('footer.aboutUs') }}
 </h3>
 
 
@@ -252,7 +217,7 @@ About Us
          after:transition-all after:duration-300
          hover:after:w-full"
 >
-  {{ item.name }}
+  {{ t(item.key) }}
 </button>
 
 </li>
@@ -271,7 +236,7 @@ About Us
 
 <h3 class="uppercase text-[20px] font-semibold text-white mb-3"
 style="font-family:'Oswald',sans-serif">
-Follow Us
+{{ t('footer.followUs') }}
 </h3>
 
 
@@ -330,7 +295,7 @@ class="max-w-[1280px] mx-auto px-8 min-h-[50px] flex flex-col md:flex-row items-
 
 
 <div>
-© 2026 Boran Care. All Rights Reserved
+{{ t('footer.copyright') }}
 </div>
 
 
@@ -340,7 +305,7 @@ class="max-w-[1280px] mx-auto px-8 min-h-[50px] flex flex-col md:flex-row items-
 @click="goTo('/privacy')"
 class="hover:underline"
 >
-Privacy Policy
+{{ t('footer.privacy') }}
 </button>
 
 
@@ -351,7 +316,7 @@ Privacy Policy
 @click="goTo('/terms')"
 class="hover:underline"
 >
-Term Condition
+{{ t('footer.terms') }}
 </button>
 
 
