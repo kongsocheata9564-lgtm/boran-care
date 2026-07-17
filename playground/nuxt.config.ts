@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
+    strategy: 'prefix_except_default',
     defaultLocale: 'km',
 
     detectBrowserLanguage: false,

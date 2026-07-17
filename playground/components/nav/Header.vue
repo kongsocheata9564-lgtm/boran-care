@@ -6,6 +6,8 @@ import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
 
 const { locale, setLocale, t, getLocaleMessage } = useI18n();
 const router = useRouter();
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 
 const mobileMenu = ref(false);
 const productOpen = ref(false);
@@ -18,14 +20,25 @@ const languageOpen = ref(false);
 const searchQuery = ref("");
 const mobileSearchQuery = ref("");
 
-const languages = [
-  { code: "en", label: "EN" },
-  { code: "km", label: "ខ្មែរ" },
-];
+const languages = computed(() => [
+  { code: "en", label: t("header.english") },
+  { code: "km", label: t("header.khmer") },
+]);
 
 const currentLangLabel = computed(() => {
-  return languages.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase();
+  return languages.value.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase();
 });
+const route = useRoute();
+
+const isProductActive = computed(
+  () => productOpen.value || route.path.includes("/product")
+);
+
+const isAboutActive = computed(
+  () => aboutOpen.value || abouts.some((a) => route.path.includes(a.link))
+);
+
+const isContactActive = computed(() => route.path.includes("/contact-us"));
 
 const products = [
   {
@@ -147,9 +160,9 @@ const goToSearchResult = (query) => {
   if (!trimmed) return;
   const match = findMatch(trimmed);
   if (match) {
-    router.push(match.to);
+    router.push(localePath(match.to));
   } else {
-    router.push({ path: "/product", query: { search: trimmed } });
+    router.push(localePath({ path: "/product", query: { search: trimmed } }));
   }
 };
 
@@ -157,6 +170,18 @@ const handleSearch = () => goToSearchResult(searchQuery.value);
 const handleMobileSearch = () => {
   mobileMenu.value = false;
   goToSearchResult(mobileSearchQuery.value);
+};
+
+// Switch language: navigate to the equivalent URL in the new locale
+// (e.g. /contact-us <-> /en/contact-us), then close whichever dropdown triggered it
+const switchLocale = async (code) => {
+  const path = switchLocalePath(code);
+  await setLocale(code);
+  if (path) {
+    router.push(path);
+  }
+  languageOpen.value = false;
+  mobileMenu.value = false;
 };
 
 const onClickOutside = (e) => {
@@ -182,9 +207,12 @@ onUnmounted(() => {
     <header
       class="fixed top-0 left-0 w-full z-50  border-t border-b border-[white] shadow-sm bg-[#AC8544]"
     >
-      <div class="max-w-7xl mx-auto h-[70px] px-4 lg:px-10 flex items-center justify-between">
+      <div
+        class="w-full h-[70px] flex items-center justify-between"
+        style="padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem);"
+      >
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center">
+        <NuxtLink :to="localePath('/')" class="flex items-center">
           <img
             :src="logo"
             alt="BORAN CARE"
@@ -198,20 +226,19 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase  tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
             >
-               <NuxtLink
-               class="relative inline-block text-white font-semibold uppercase
+              <NuxtLink
+               class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
                      after:-bottom-1
-                     after:w-0
                      after:h-[2px]
                      after:bg-white
                      after:transition-all
-                     after:duration-300
-                     hover:after:w-full"
+                     after:duration-300"
+               :class="isProductActive ? 'after:w-full' : 'after:w-0'"
              >
                {{ t('header.product') }}
              </NuxtLink>
@@ -238,7 +265,7 @@ onUnmounted(() => {
                 <NuxtLink
                   v-for="item in products"
                   :key="item.key"
-                  :to="item.link"
+                  :to="localePath(item.link)"
                   class="block px-5 py-3 text-sm text-white hover:text-[#f5dfb5] transition-colors"
                 >
                   {{ t(item.key) }}
@@ -251,20 +278,19 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="aboutOpen = !aboutOpen; productOpen = false; languageOpen = false"
-              class="flex items-center gap-1 uppercase tracking-wide  text-[white]"
+              class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
             >
              <NuxtLink
-               class="relative inline-block text-white font-semibold uppercase
+               class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
                      after:-bottom-1
-                     after:w-0
                      after:h-[2px]
                      after:bg-white
                      after:transition-all
-                     after:duration-300
-                     hover:after:w-full"
+                     after:duration-300"
+               :class="isAboutActive ? 'after:w-full' : 'after:w-0'"
              >
                {{ t('header.about') }}
              </NuxtLink>
@@ -291,7 +317,7 @@ onUnmounted(() => {
                 <NuxtLink
                   v-for="item in abouts"
                   :key="item.key"
-                  :to="item.link"
+                  :to="localePath(item.link)"
                   class="block px-5 py-3 text-sm text-white hover:text-[#f5dfb5] transition-colors"
                 >
                   {{ t(item.key) }}
@@ -301,18 +327,17 @@ onUnmounted(() => {
           </div>
 
             <NuxtLink
-               to="/contact-us"
-               class="relative inline-block text-white  uppercase
+               :to="localePath('/contact-us')"
+               class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
                      after:-bottom-1
-                     after:w-0
                      after:h-[2px]
                      after:bg-white
                      after:transition-all
-                     after:duration-300
-                     hover:after:w-full"
+                     after:duration-300"
+               :class="isContactActive ? 'after:w-full' : 'after:w-0'"
              >
                {{ t('header.contact') }}
              </NuxtLink>
@@ -341,7 +366,7 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-semibold"
+              class="w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-normal"
             >
               <Globe :size="16" class="text-white" />
               {{ currentLangLabel }}
@@ -368,7 +393,7 @@ onUnmounted(() => {
                 <button
                   v-for="lang in languages"
                   :key="lang.code"
-                  @click="setLocale(lang.code); languageOpen = false"
+                  @click="switchLocale(lang.code)"
                   class="block w-full py-1 hover:text-[#f5dfb5] text-white transition-colors rounded-[10px]"
                 >
                   {{ lang.label }}
@@ -381,7 +406,7 @@ onUnmounted(() => {
         <!-- Mobile Logo + Button -->
 <div class="flex lg:hidden items-center gap-4">
 
-<NuxtLink to="/" class="hidden lg:flex items-center">
+<NuxtLink :to="localePath('/')" class="hidden lg:flex items-center">
   <img
     :src="logo"
     alt="BORAN CARE"
@@ -390,15 +415,10 @@ onUnmounted(() => {
 </NuxtLink>
 
   <button
+    v-if="!mobileMenu"
     @click="mobileMenu = !mobileMenu"
   >
     <Menu
-      v-if="!mobileMenu"
-      :size="28"
-      class="text-white"
-    />
-    <X
-      v-else
       :size="28"
       class="text-white"
     />
@@ -464,7 +484,7 @@ onUnmounted(() => {
                <NuxtLink
   v-for="item in products"
   :key="item.key"
-  :to="item.link"
+  :to="localePath(item.link)"
   @click="mobileMenu = false"
   class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
 >
@@ -495,7 +515,7 @@ onUnmounted(() => {
               >              <NuxtLink
                 v-for="item in abouts"
                 :key="item.key"
-                :to="item.link"
+                :to="localePath(item.link)"
                 @click="mobileMenu = false"
                 class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
               >
@@ -506,7 +526,7 @@ onUnmounted(() => {
 
           <!-- Contact -->
           <NuxtLink
-            to="/contact"
+            :to="localePath('/contact-us')"
             @click="mobileMenu = false"
             class="block py-3 text-white font-semibold uppercase tracking-wide hover:text-[#f5dfb5] transition-colors"
           >
@@ -543,7 +563,7 @@ onUnmounted(() => {
               <button
                 v-for="lang in languages"
                 :key="lang.code"
-                @click="setLocale(lang.code)"
+                @click="switchLocale(lang.code)"
                 class="px-5 py-2 rounded-full text-sm font-semibold transition-colors"
                 :class="
    locale === lang.code
