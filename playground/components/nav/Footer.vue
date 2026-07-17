@@ -149,99 +149,102 @@ const goTo = async (item) => {
   <!-- =========================================================
        MOBILE FOOTER (Style 4) — visible below sm breakpoint
   ========================================================== -->
+
   <footer
     class="sm:hidden w-full bg-[#AC8544] border-t border-[#C9A86A]"
     style="font-family:'Oswald',sans-serif"
   >
     <div class="max-w-[480px] mx-auto px-6 pt-10 pb-6">
 
-      <div class="flex justify-center mb-5">
-        <img
-          src="assets/images/boran_care_logo-removebg-preview.png"
-          alt="Boran Care"
-          class="w-[150px] object-contain"
-        />
-      </div>
+  <div class="flex justify-center mb-5">
+    <img
+      src="assets/images/boran_care_logo-removebg-preview.png"
+      alt="Boran Care"
+      class="w-[150px] object-contain"
+    />
+  </div>
 
-      
+  
 
-      <div class="h-px w-full bg-[#C9A86A] mb-4"></div>
+  <div class="h-px w-full bg-[#C9A86A] mb-4"></div>
 
-      <div class="divide-y divide-[#C9A86A]">
-        <div v-for="section in mobileSections" :key="section.name" class="py-1">
-          <button
-            @click="toggleSection(section.name)"
-            class="w-full flex items-center justify-between py-3 text-left"
-          >
-            <span class="flex items-center gap-3 text-[15px] text-white">
-              <span class="w-5 h-5 shrink-0 text-white" v-html="section.icon"></span>
-              <span class="shrink-0">{{ t(section.labelKey) }}</span>
-            </span>
-            <span
-              class="text-white shrink-0 transition-transform duration-300"
-              :class="{ 'rotate-90': openSection === section.name }"
-            >
-              &#8250;
-            </span>
-          </button>
-
-          <div v-show="openSection === section.name" class="pl-8 pb-3 space-y-2">
-            <button
-              v-for="item in section.items"
-              :key="item.key"
-              @click="goTo(item.link || item.path)"
-              class="block text-[13px] text-white/85 hover:text-white transition text-left"
-            >
-              {{ t(item.key) }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-8 text-center">
-        <h3
-          class="uppercase text-[13px] tracking-wider font-semibold text-white mb-4"
+  <div class="divide-y divide-[#C9A86A]">
+    <div v-for="section in mobileSections" :key="section.name" class="py-1">
+      <button
+        @click="toggleSection(section.name)"
+        class="w-full flex items-center justify-between py-3 text-left"
+      >
+        <span class="flex items-center gap-3 text-[15px] text-white">
+          <span class="w-5 h-5 shrink-0 text-white" v-html="section.icon"></span>
+          <span class="shrink-0">{{ t(section.labelKey) }}</span>
+        </span>
+        <span
+          class="text-white shrink-0 transition-transform duration-300"
+          :class="{ 'rotate-90': openSection === section.name }"
         >
-          {{ t('footer.followUs') }}
-        </h3>
+          &#8250;
+        </span>
+      </button>
 
-        <div class="flex justify-center gap-3">
-          <button
-            v-for="social in socialLinks"
-            :key="social.name"
-            @click="openLink(social.url)"
-            class="w-10 h-10 rounded-full flex items-center justify-center
-              bg-transparent border border-white text-white
-              hover:bg-white hover:text-[#AC8544]
-              hover:-translate-y-1 hover:scale-110
-              transition-all duration-300"
-          >
-            <span class="w-5 h-5" v-html="social.icon"></span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Language Switcher: compact inline pill, sits quietly under Follow Us -->
-      <div class="mt-6 flex justify-center">
-        
+      <div v-show="openSection === section.name" class="pl-8 pb-3 space-y-2">
+        <button
+          v-for="item in section.items"
+          :key="item.key"
+          @click="goTo(item.link || item.path)"
+          class="block text-[13px] text-white/85 hover:text-white transition text-left"
+        >
+          {{ t(item.key) }}
+        </button>
       </div>
     </div>
+  </div>
 
-    <div class="border-t border-[#C9A86A]">
-      <div class="max-w-[480px] mx-auto px-6 py-4 text-center text-white/85 text-[12px] space-y-1">
-        <div>{{ t('footer.copyright') }}</div>
-        <div class="flex justify-center gap-2">
-          <button @click="goTo('/privacy')" class="hover:underline text-white">{{ t('footer.privacy') }}</button>
-          <span>|</span>
-          <button @click="goTo('/terms')" class="hover:underline text-white">{{ t('footer.terms') }}</button>
-        </div>
-      </div>
+  <div class="mt-8 text-center">
+    <h3
+      class="uppercase text-[13px] tracking-wider font-semibold text-white mb-4"
+    >
+      {{ t('footer.followUs') }}
+    </h3>
+
+    <div class="flex justify-center gap-3">
+      <button
+        v-for="social in socialLinks"
+        :key="social.name"
+        @click="openLink(social.url)"
+        class="w-10 h-10 rounded-full flex items-center justify-center
+          bg-transparent border border-white text-white
+          hover:bg-white hover:text-[#AC8544]
+          hover:-translate-y-1 hover:scale-110
+          transition-all duration-300"
+      >
+        <span class="w-5 h-5" v-html="social.icon"></span>
+      </button>
     </div>
+  </div>
+
+  <!-- Language Switcher: compact inline pill, sits quietly under Follow Us -->
+  <div class="mt-6 flex justify-center">
+    
+  </div>
+</div>
+
+<div class="border-t border-[#C9A86A]">
+  <div class="max-w-[480px] mx-auto px-6 py-4 text-center text-white/85 text-[12px] space-y-1">
+    <div>{{ t('footer.copyright') }}</div>
+    <div class="flex justify-center gap-2">
+      <button @click="goTo('/privacy')" class="hover:underline text-white">{{ t('footer.privacy') }}</button>
+      <span>|</span>
+      <button @click="goTo('/terms')" class="hover:underline text-white">{{ t('footer.terms') }}</button>
+    </div>
+  </div>
+</div>
+
   </footer>
 
   <!-- =========================================================
        DESKTOP / TABLET FOOTER (original design) — sm and up
   ========================================================== -->
+
   <footer
     class="hidden sm:block w-full bg-[#AC8544] border-t border-[#E8DFC8]"
     style="font-family:'Oswald',sans-serif"
@@ -266,147 +269,148 @@ const goTo = async (item) => {
         />
       </div>
 
-      <!-- Quick Links -->
-      <div class="text-center sm:text-left">
-        <h3 class="uppercase text-[18px] sm:text-[20px] font-semibold text-white mb-4">
-          {{ t('footer.quickLinks') }}
-        </h3>
-        <ul class="space-y-2">
-          <li v-for="item in quickLinks" :key="item.key">
-            <button
-              @click="goTo(item.path)"
-              class="relative text-[14px] sm:text-[13px] text-white transition
-              after:absolute after:left-0 after:-bottom-1
-              after:h-[1px] after:w-0
-              after:bg-white
-              after:transition-all after:duration-300
-              hover:after:w-full"
-            >
-              {{ t(item.key) }}
-            </button>
-          </li>
-        </ul>
-      </div>
+  <!-- Quick Links -->
+  <div class="text-center sm:text-left">
+    <h3 class="uppercase text-[18px] sm:text-[20px] font-semibold text-white mb-4">
+      {{ t('footer.quickLinks') }}
+    </h3>
+    <ul class="space-y-2">
+      <li v-for="item in quickLinks" :key="item.key">
+        <button
+          @click="goTo(item.path)"
+          class="relative text-[14px] sm:text-[13px] text-white transition
+          after:absolute after:left-0 after:-bottom-1
+          after:h-[1px] after:w-0
+          after:bg-white
+          after:transition-all after:duration-300
+          hover:after:w-full"
+        >
+          {{ t(item.key) }}
+        </button>
+      </li>
+    </ul>
+  </div>
 
-      <!-- Products -->
-      <div class="text-center sm:text-left">
-        <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
-          {{ t('footer.products') }}
-        </h3>
-        <ul class="space-y-2">
-          <li v-for="item in products" :key="item.key">
-            <button
-              @click="goTo(item.link)"
-              class="relative text-[13px] text-white transition
-              after:absolute after:left-0 after:-bottom-1
-              after:h-[1px] after:w-0
-              after:bg-white
-              after:transition-all after:duration-300
-              hover:after:w-full"
-            >
-              {{ t(item.key) }}
-            </button>
-          </li>
-        </ul>
-      </div>
+  <!-- Products -->
+  <div class="text-center sm:text-left">
+    <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
+      {{ t('footer.products') }}
+    </h3>
+    <ul class="space-y-2">
+      <li v-for="item in products" :key="item.key">
+        <button
+          @click="goTo(item.link)"
+          class="relative text-[13px] text-white transition
+          after:absolute after:left-0 after:-bottom-1
+          after:h-[1px] after:w-0
+          after:bg-white
+          after:transition-all after:duration-300
+          hover:after:w-full"
+        >
+          {{ t(item.key) }}
+        </button>
+      </li>
+    </ul>
+  </div>
 
-      <!-- About -->
-      <div class="text-center lg:text-left">
-        <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
-          {{ t('footer.aboutUs') }}
-        </h3>
-        <ul class="space-y-1">
-          <li v-for="item in aboutLinks" :key="item.key">
-            <button
-              @click="goTo(item.path)"
-              class="relative text-[13px] text-white transition
-              after:absolute after:left-0 after:-bottom-1
-              after:h-[1px] after:w-0
-              after:bg-white
-              after:transition-all after:duration-300
-              hover:after:w-full"
-            >
-              {{ t(item.key) }}
-            </button>
-          </li>
-        </ul>
-      </div>
+  <!-- About -->
+  <div class="text-center lg:text-left">
+    <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
+      {{ t('footer.aboutUs') }}
+    </h3>
+    <ul class="space-y-1">
+      <li v-for="item in aboutLinks" :key="item.key">
+        <button
+          @click="goTo(item.path)"
+          class="relative text-[13px] text-white transition
+          after:absolute after:left-0 after:-bottom-1
+          after:h-[1px] after:w-0
+          after:bg-white
+          after:transition-all after:duration-300
+          hover:after:w-full"
+        >
+          {{ t(item.key) }}
+        </button>
+      </li>
+    </ul>
+  </div>
 
-      <!-- Social -->
-      <div class="text-center sm:text-left">
-        <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
-          {{ t('footer.followUs') }}
-        </h3>
-        <div class="flex justify-center sm:justify-start flex-wrap gap-3">
-          <button
-            v-for="social in socialLinks"
-            :key="social.name"
-            @click="openLink(social.url)"
-            class="w-10 h-10 sm:w-9 sm:h-9 rounded-full
-              flex items-center justify-center
-              bg-[#F8F1E3]
-              text-[#B88A33]
-              hover:bg-[#AC8544]
-              hover:text-white
-              hover:-translate-y-1
-              hover:scale-110
-              hover:shadow-lg
-              hover:shadow-[#B88A33]/30
-              transition-all duration-300"
-          >
-            <span class="w-5 h-5" v-html="social.icon"></span>
-          </button>
-        </div>
-
-        <!-- Language Switcher -->
-        <div class="relative mt-5 flex justify-center sm:justify-start">
-          
-
-          <div
-            v-show="isLangOpen"
-            class="absolute bottom-full mb-2 w-40 rounded-lg overflow-hidden
-              border border-[#E8DFC8] bg-[#AC8544] shadow-lg z-10"
-          >
-            <button
-              v-for="lang in languages"
-              :key="lang.code"
-              @click="setLanguage(lang.code)"
-              class="w-full text-left px-4 py-2 text-[13px] text-white/85
-                hover:bg-white/10 hover:text-white transition"
-              :class="{ 'font-semibold text-white': lang.code === locale }"
-            >
-              {{ lang.label }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom -->
-    <div class="bg-[#AC8544] border">
-      <div
-        class="max-w-[1280px] mx-auto
-        px-5 sm:px-8
-        py-5
-        flex flex-col
-        md:flex-row
-        items-center
-        justify-between
-        gap-3
-        text-white
-        text-center
-        md:text-left
-        text-[13px]
-        sm:text-[14px]"
+  <!-- Social -->
+  <div class="text-center sm:text-left">
+    <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
+      {{ t('footer.followUs') }}
+    </h3>
+    <div class="flex justify-center sm:justify-start flex-wrap gap-3">
+      <button
+        v-for="social in socialLinks"
+        :key="social.name"
+        @click="openLink(social.url)"
+        class="w-10 h-10 sm:w-9 sm:h-9 rounded-full
+          flex items-center justify-center
+          bg-[#F8F1E3]
+          text-[#B88A33]
+          hover:bg-[#AC8544]
+          hover:text-white
+          hover:-translate-y-1
+          hover:scale-110
+          hover:shadow-lg
+          hover:shadow-[#B88A33]/30
+          transition-all duration-300"
       >
-        <div>{{ t('footer.copyright') }}</div>
-        <div class="flex flex-wrap justify-center gap-2">
-          <button @click="goTo('/privacy')" class="hover:underline">{{ t('footer.privacy') }}</button>
-          <span>|</span>
-          <button @click="goTo('/terms')" class="hover:underline">{{ t('footer.terms') }}</button>
-        </div>
+        <span class="w-5 h-5" v-html="social.icon"></span>
+      </button>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="relative mt-5 flex justify-center sm:justify-start">
+      
+
+      <div
+        v-show="isLangOpen"
+        class="absolute bottom-full mb-2 w-40 rounded-lg overflow-hidden
+          border border-[#E8DFC8] bg-[#AC8544] shadow-lg z-10"
+      >
+        <button
+          v-for="lang in languages"
+          :key="lang.code"
+          @click="setLanguage(lang.code)"
+          class="w-full text-left px-4 py-2 text-[13px] text-white/85
+            hover:bg-white/10 hover:text-white transition"
+          :class="{ 'font-semibold text-white': lang.code === locale }"
+        >
+          {{ lang.label }}
+        </button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Bottom -->
+<div class="bg-[#AC8544] border">
+  <div
+    class="max-w-[1280px] mx-auto
+    px-5 sm:px-8
+    py-5
+    flex flex-col
+    md:flex-row
+    items-center
+    justify-between
+    gap-3
+    text-white
+    text-center
+    md:text-left
+    text-[13px]
+    sm:text-[14px]"
+  >
+    <div>{{ t('footer.copyright') }}</div>
+    <div class="flex flex-wrap justify-center gap-2">
+      <button @click="goTo('/privacy')" class="hover:underline">{{ t('footer.privacy') }}</button>
+      <span>|</span>
+      <button @click="goTo('/terms')" class="hover:underline">{{ t('footer.terms') }}</button>
+    </div>
+  </div>
+</div>
+
   </footer>
 
 </template>
