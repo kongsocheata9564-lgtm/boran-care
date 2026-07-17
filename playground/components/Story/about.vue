@@ -21,7 +21,7 @@
 
     <!-- Card -->
     <div
-      class="max-w-5xl mx-auto rounded-2xl sm:rounded-3xl border border-amber-200 shadow-sm p-5 sm:p-8 md:p-10"
+      class="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl border border-amber-200 shadow-sm p-5 sm:p-8 md:p-10"
     >
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
         <!-- Left: text + icons -->
