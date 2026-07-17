@@ -43,19 +43,19 @@ const isContactActive = computed(() => route.path.includes("/contact-us"));
 const products = [
   {
     key: "header.facialCare",
-    link: { path: "/product", query: { category: "FACIAL CARE" } },
+    link: { path: "/product", query: { category: "FACIAL_CARE" } },
   },
   {
     key: "header.hairCare",
-    link: { path: "/product", query: { category: "HAIR CARE" } },
+    link: { path: "/product", query: { category: "HAIR_CARE" } },
   },
   {
     key: "header.skinCare",
-    link: { path: "/product", query: { category: "SKIN CARE" } },
+    link: { path: "/product", query: { category: "SKIN_CARE" } },
   },
   {
     key: "header.personalCare",
-    link: { path: "/product", query: { category: "PERSONAL CARE" } },
+    link: { path: "/product", query: { category: "PERSONAL_CARE" } },
   },
   {
     key: "header.makeup",

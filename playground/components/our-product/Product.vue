@@ -141,8 +141,8 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import { useRoute } from "vue-router";
+import { ref, computed, watch, nextTick } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useI18n } from 'vue-i18n';
 
 // Import all product images
@@ -173,6 +173,7 @@ import b16 from '~/assets/images/16.jpeg'
 
 const { t, tm } = useI18n();
 const route = useRoute();
+const router = useRouter();
 
 const activeCategory = ref('');
 const isModalOpen = ref(false);
@@ -207,6 +208,8 @@ watch(
     } else {
       activeCategory.value = "";
     }
+    // Ensure we start at top whenever the category changes
+    nextTick(() => window.scrollTo({ top: 0, behavior: "smooth" }));
   },
   { immediate: true }
 );
@@ -312,7 +315,15 @@ const filteredProducts = computed(() => {
 });
 
 function toggleCategory(cat) {
-  activeCategory.value = activeCategory.value === cat ? '' : cat;
+  if (activeCategory.value === cat) {
+    // Deselect — clear the query
+    activeCategory.value = '';
+    router.replace({ path: '/product', query: {} });
+  } else {
+    // Select — push category into the URL
+    activeCategory.value = cat;
+    router.replace({ path: '/product', query: { category: cat } });
+  }
 }
 
 function openProduct(product) {
