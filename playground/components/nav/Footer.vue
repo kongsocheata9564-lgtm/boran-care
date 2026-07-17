@@ -40,25 +40,25 @@ const quickLinks = [
 const products = [
   {
     key: "footer.facialCare",
-    link: "/products/facial-care"
+    link: { path: "/product", query: { category: "FACIAL CARE" } }
   },
   {
     key: "footer.hairCare",
-    link: "/products/hair-care"
+    link: { path: "/product", query: { category: "HAIR CARE" } }
   },
   {
     key: "footer.skinCare",
-    link: "/products/skin-care"
+    link: { path: "/product", query: { category: "SKIN CARE" } }
   },
   {
     key: "footer.personalCare",
-    link: "/products/personal-care"
+    link: { path: "/product", query: { category: "PERSONAL CARE" } }
   },
   {
     key: "footer.makeup",
-    link: "/products/makeup"
+    link: { path: "/product", query: { category: "MAKEUP" } }
   }
-]
+];
 
 
 const aboutLinks = [
@@ -119,23 +119,28 @@ const socialLinks = [
   }
 ];
 
-const goTo = (item) => {
+import { nextTick } from "vue";
+
+const goTo = async (item) => {
   if (!item) return;
 
+  // 1. Update the route/query first
   if (typeof item === "string") {
-    router.push(item);
+    await router.push(item);
   } else {
-    router.push({
+    await router.push({
       path: item.path,
       query: item.query
     });
   }
 
-  openSection.value = null;
-};
+  // 2. Wait for Vue to actually finish re-rendering the new category
+  await nextTick();
 
-const openLink = (url) => {
-  window.open(url, "_blank");
+  // 3. Only now jump to top — new category is already painted on screen
+  window.scrollTo({ top: 0, behavior: "auto" });
+
+  openSection.value = null;
 };
 </script>
 
