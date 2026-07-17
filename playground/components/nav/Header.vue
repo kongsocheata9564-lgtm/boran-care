@@ -28,6 +28,17 @@ const languages = computed(() => [
 const currentLangLabel = computed(() => {
   return languages.value.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase();
 });
+const route = useRoute();
+
+const isProductActive = computed(
+  () => productOpen.value || route.path.includes("/product")
+);
+
+const isAboutActive = computed(
+  () => aboutOpen.value || abouts.some((a) => route.path.includes(a.link))
+);
+
+const isContactActive = computed(() => route.path.includes("/contact-us"));
 
 const products = [
   {
@@ -217,18 +228,17 @@ onUnmounted(() => {
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
               class="flex items-center gap-1 uppercase font-normal tracking-wide  text-[white]"
             >
-               <NuxtLink
+              <NuxtLink
                class="relative inline-block text-white font-normal uppercase
                      after:content-['']
                      after:absolute
                      after:left-0
                      after:-bottom-1
-                     after:w-0
                      after:h-[2px]
                      after:bg-white
                      after:transition-all
-                     after:duration-300
-                     hover:after:w-full"
+                     after:duration-300"
+               :class="isProductActive ? 'after:w-full' : 'after:w-0'"
              >
                {{ t('header.product') }}
              </NuxtLink>
@@ -276,12 +286,11 @@ onUnmounted(() => {
                      after:absolute
                      after:left-0
                      after:-bottom-1
-                     after:w-0
                      after:h-[2px]
                      after:bg-white
                      after:transition-all
-                     after:duration-300
-                     hover:after:w-full"
+                     after:duration-300"
+               :class="isAboutActive ? 'after:w-full' : 'after:w-0'"
              >
                {{ t('header.about') }}
              </NuxtLink>
@@ -324,12 +333,11 @@ onUnmounted(() => {
                      after:absolute
                      after:left-0
                      after:-bottom-1
-                     after:w-0
                      after:h-[2px]
                      after:bg-white
                      after:transition-all
-                     after:duration-300
-                     hover:after:w-full"
+                     after:duration-300"
+               :class="isContactActive ? 'after:w-full' : 'after:w-0'"
              >
                {{ t('header.contact') }}
              </NuxtLink>
