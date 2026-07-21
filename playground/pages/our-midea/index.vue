@@ -12,112 +12,61 @@ import media6 from "~/assets/images/pic6.jpg";
 
 const router = useRouter();
 const { t, d } = useI18n();
-const localePath = useLocalePath(); // Added this line
+const localePath = useLocalePath();
 
 const mediaItems = [
-  {
-    image: media1,
-    type: "image",
-    date: "mediaPage.date1",
-    title: "mediaPage.educational"
-  },
-  {
-    image: media2,
-    type: "image",
-     date: "mediaPage.date1",
-    title: "mediaPage.educational"
-  },
-  {
-    image: media3,
-    type: "image",
-    date: "mediaPage.date1",
-    title: "mediaPage.educational"
-  },
-  {
-    image: media4,
-    type: "image",
-    date: "mediaPage.date1",
-    title: "mediaPage.educational"
-  },
-  {
-    image: media5,
-    type: "image",
-    date: "mediaPage.date1",
-    title: "mediaPage.educational"
-  },
-  {
-    image: media6,
-    type: "image",
-    date: "mediaPage.date1",
-    title: "mediaPage.educational"
-  },
+  { image: media1, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
+  { image: media2, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
+  { image: media3, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
+  { image: media4, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
+  { image: media5, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
+  { image: media6, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
 ];
 
 const goVideo = () => {
-  router.push(localePath("/our-video")); // Updated to use localePath
+  router.push(localePath("/our-video"));
 };
 </script>
-
 
 <template>
   <Header />
 
   <section class="min-h-screen bg-white pt-[110px] pb-20 px-5 md:px-10">
-
     <!-- Title -->
     <div class="text-center max-w-3xl mx-auto">
-
-      <h1
-        class="text-[#A47B3B] text-4xl md:text-5xl font-semibold tracking-wider"
-      >
-          {{ t("mediaPage.title") }}
+      <h1 class="text-[#A47B3B] text-3xl sm:text-4xl tracking-wider">
+        {{ t("mediaPage.title") }}
       </h1>
 
-
-      <p
-        class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto"
-      >
-         {{ t("mediaPage.description") }}
+      <p class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto">
+        {{ t("mediaPage.description") }}
       </p>
-
 
       <!-- Buttons -->
       <div class="flex justify-center gap-5 mt-8">
-
         <button
-          class="bg-[#AC8544] text-white px-10 py-3 rounded-lg font-medium transition"
+          class="bg-[#AC8544] text-white px-10 py-3 rounded-lg font-normal tracking-wider transition"
         >
-         {{ t("mediaPage.title") }}
+          {{ t("mediaPage.title") }}
         </button>
-
 
         <button
           @click="goVideo"
-          class="border border-[#AC8544] text-[#AC8544] hover:bg-[#AC8544] hover:text-white px-10 py-3 rounded-lg font-medium transition"
+          class="border border-[#AC8544] text-[#AC8544] hover:bg-[#AC8544] hover:text-white px-10 py-3 rounded-lg font-normal tracking-wider transition"
         >
-           {{ t("mediaPage.video") }}
+          {{ t("mediaPage.video") }}
         </button>
-
       </div>
-
     </div>
 
-
-
     <!-- Media Grid -->
-    <div
-      class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-    >
-
+    <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
-        v-for="(item,index) in mediaItems"
+        v-for="(item, index) in mediaItems"
         :key="index"
         class="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
       >
-
         <div class="relative h-[300px] overflow-hidden">
-
-
           <!-- Video -->
           <video
             v-if="item.type === 'video'"
@@ -125,7 +74,6 @@ const goVideo = () => {
             controls
             class="w-full h-full object-cover"
           ></video>
-
 
           <!-- Image -->
           <img
@@ -135,55 +83,35 @@ const goVideo = () => {
             class="w-full h-full object-cover hover:scale-105 transition duration-500"
           />
 
-
           <!-- Bottom Overlay -->
-          <div
-            class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2"
-          >
-
+          <div class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2">
             <!-- <div class="flex items-center gap-2 text-xs opacity-95">
-
               <CalendarDays :size="14"/>
-
-              <span>
-              {{ t(item.date) }}
-              </span>
-
+              <span>{{ t(item.date) }}</span>
             </div> -->
 
-
-            <h3 class="mt-1 text-xl font-semibold">
+            <h3 class="mt-1 text-xl tracking-wider">
               {{ t(item.title) }}
             </h3>
-
           </div>
-
-
         </div>
-
       </div>
-
     </div>
-
-
   </section>
-
 
   <Footer />
 </template>
-
-
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 h1,
+h3,
 button {
   font-family: "Oswald", sans-serif;
 }
 
-p,
-h3 {
+p {
   font-family: "Poppins", sans-serif;
 }
 </style>
