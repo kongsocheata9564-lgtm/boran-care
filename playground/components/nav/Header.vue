@@ -6,13 +6,14 @@ import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
 
 const { locale, setLocale, t, getLocaleMessage } = useI18n();
 const router = useRouter();
+const route = useRoute();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 
+// --- UI state ---
 const mobileMenu = ref(false);
 const productOpen = ref(false);
 const aboutOpen = ref(false);
-
 const mobileProductOpen = ref(false);
 const mobileAboutOpen = ref(false);
 const languageOpen = ref(false);
@@ -20,48 +21,13 @@ const languageOpen = ref(false);
 const searchQuery = ref("");
 const mobileSearchQuery = ref("");
 
-const languages = computed(() => [
-  { code: "en", label: t("header.english") },
-  { code: "km", label: t("header.khmer") },
-]);
-
-const currentLangLabel = computed(() => {
-  return languages.value.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase();
-});
-
-const route = useRoute();
-
-const isProductActive = computed(
-  () => productOpen.value || route.path.includes("/product")
-);
-
-const isAboutActive = computed(
-  () => aboutOpen.value || abouts.some((a) => route.path.includes(a.link))
-);
-
-const isContactActive = computed(() => route.path.includes("/contact-us"));
-
+// --- Nav data ---
 const products = [
-  {
-    key: "header.facialCare",
-    link: { path: "/product", query: { category: "FACIAL_CARE" } },
-  },
-  {
-    key: "header.hairCare",
-    link: { path: "/product", query: { category: "HAIR_CARE" } },
-  },
-  {
-    key: "header.skinCare",
-    link: { path: "/product", query: { category: "SKIN_CARE" } },
-  },
-  {
-    key: "header.personalCare",
-    link: { path: "/product", query: { category: "PERSONAL_CARE" } },
-  },
-  {
-    key: "header.makeup",
-    link: { path: "/product", query: { category: "MAKEUP" } },
-  },
+  { key: "header.facialCare", link: { path: "/product", query: { category: "FACIAL_CARE" } } },
+  { key: "header.hairCare", link: { path: "/product", query: { category: "HAIR_CARE" } } },
+  { key: "header.skinCare", link: { path: "/product", query: { category: "SKIN_CARE" } } },
+  { key: "header.personalCare", link: { path: "/product", query: { category: "PERSONAL_CARE" } } },
+  { key: "header.makeup", link: { path: "/product", query: { category: "MAKEUP" } } },
 ];
 
 const abouts = [
@@ -72,8 +38,48 @@ const abouts = [
   { key: "header.media", link: "/our-midea" },
 ];
 
-// --- Search: match across product categories, about pages, contact,
+// --- Language switcher ---
+const languages = computed(() => [
+  { code: "en", label: t("header.english") },
+  { code: "km", label: t("header.khmer") },
+]);
+
+const currentLangLabel = computed(
+  () => languages.value.find((l) => l.code === locale.value)?.label ?? locale.value.toUpperCase()
+);
+
+const switchLocale = async (code) => {
+  const path = switchLocalePath(code);
+  await setLocale(code);
+  if (path) router.push(path);
+  languageOpen.value = false;
+  mobileMenu.value = false;
+};
+
+// --- Active-link detection ---
+const isProductActive = computed(() => productOpen.value || route.path.includes("/product"));
+const isAboutActive = computed(
+  () => aboutOpen.value || abouts.some((a) => route.path.includes(a.link))
+);
+const isContactActive = computed(() => route.path.includes("/contact-us"));
+
+// --- Search: match across product categories, about pages, and contact,
 // in both English and Khmer, regardless of which language is active ---
+const EXTRA_KEYWORDS = {
+  "header.facialCare": ["facial care", "facial"],
+  "header.hairCare": ["hair care", "hair"],
+  "header.skinCare": ["skin care", "skin"],
+  "header.personalCare": ["personal care", "personal"],
+  "header.makeup": ["makeup", "make up"],
+  "header.story": ["our story", "story"],
+  "header.vision": ["vision", "mission", "vision mission", "our vision", "core values", "mission core values"],
+  "header.founder": ["founder", "our founder"],
+  "header.csr": ["csr", "our csr"],
+  "header.media": ["media", "video", "our media", "media and video"],
+  "header.about": ["about", "about us"],
+  "header.contact": ["contact", "contact us"],
+};
+
 const translateAllLocales = (key) => {
   return ["en", "km"]
     .map((loc) => {
@@ -89,35 +95,9 @@ const translateAllLocales = (key) => {
     .filter(Boolean);
 };
 
-const EXTRA_KEYWORDS = {
-  "header.facialCare": ["facial care", "facial"],
-  "header.hairCare": ["hair care", "hair"],
-  "header.skinCare": ["skin care", "skin"],
-  "header.personalCare": ["personal care", "personal"],
-  "header.makeup": ["makeup", "make up"],
-  "header.story": ["our story", "story"],
-  "header.vision": [
-    "vision",
-    "mission",
-    "vision mission",
-    "our vision",
-    "core values",
-    "mission core values",
-  ],
-  "header.founder": ["founder", "our founder"],
-  "header.csr": ["csr", "our csr"],
-  "header.media": ["media", "video", "our media", "media and video"],
-  "header.about": ["about", "about us"],
-  "header.contact": ["contact", "contact us"],
-};
-
 const searchTargets = computed(() => {
   const items = products.map((p) => ({
-    keywords: [
-      ...translateAllLocales(p.key),
-      ...(EXTRA_KEYWORDS[p.key] ?? []),
-      p.link.query?.category,
-    ],
+    keywords: [...translateAllLocales(p.key), ...(EXTRA_KEYWORDS[p.key] ?? []), p.link.query?.category],
     to: p.link,
   }));
 
@@ -129,18 +109,12 @@ const searchTargets = computed(() => {
   });
 
   items.push({
-    keywords: [
-      ...translateAllLocales("header.about"),
-      ...EXTRA_KEYWORDS["header.about"],
-    ],
+    keywords: [...translateAllLocales("header.about"), ...EXTRA_KEYWORDS["header.about"]],
     to: abouts[0]?.link ?? "/our-story",
   });
 
   items.push({
-    keywords: [
-      ...translateAllLocales("header.contact"),
-      ...EXTRA_KEYWORDS["header.contact"],
-    ],
+    keywords: [...translateAllLocales("header.contact"), ...EXTRA_KEYWORDS["header.contact"]],
     to: "/contact-us",
   });
 
@@ -151,14 +125,13 @@ const normalize = (str) => str.toLowerCase().trim();
 
 const findMatch = (query) => {
   const q = normalize(query);
-  return searchTargets.value.find((item) =>
-    item.keywords.some((k) => k && normalize(k).includes(q))
-  );
+  return searchTargets.value.find((item) => item.keywords.some((k) => k && normalize(k).includes(q)));
 };
 
 const goToSearchResult = (query) => {
   const trimmed = query.trim();
   if (!trimmed) return;
+
   const match = findMatch(trimmed);
   if (match) {
     router.push(localePath(match.to));
@@ -173,31 +146,17 @@ const handleMobileSearch = () => {
   goToSearchResult(mobileSearchQuery.value);
 };
 
-// Switch language: navigate to the equivalent URL in the new locale
-// (e.g. /contact-us <-> /en/contact-us), then close whichever dropdown triggered it
-const switchLocale = async (code) => {
-  // setLocale automatically updates the locale and navigates to the correct URL
-  await setLocale(code);
-  languageOpen.value = false;
-  mobileMenu.value = false;
-};
-
+// --- Close dropdowns on outside click ---
 const onClickOutside = (e) => {
-  const target = e.target;
-  if (!target.closest("[data-dropdown]")) {
+  if (!e.target.closest("[data-dropdown]")) {
     productOpen.value = false;
     aboutOpen.value = false;
     languageOpen.value = false;
   }
 };
 
-onMounted(() => {
-  document.addEventListener("click", onClickOutside);
-});
-
-onUnmounted(() => {
-  document.removeEventListener("click", onClickOutside);
-});
+onMounted(() => document.addEventListener("click", onClickOutside));
+onUnmounted(() => document.removeEventListener("click", onClickOutside));
 </script>
 
 <template>
@@ -218,27 +177,17 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="productOpen = !productOpen; aboutOpen = false; languageOpen = false"
-              class="nav-font flex items-center gap-1 uppercase font-normal tracking-widest text-[white]"
+              class="flex items-center gap-1 uppercase font-normal tracking-wide text-white"
             >
               <NuxtLink
-                class="nav-font relative inline-block text-white font-normal uppercase tracking-widest
-                       after:content-['']
-                       after:absolute
-                       after:left-0
-                       after:-bottom-1
-                       after:h-[2px]
-                       after:bg-white
-                       after:transition-all
-                       after:duration-300"
+                class="relative inline-block text-white font-normal uppercase
+                       after:content-[''] after:absolute after:left-0 after:-bottom-1
+                       after:h-[2px] after:bg-white after:transition-all after:duration-300"
                 :class="isProductActive ? 'after:w-full' : 'after:w-0'"
               >
                 {{ t('header.product') }}
               </NuxtLink>
-              <ChevronDown
-                :size="16"
-                class="duration-300"
-                :class="{ 'rotate-180': productOpen }"
-              />
+              <ChevronDown :size="16" class="duration-300" :class="{ 'rotate-180': productOpen }" />
             </button>
 
             <Transition
@@ -270,27 +219,17 @@ onUnmounted(() => {
           <div class="relative" data-dropdown>
             <button
               @click.stop="aboutOpen = !aboutOpen; productOpen = false; languageOpen = false"
-              class="nav-font flex items-center gap-1 uppercase font-normal tracking-widest text-[white]"
+              class="flex items-center gap-1 uppercase font-normal tracking-wide text-white"
             >
               <NuxtLink
-                class="nav-font relative inline-block text-white font-normal uppercase tracking-widest
-                       after:content-['']
-                       after:absolute
-                       after:left-0
-                       after:-bottom-1
-                       after:h-[2px]
-                       after:bg-white
-                       after:transition-all
-                       after:duration-300"
+                class="relative inline-block text-white font-normal uppercase
+                       after:content-[''] after:absolute after:left-0 after:-bottom-1
+                       after:h-[2px] after:bg-white after:transition-all after:duration-300"
                 :class="isAboutActive ? 'after:w-full' : 'after:w-0'"
               >
                 {{ t('header.about') }}
               </NuxtLink>
-              <ChevronDown
-                :size="16"
-                class="duration-300"
-                :class="{ 'rotate-180': aboutOpen }"
-              />
+              <ChevronDown :size="16" class="duration-300" :class="{ 'rotate-180': aboutOpen }" />
             </button>
 
             <Transition
@@ -320,15 +259,9 @@ onUnmounted(() => {
 
           <NuxtLink
             :to="localePath('/contact-us')"
-            class="nav-font relative inline-block text-white font-normal uppercase tracking-widest
-                   after:content-['']
-                   after:absolute
-                   after:left-0
-                   after:-bottom-1
-                   after:h-[2px]
-                   after:bg-white
-                   after:transition-all
-                   after:duration-300"
+            class="relative inline-block text-white font-normal uppercase
+                   after:content-[''] after:absolute after:left-0 after:-bottom-1
+                   after:h-[2px] after:bg-white after:transition-all after:duration-300"
             :class="isContactActive ? 'after:w-full' : 'after:w-0'"
           >
             {{ t('header.contact') }}
@@ -337,36 +270,27 @@ onUnmounted(() => {
 
         <!-- Desktop Right -->
         <div class="hidden lg:flex items-center gap-8">
-          <div class="flex items-center border border-[white] rounded-full px-6 py-2">
-            <button
-              type="button"
-              @click="handleSearch"
-              class="shrink-0"
-              :aria-label="t('header.search')"
-            >
-              <Search :size="18" class="text-[white]" />
+          <div class="flex items-center border border-white rounded-full px-6 py-2">
+            <button type="button" @click="handleSearch" class="shrink-0" :aria-label="t('header.search')">
+              <Search :size="18" class="text-white" />
             </button>
             <input
               v-model="searchQuery"
               type="text"
               :placeholder="t('header.search')"
               @keyup.enter="handleSearch"
-              class="nav-font ml-3 outline-none bg-transparent w-32 text-sm tracking-wide text-[white]"
+              class="ml-3 outline-none bg-transparent w-32 text-white text-[15px]"
             />
           </div>
 
           <div class="relative" data-dropdown>
             <button
               @click.stop="languageOpen = !languageOpen; productOpen = false; aboutOpen = false"
-              class="nav-font w-[110px] h-[42px] rounded-full border border-[white] flex justify-center items-center gap-1.5 text-[white] font-normal tracking-widest"
+              class="w-[110px] h-[42px] rounded-full border border-white flex justify-center items-center gap-1.5 text-white font-normal"
             >
               <Globe :size="16" class="text-white" />
               {{ currentLangLabel }}
-              <ChevronDown
-                :size="15"
-                class="duration-300"
-                :class="{ 'rotate-180': languageOpen }"
-              />
+              <ChevronDown :size="15" class="duration-300" :class="{ 'rotate-180': languageOpen }" />
             </button>
 
             <Transition
@@ -423,11 +347,7 @@ onUnmounted(() => {
     <div v-if="mobileMenu" class="fixed inset-0 z-[60] lg:hidden">
       <div
         class="absolute inset-0 bg-black/30"
-        @click="
-          mobileMenu = false;
-          mobileProductOpen = false;
-          mobileAboutOpen = false;
-        "
+        @click="mobileMenu = false; mobileProductOpen = false; mobileAboutOpen = false"
       ></div>
 
       <div class="absolute top-0 left-0 h-full w-80 bg-[#AC8544] shadow-2xl overflow-y-auto">
@@ -442,34 +362,20 @@ onUnmounted(() => {
           <!-- Products -->
           <div>
             <button
-              @click.stop="
-                mobileProductOpen = !mobileProductOpen;
-                mobileAboutOpen = false;
-              "
-              class="nav-font w-full flex items-center justify-between py-1 text-white uppercase tracking-widest active:text-[#f5dfb5] transition-colors"
+              @click.stop="mobileProductOpen = !mobileProductOpen; mobileAboutOpen = false"
+              class="w-full flex items-center justify-between py-3 text-white font-semibold uppercase tracking-wide"
             >
-              <span
-                class="relative inline-block leading-tight
-                       after:content-[''] after:absolute after:left-0 after:-bottom-px
-                       after:h-[2px] after:bg-white after:transition-all after:duration-300"
-                :class="isProductActive ? 'after:w-full' : 'after:w-0'"
-              >
-                {{ t('header.product') }}
-              </span>
-              <ChevronDown
-                :size="16"
-                class="duration-300 text-white"
-                :class="{ 'rotate-180': mobileProductOpen }"
-              />
+              {{ t('header.product') }}
+              <ChevronDown :size="16" class="duration-300 text-white" :class="{ 'rotate-180': mobileProductOpen }" />
             </button>
 
-            <div v-if="mobileProductOpen" class="pl-4 pb-2 pt-1 space-y-0">
+            <div v-if="mobileProductOpen" class="pl-4 pb-2 space-y-1">
               <NuxtLink
                 v-for="item in products"
                 :key="item.key"
                 :to="localePath(item.link)"
                 @click="mobileMenu = false"
-                class="nav-font block py-1.5 text-sm tracking-wider text-white/90 hover:text-[#f5dfb5] active:text-[#f5dfb5] transition-colors"
+                class="block py-2.5 text-sm text-white hover:text-[#f5dfb5] transition-colors"
               >
                 {{ t(item.key) }}
               </NuxtLink>
@@ -479,28 +385,14 @@ onUnmounted(() => {
           <!-- About -->
           <div>
             <button
-              @click.stop="
-                mobileAboutOpen = !mobileAboutOpen;
-                mobileProductOpen = false;
-              "
-              class="nav-font w-full flex items-center justify-between py-1 text-white uppercase tracking-widest active:text-[#f5dfb5] transition-colors"
+              @click.stop="mobileAboutOpen = !mobileAboutOpen; mobileProductOpen = false"
+              class="w-full flex items-center justify-between py-3 text-white font-semibold uppercase tracking-wide"
             >
-              <span
-                class="relative inline-block leading-tight
-                       after:content-[''] after:absolute after:left-0 after:-bottom-px
-                       after:h-[2px] after:bg-white after:transition-all after:duration-300"
-                :class="isAboutActive ? 'after:w-full' : 'after:w-0'"
-              >
-                {{ t('header.about') }}
-              </span>
-              <ChevronDown
-                :size="16"
-                class="duration-300 text-white"
-                :class="{ 'rotate-180': mobileAboutOpen }"
-              />
+              {{ t('header.about') }}
+              <ChevronDown :size="16" class="duration-300 text-white" :class="{ 'rotate-180': mobileAboutOpen }" />
             </button>
 
-            <div v-if="mobileAboutOpen" class="pl-4 pb-2 pt-1 space-y-0">
+            <div v-if="mobileAboutOpen" class="pl-4 pb-2 space-y-1">
               <NuxtLink
                 v-for="item in abouts"
                 :key="item.key"
@@ -527,23 +419,17 @@ onUnmounted(() => {
           </div>
 
           <!-- Search -->
-          <div class="mt-8 pt-6">
-            <div class="flex items-center border border-white rounded-full px-4 py-2.5">
-              <button
-                type="button"
-                @click="handleMobileSearch"
-                :aria-label="t('header.search')"
-              >
-                <Search :size="18" class="text-white" />
-              </button>
-              <input
-                v-model="mobileSearchQuery"
-                type="text"
-                :placeholder="t('header.search')"
-                @keyup.enter="handleMobileSearch"
-                class="nav-font ml-3 outline-none bg-transparent w-full text-sm tracking-wide text-white"
-              />
-            </div>
+          <div class="flex items-center border border-white rounded-full px-4 py-2.5">
+            <button type="button" @click="handleMobileSearch" :aria-label="t('header.search')">
+              <Search :size="18" class="text-white" />
+            </button>
+            <input
+              v-model="mobileSearchQuery"
+              type="text"
+              :placeholder="t('header.search')"
+              @keyup.enter="handleMobileSearch"
+              class="ml-3 outline-none bg-transparent w-full text-sm text-white"
+            />
           </div>
 
           <!-- Language -->
@@ -557,12 +443,8 @@ onUnmounted(() => {
                 v-for="lang in languages"
                 :key="lang.code"
                 @click="switchLocale(lang.code)"
-                class="nav-font px-5 py-2 rounded-full text-sm font-semibold tracking-wider transition-colors"
-                :class="
-                  locale === lang.code
-                    ? 'bg-white text-[#AC8544]'
-                    : 'border border-white text-white active:text-white/60'
-                "
+                class="px-5 py-2 rounded-full text-sm font-semibold transition-colors"
+                :class="locale === lang.code ? 'bg-white text-[#AC8544]' : 'border border-white text-white hover:text-white/20'"
               >
                 {{ lang.label }}
               </button>
@@ -582,7 +464,7 @@ header {
 nav,
 button,
 a {
-  font-family: "Oswald", 'Noto Sans Khmer', sans-serif;
+  font-family: "Oswald", "Noto Sans Khmer", sans-serif;
 }
 
 .nav-font {

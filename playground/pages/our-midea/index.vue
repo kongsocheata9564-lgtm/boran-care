@@ -4,11 +4,11 @@ import { CalendarDays } from "lucide-vue-next";
 
 // Import images/videos
 import media1 from "~/assets/images/pic1.jpg";
-import media2 from "~/assets/images/pic1.jpg";
-import media3 from "~/assets/images/pic1.jpg";
-import media4 from "~/assets/images/pic1.jpg";
-import media5 from "~/assets/images/pic1.jpg";
-import media6 from "~/assets/images/pic1.jpg";
+import media2 from "~/assets/images/pic2.jpg";
+import media3 from "~/assets/images/pic3.jpg";
+import media4 from "~/assets/images/pic4.jpg";
+import media5 from "~/assets/images/pic5.jpg";
+import media6 from "~/assets/images/pic6.jpg";
 
 const router = useRouter();
 const { t, d } = useI18n();
@@ -19,37 +19,37 @@ const mediaItems = [
     image: media1,
     type: "image",
     date: "mediaPage.date1",
-    title: "mediaPage.opening"
+    title: "mediaPage.educational"
   },
   {
     image: media2,
     type: "image",
      date: "mediaPage.date1",
-    title: "mediaPage.opening"
+    title: "mediaPage.educational"
   },
   {
     image: media3,
     type: "image",
     date: "mediaPage.date1",
-    title: "mediaPage.opening"
+    title: "mediaPage.educational"
   },
   {
     image: media4,
     type: "image",
     date: "mediaPage.date1",
-    title: "mediaPage.opening"
+    title: "mediaPage.educational"
   },
   {
     image: media5,
     type: "image",
     date: "mediaPage.date1",
-    title: "mediaPage.opening"
+    title: "mediaPage.educational"
   },
   {
     image: media6,
     type: "image",
     date: "mediaPage.date1",
-    title: "mediaPage.opening"
+    title: "mediaPage.educational"
   },
 ];
 
@@ -141,7 +141,7 @@ const goVideo = () => {
             class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2"
           >
 
-            <div class="flex items-center gap-2 text-xs opacity-95">
+            <!-- <div class="flex items-center gap-2 text-xs opacity-95">
 
               <CalendarDays :size="14"/>
 
@@ -149,7 +149,7 @@ const goVideo = () => {
               {{ t(item.date) }}
               </span>
 
-            </div>
+            </div> -->
 
 
             <h3 class="mt-1 text-xl font-semibold">

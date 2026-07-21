@@ -18,32 +18,32 @@ const videoItems = [
   {
     video: video1,
     date: "videoPage.date1",
-    title: "videoPage.opening",
+    title: "videoPage.educational",
   },
   {
     video: video2,
     date: "videoPage.date1",
-    title: "videoPage.opening",
+    title: "videoPage.educational",
   },
   {
     video: video3,
     date: "videoPage.date1",
-    title: "videoPage.opening",
+    title: "videoPage.educational",
   },
   {
     video: video4,
     date: "videoPage.date1",
-    title: "videoPage.opening",
+    title: "videoPage.educational",
   },
   {
     video: video5,
     date: "videoPage.date1",
-    title: "videoPage.opening",
+    title: "videoPage.educational",
   },
   {
     video: video6,
     date: "videoPage.date1",
-    title: "videoPage.opening",
+    title: "videoPage.educational",
   },
 ];
 
@@ -125,7 +125,7 @@ const goMedia = () => {
             class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2"
           >
 
-            <div class="flex items-center gap-2 text-xs opacity-95">
+            <!-- <div class="flex items-center gap-2 text-xs opacity-95">
 
               <CalendarDays :size="14"/>
 
@@ -133,7 +133,7 @@ const goMedia = () => {
                 {{ t(item.date) }}
               </span>
 
-            </div>
+            </div> -->
 
 
             <h3 class="mt-1 text-xl font-semibold">
