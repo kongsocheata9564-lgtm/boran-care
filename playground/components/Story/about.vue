@@ -1,27 +1,23 @@
 <template>
   <section
-  class="w-full bg-white py-6 sm:py-8 md:py-10 px-4 sm:px-6"
+    class="w-full bg-white py-6 sm:py-8 md:py-10 px-4 sm:px-6"
     style="font-family: 'Inter', sans-serif"
   >
     <!-- Heading -->
     <div class="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
       <h2
-        class="text-center text-3xl sm:text-4xl font-normal mb-12"
-        style="font-family: 'Oswald', sans-serif; color: #A57E45; letter-spacing: 0.08em;  "
+        class="text-center text-3xl sm:text-4xl font-normal mb-12 tracking-wider text-[#A57E45]"
+        style="font-family: 'Oswald', sans-serif"
       >
         {{ t('about.heading') }}
       </h2>
-      <p
-        class="mt-3 sm:mt-4 text-[#145A3A] text-sm sm:text-base md:text-lg leading-relaxed"
-      >
+      <p class="mt-3 sm:mt-4 text-[#145A3A] text-sm sm:text-base md:text-lg leading-relaxed">
         {{ t('about.intro') }}
       </p>
     </div>
 
     <!-- Card -->
-    <div
-      class="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl border border-amber-200 shadow-sm p-5 sm:p-8 md:p-10"
-    >
+    <div class="max-w-6xl mx-auto rounded-2xl sm:rounded-3xl border border-amber-200 shadow-sm p-5 sm:p-8 md:p-10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
         <!-- Left: text + icons -->
         <div class="order-2 md:order-1">
@@ -46,9 +42,7 @@
                   class="w-7 h-7 sm:w-8 sm:h-8 object-contain"
                 />
               </div>
-              <span
-                class="text-xs sm:text-sm text-[#145A3A] text-center leading-tight"
-              >
+              <span class="text-xs sm:text-sm text-[#145A3A] text-center leading-tight">
                 {{ item.label }}
               </span>
             </div>
@@ -57,9 +51,7 @@
 
         <!-- Right: image -->
         <div class="order-1 md:order-2">
-          <div
-            class="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/11]"
-          >
+          <div class="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/11]">
             <img
               src="~/assets/images/boran care our history picture.jpeg"
               alt="BORAN CARE ASIA team"
@@ -105,4 +97,3 @@ const features = computed(() => [
   },
 ])
 </script>
-

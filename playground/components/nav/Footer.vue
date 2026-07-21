@@ -4,9 +4,8 @@ import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
 const route = useRoute(); // <-- Added useRoute to track the current path
-const { t, locale } = useI18n();
-const localePath = useLocalePath(); // <--- ADDED THIS
-
+const { t, locale, setLocale } = useI18n(); // Added setLocale
+const localePath = useLocalePath();
 
 const openSection = ref(null);
 const toggleSection = (name) => {
@@ -29,9 +28,15 @@ const currentLanguage = computed(
 );
 
 const setLanguage = (code) => {
-  locale.value = code;
-  localStorage.setItem("locale", code);
+  setLocale(code); // Use Nuxt i18n's setLocale instead of mutating directly
   isLangOpen.value = false;
+};
+
+// Added missing openLink function
+const openLink = (url) => {
+  if (process.client) {
+    window.open(url, "_blank");
+  }
 };
 
 const quickLinks = [
@@ -120,12 +125,14 @@ const socialLinks = [
     icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V8.9h3.42v1.58h.05c.48-.91 1.65-1.86 3.39-1.86 3.63 0 4.3 2.39 4.3 5.5v6.33zM5.34 7.32a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V8.9h3.56v11.55zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>`
   }
 ];
+const socialLinksTopRow = computed(() => socialLinks.slice(0, 2));
+const socialLinksBottomRow = computed(() => socialLinks.slice(2, 5));
 
 // Helper function to check if the current item is active
 const isActive = (item) => {
   const target = item.link || item.path;
   if (!target) return false;
-  
+
   const targetPath = typeof target === "string" ? target : target.path;
   const targetQuery = typeof target === "string" ? {} : (target.query || {});
 
@@ -146,9 +153,9 @@ const goTo = async (item) => {
 
   // 1. Update the route/query first
   if (typeof item === "string") {
-    await router.push(localePath(item)); // <--- UPDATED THIS
+    await router.push(localePath(item));
   } else {
-    await router.push(localePath({       // <--- UPDATED THIS
+    await router.push(localePath({
       path: item.path,
       query: item.query
     }));
@@ -176,7 +183,7 @@ const goTo = async (item) => {
   >
     <div class="max-w-[480px] mx-auto px-6 pt-10 pb-6">
 
-      <div class="flex justify-center mb-5">
+      <div class="flex justify-center py-3">
         <img
           src="assets/images/boran_care_logo-removebg-preview.png"
           alt="Boran Care"
@@ -184,7 +191,7 @@ const goTo = async (item) => {
         />
       </div>
 
-      <div class="h-px w-full bg-[#C9A86A] mb-4"></div>
+      <div class="h-px w-full bg-[#C9A86A]"></div>
 
       <div class="divide-y divide-[#C9A86A]">
         <div v-for="section in mobileSections" :key="section.name" class="py-1">
@@ -192,7 +199,7 @@ const goTo = async (item) => {
             @click="toggleSection(section.name)"
             class="w-full flex items-center justify-between py-3 text-left"
           >
-            <span class="flex items-center gap-3 text-[15px] text-white">
+            <span class="flex items-center gap-3 text-[15px] text-white tracking-widest">
               <span class="w-5 h-5 shrink-0 text-white" v-html="section.icon"></span>
               <span class="shrink-0">{{ t(section.labelKey) }}</span>
             </span>
@@ -209,8 +216,8 @@ const goTo = async (item) => {
               v-for="item in section.items"
               :key="item.key"
               @click="goTo(item.link || item.path)"
-              class="block text-[13px] transition text-left"
-              :class="isActive(item) ? 'text-white font-semibold' : 'text-white/85 hover:text-white'"
+              class="block text-sm tracking-wider transition text-left"
+              :class="isActive(item) ? 'text-white' : 'text-white/85 hover:text-white'"
             >
               {{ t(item.key) }}
             </button>
@@ -219,18 +226,30 @@ const goTo = async (item) => {
       </div>
 
       <div class="mt-8 text-center">
-        <h3
-          class="uppercase text-[13px] tracking-wider font-semibold text-white mb-4"
-        >
+        <h3 class="uppercase text-[13px] tracking-widest text-white mb-4">
           {{ t('footer.followUs') }}
         </h3>
 
-        <div class="flex justify-center gap-3">
+        <div class="flex justify-center gap-3 mb-3">
           <button
-            v-for="social in socialLinks"
+            v-for="social in socialLinksTopRow"
             :key="social.name"
             @click="openLink(social.url)"
-            class="w-10 h-10 rounded-full flex items-center justify-center
+            class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center
+              bg-transparent border border-white text-white
+              hover:bg-white hover:text-[#AC8544]
+              hover:-translate-y-1 hover:scale-110
+              transition-all duration-300"
+          >
+            <span class="w-5 h-5" v-html="social.icon"></span>
+          </button>
+        </div>
+        <div class="flex justify-center gap-3">
+          <button
+            v-for="social in socialLinksBottomRow"
+            :key="social.name"
+            @click="openLink(social.url)"
+            class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center
               bg-transparent border border-white text-white
               hover:bg-white hover:text-[#AC8544]
               hover:-translate-y-1 hover:scale-110
@@ -242,11 +261,11 @@ const goTo = async (item) => {
       </div>
 
       <!-- Language Switcher -->
-      
+
     </div>
 
     <div class="border-t border-[#C9A86A]">
-      <div class="max-w-[480px] mx-auto px-6 py-4 text-center text-white/85 text-[12px] space-y-1">
+      <div class="max-w-[480px] mx-auto px-6 py-4 text-center text-white/85 text-[12px] tracking-wide space-y-1">
         <div>{{ t('footer.copyright') }}</div>
         <div class="flex justify-center gap-2">
           <button @click="goTo('/privacy')" class="hover:underline text-white">{{ t('footer.privacy') }}</button>
@@ -276,7 +295,7 @@ const goTo = async (item) => {
       gap-x-8"
     >
       <!-- Logo -->
-      <div class="flex justify-center sm:justify-start lg:justify-start pb-4 sm:pb-0">
+      <div class="flex items-start justify-center sm:justify-start lg:justify-start pb-4 sm:pb-0">
         <img
           src="assets/images/boran_care_logo-removebg-preview.png"
           alt="Boran Care"
@@ -286,14 +305,14 @@ const goTo = async (item) => {
 
       <!-- Quick Links -->
       <div class="text-center sm:text-left">
-        <h3 class="uppercase text-[18px] sm:text-[20px] font-semibold text-white mb-4">
+        <h3 class="uppercase tracking-widest text-[18px] sm:text-[20px] text-white mb-4">
           {{ t('footer.quickLinks') }}
         </h3>
         <ul class="space-y-2">
           <li v-for="item in quickLinks" :key="item.key">
             <button
               @click="goTo(item.path)"
-              class="relative text-[14px] sm:text-[13px] text-white transition
+              class="relative tracking-wider text-sm text-white transition
               after:absolute after:left-0 after:-bottom-1
               after:h-[1px] after:bg-white
               after:transition-all after:duration-300"
@@ -307,14 +326,14 @@ const goTo = async (item) => {
 
       <!-- Products -->
       <div class="text-center sm:text-left">
-        <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
+        <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.products') }}
         </h3>
         <ul class="space-y-2">
           <li v-for="item in products" :key="item.key">
             <button
               @click="goTo(item.link)"
-              class="relative text-[13px] text-white transition
+              class="relative tracking-wider text-sm text-white transition
               after:absolute after:left-0 after:-bottom-1
               after:h-[1px] after:bg-white
               after:transition-all after:duration-300"
@@ -328,14 +347,14 @@ const goTo = async (item) => {
 
       <!-- About -->
       <div class="text-center lg:text-left">
-        <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
+        <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.aboutUs') }}
         </h3>
         <ul class="space-y-1">
           <li v-for="item in aboutLinks" :key="item.key">
             <button
               @click="goTo(item.path)"
-              class="relative text-[13px] text-white transition
+              class="relative tracking-wider text-sm text-white transition
               after:absolute after:left-0 after:-bottom-1
               after:h-[1px] after:bg-white
               after:transition-all after:duration-300"
@@ -348,16 +367,17 @@ const goTo = async (item) => {
       </div>
 
       <!-- Social -->
-      <div class="text-center sm:text-left">
-        <h3 class="uppercase text-[20px] font-semibold text-white mb-3">
+      <div class="text-center">
+        <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.followUs') }}
         </h3>
-        <div class="flex justify-center sm:justify-start flex-wrap gap-3">
+        <!-- Row 1: 2 icons, centered -->
+        <div class="flex justify-center gap-3 mb-3">
           <button
-            v-for="social in socialLinks"
+            v-for="social in socialLinksTopRow"
             :key="social.name"
             @click="openLink(social.url)"
-            class="w-10 h-10 sm:w-9 sm:h-9 rounded-full
+            class="w-9 h-9 shrink-0 rounded-full
               flex items-center justify-center
               bg-[#F8F1E3]
               text-[#B88A33]
@@ -372,8 +392,27 @@ const goTo = async (item) => {
             <span class="w-5 h-5" v-html="social.icon"></span>
           </button>
         </div>
-
-        
+        <!-- Row 2: 3 icons, centered -->
+        <div class="flex justify-center gap-3">
+          <button
+            v-for="social in socialLinksBottomRow"
+            :key="social.name"
+            @click="openLink(social.url)"
+            class="w-9 h-9 shrink-0 rounded-full
+              flex items-center justify-center
+              bg-[#F8F1E3]
+              text-[#B88A33]
+              hover:bg-[#AC8544]
+              hover:text-white
+              hover:-translate-y-1
+              hover:scale-110
+              hover:shadow-lg
+              hover:shadow-[#B88A33]/30
+              transition-all duration-300"
+          >
+            <span class="w-5 h-5" v-html="social.icon"></span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -392,7 +431,8 @@ const goTo = async (item) => {
         text-center
         md:text-left
         text-[13px]
-        sm:text-[14px]"
+        sm:text-[14px]
+        tracking-wide"
       >
         <div>{{ t('footer.copyright') }}</div>
         <div class="flex flex-wrap justify-center gap-2">

@@ -6,7 +6,7 @@
 
         <!-- Heading -->
         <h2
-          class="font-bebas text-3xl md:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
+          class="font-oswald font-normal text-3xl sm:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
         >
            {{ $t('visionMission.visionSectionTitle') }}
         </h2>
@@ -23,7 +23,7 @@
 
             <!-- Title -->
             <h3
-              class="font-bebas text-lg md:text-xl tracking-wide text-[#a97c34] mb-3"
+              class="font-oswald text-lg md:text-xl tracking-wide text-[#a97c34] mb-3"
             >
               {{ item.title }}
             </h3>
@@ -44,7 +44,7 @@
 
         <!-- Heading -->
         <h2
-          class="font-bebas text-3xl md:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
+          class="font-oswald font-normal text-3xl sm:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
         >
           {{ $t('visionMission.coreValueSectionTitle') }}
         </h2>
@@ -61,7 +61,7 @@
 
             <!-- Title -->
             <h3
-              class="font-bebas text-lg md:text-xl tracking-wide text-[#a97c34] mb-3"
+              class="font-oswald text-lg md:text-xl tracking-wide text-[#a97c34] mb-3"
             >
               {{ item.title }}
             </h3>
@@ -79,10 +79,10 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-.font-bebas {
-  font-family: "Bebas Neue", sans-serif;
+.font-oswald {
+  font-family: "Oswald", sans-serif;
 }
 .font-inter {
   font-family: "Inter", sans-serif;                                                                                                                                                                                                                                                                                               
@@ -198,8 +198,8 @@ const coreValues = computed(() => [
 </script>
 
 <style scoped>
-.font-bebas {
-  font-family: 'Bebas Neue', sans-serif;
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
 }
 .font-inter {
   font-family: 'Inter', sans-serif;

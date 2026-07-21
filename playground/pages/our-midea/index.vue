@@ -12,6 +12,7 @@ import media6 from "~/assets/images/pic1.jpg";
 
 const router = useRouter();
 const { t, d } = useI18n();
+const localePath = useLocalePath(); // Added this line
 
 const mediaItems = [
   {
@@ -53,7 +54,7 @@ const mediaItems = [
 ];
 
 const goVideo = () => {
-  router.push("/our-video");
+  router.push(localePath("/our-video")); // Updated to use localePath
 };
 </script>
 

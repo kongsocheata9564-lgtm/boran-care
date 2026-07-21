@@ -12,6 +12,8 @@ import video6 from "~/assets/videos/boran.mp4";
 
 const router = useRouter();
 const { t } = useI18n();
+const localePath = useLocalePath(); // 1. Added this line
+
 const videoItems = [
   {
     video: video1,
@@ -46,7 +48,7 @@ const videoItems = [
 ];
 
 const goMedia = () => {
-  router.push("/our-midea");
+  router.push(localePath("/our-midea")); // 2. Wrapped the path with localePath()
 };
 </script>
 
