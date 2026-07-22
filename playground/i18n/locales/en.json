@@ -218,6 +218,54 @@
           { "name": "Natural saponified base", "desc": "no synthetic detergents" }
         ]
       },
+      "p13": {
+        "name": "Organic Rice Soap 75g",
+        "type": "FACIAL CARE",
+        "badge": "Organic Rice Soap",
+        "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
+        "benefits": [
+          "100% natural ingredients",
+          "Free from harsh chemicals",
+          "Suitable for everyday use",
+          "Handmade in Cambodia"
+        ],
+        "ingredients": [
+          { "name": "Local botanical oils", "desc": "sustainably farmed by the community" },
+          { "name": "Natural saponified base", "desc": "no synthetic detergents" }
+        ]
+      },
+      "p19": {
+        "name": "Organic Rice Soap 75g",
+        "type": "FACIAL CARE",
+        "badge": "Organic Rice Soap",
+        "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
+        "benefits": [
+          "100% natural ingredients",
+          "Free from harsh chemicals",
+          "Suitable for everyday use",
+          "Handmade in Cambodia"
+        ],
+        "ingredients": [
+          { "name": "Local botanical oils", "desc": "sustainably farmed by the community" },
+          { "name": "Natural saponified base", "desc": "no synthetic detergents" }
+        ]
+      },
+      "p20": {
+        "name": "Organic Rice Soap 75g",
+        "type": "FACIAL CARE",
+        "badge": "Organic Rice Soap",
+        "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
+        "benefits": [
+          "100% natural ingredients",
+          "Free from harsh chemicals",
+          "Suitable for everyday use",
+          "Handmade in Cambodia"
+        ],
+        "ingredients": [
+          { "name": "Local botanical oils", "desc": "sustainably farmed by the community" },
+          { "name": "Natural saponified base", "desc": "no synthetic detergents" }
+        ]
+      },
       "p3": {
         "name": "Natural Shampoo 300ml",
         "type": "HAIR CARE",
@@ -234,7 +282,89 @@
           { "name": "Silk-inspired formulation", "desc": "inspired by Boran Care’s silk sericin research" }
         ]
       },
+      "p14": {
+        "name": "Diamond Silk Shampoo ",
+        "type": "HAIR CARE",
+        "badge": "Diamond Silk",
+        "description": "BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.",
+        "benefits": [
+          "Gently removes dirt and excess oil.",
+          "Leaves hair feeling soft and refreshed.",
+          "Suitable for daily hair care.",
+          "Made in Cambodia."
+        ],
+        "ingredients": [
+          { "name": "Natural plant extracts", "desc": "nourishes scalp and strands" },
+          { "name": "Silk-inspired formulation", "desc": "inspired by Boran Care’s silk sericin research" }
+        ]
+      },
+      "p15": {
+        "name": "Hair Wax Stick 25g ",
+        "type": "HAIR CARE",
+        "badge": "Hair Wax Stick",
+        "description": "BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.",
+        "benefits": [
+          "Gently removes dirt and excess oil.",
+          "Leaves hair feeling soft and refreshed.",
+          "Suitable for daily hair care.",
+          "Made in Cambodia."
+        ],
+        "ingredients": [
+          { "name": "Natural plant extracts", "desc": "nourishes scalp and strands" },
+          { "name": "Silk-inspired formulation", "desc": "inspired by Boran Care’s silk sericin research" }
+        ]
+      },
+      "p18": {
+        "name": "Natural hair cream",
+        "type": "HAIR CARE",
+        "badge": "Natural hair cream",
+        "description": "BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.",
+        "benefits": [
+          "Gently removes dirt and excess oil.",
+          "Leaves hair feeling soft and refreshed.",
+          "Suitable for daily hair care.",
+          "Made in Cambodia."
+        ],
+        "ingredients": [
+          { "name": "Natural plant extracts", "desc": "nourishes scalp and strands" },
+          { "name": "Silk-inspired formulation", "desc": "inspired by Boran Care’s silk sericin research" }
+        ]
+      },
       "p7": {
+        "name": "Anti Wrinkle Cream",
+        "type": "SKIN CARE",
+        "badge": "Anti Wrinkle Cream",
+        "description": "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
+        "benefits": [
+          "Helps moisturize the skin.",
+          "Supports smoother-looking skin.",
+          "Lightweight texture.",
+          "Suitable for daily use."
+        ],
+        "ingredients": [
+          { "name": "Hyaluronic Acid", "desc": "A powerful humectant that draws deep moisture into the skin barrier, keeping it plump and highly hydrated." },
+          { "name": "Collagen", "desc": "Works to support the skin's natural framework, visibly improving firmness, springiness, and texture." },
+          { "name": "Silk Cocoon Extract (SOURINA Line)", "desc": "Rich in natural sericin protein to form a protective moisture shield and noticeably soften aging skin." }
+        ]
+      },
+      "p10": {
+        "name": "Anti Wrinkle Cream",
+        "type": "SKIN CARE",
+        "badge": "Anti Wrinkle Cream",
+        "description": "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
+        "benefits": [
+          "Helps moisturize the skin.",
+          "Supports smoother-looking skin.",
+          "Lightweight texture.",
+          "Suitable for daily use."
+        ],
+        "ingredients": [
+          { "name": "Hyaluronic Acid", "desc": "A powerful humectant that draws deep moisture into the skin barrier, keeping it plump and highly hydrated." },
+          { "name": "Collagen", "desc": "Works to support the skin's natural framework, visibly improving firmness, springiness, and texture." },
+          { "name": "Silk Cocoon Extract (SOURINA Line)", "desc": "Rich in natural sericin protein to form a protective moisture shield and noticeably soften aging skin." }
+        ]
+      },
+      "p11": {
         "name": "Anti Wrinkle Cream",
         "type": "SKIN CARE",
         "badge": "Anti Wrinkle Cream",
@@ -321,6 +451,116 @@
           { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
           { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
           { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p8": {
+        "name": "Neem Soap 75g",
+        "type": "PERSONAL CARE",
+        "badge": "Neem Soap",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p12": {
+        "name": "Alum Deodorant 60g",
+        "type": "PERSONAL CARE",
+        "badge": "Alum Deodorant",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p16": {
+        "name": "Natural Mosquito Repellent",
+        "type": "PERSONAL CARE",
+        "badge": "Natural Mosquito Repellent",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p17": {
+        "name": "Natural Mosquito Repellent",
+        "type": "PERSONAL CARE",
+        "badge": "Natural Mosquito Repellent",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p21": {
+        "name": "Natural Mosquitoes Repellent",
+        "type": "PERSONAL CARE",
+        "badge": "Natural Mosquitoes Repellent",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p9": {
+        "name": "SILK CLEANSING GEL 60 & 100ml",
+        "type": "FACIAL CARE ",
+        "badge": "Silk Cleansing Gel",
+        "description": "Silk Soap is a handcrafted facial cleansing bar formulated with naturally derived ingredients to gently cleanse, refresh, and soften the skin. Its rich, creamy lather removes impurities while helping maintain the skin's natural moisture, leaving your complexion feeling clean, smooth, and revitalized after every wash.",
+        "benefits": [
+          "Gentle cleansing for daily facial care.",
+          "Helps remove dirt, oil, and impurities.",
+          "Leaves skin feeling soft and smooth.",
+          "Maintains the skins natural moisture balance.",
+          "Suitable for most skin types.",
+          "Made with naturally derived ingredients."
+        ],
+        "ingredients": [
+          { "name": "Natural Soap Base", "desc": "Gently cleanses the skin without harsh detergents." },
+          { "name": "Silk Extract", "desc": "Helps keep the skin feeling soft and smooth." },
+          { "name": "Natural Plant Oils", "desc": "Nourish and moisturize the skin." },
+          { "name": "Glycerin", "desc": "Helps retain moisture and prevent dryness." }
         ]
       }
     }
