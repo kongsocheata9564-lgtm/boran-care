@@ -24,26 +24,34 @@
         <div
           v-for="product in filteredProducts"
           :key="product.id"
-          class="bg-white rounded-2xl border border-[#AC8544] overflow-hidden flex flex-col group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl   active:translate-y-0 active:shadow-sm active:ring-0 tap-transparent"
+          class="group relative bg-white rounded-xl border border-[#EADFC8] overflow-hidden flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(172,133,68,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(172,133,68,0.18)] hover:border-[#AC8544] active:translate-y-0 active:shadow-sm tap-transparent"
           @click="openProduct(product)"
         >
-          <div class="relative aspect-square bg-[#F3F1ED] overflow-hidden flex items-center justify-center">
-            <span class="font-oswald absolute top-3 left-3 sm:top-4 sm:left-4 bg-[#AC8544]/70 backdrop-blur-sm text-white text-sm font-medium uppercase px-3 py-2 rounded shadow-sm z-10 tracking-wide text-center leading-snug flex items-center justify-center w-[150px] sm:w-[160px] min-h-[38px]">
-              {{ product.badge }}
-            </span>
+          <div class="relative aspect-[4/3] bg-[#F3F1ED] overflow-hidden rounded-b-xl">
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
-            <span v-else class="text-xs text-gray-400">{{ t('productPage.noImage') }}</span>
+            <span v-else class="text-xs text-gray-400 flex items-center justify-center w-full h-full">{{ t('productPage.noImage') }}</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
 
-          <!-- <div class="p-5 flex justify-between items-center mt-auto border-t border-[#F5F2EC]">
-            <span class="text-[#145A3A] font-medium tracking-wide text-base group-hover:text-[#8C7654] transition-colors">
-             {{ t('productPage.viewDetails') }}
-            </span>
-            <svg class="w-5 h-5 text-[#145A3A] transform transition-transform group-hover:translate-x-1.5 group-hover:text-[#8C7654] duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </div> -->
-          
+          <div class="relative px-5 pb-3.5 pt-3.5">
+            <h3 class="font-oswald text-base sm:text-lg text-[#145A3A] font-semibold tracking-wide mb-1 leading-snug">
+              {{ product.badge }}
+            </h3>
+            <p class="text-base text-[#145A3A]/70 mb-3">
+              {{ product.type }}
+            </p>
+
+            <div class="flex items-center justify-between">
+              <span class="text-base font-medium text-[#AC8544] uppercase tracking-wide transition-colors group-hover:text-[#8C7654]">
+                {{ t('productPage.viewDetails') }}
+              </span>
+              <span class="w-7 h-7 rounded-full border border-[#AC8544] flex items-center justify-center text-[#AC8544] transition-all duration-300 group-hover:bg-[#AC8544] group-hover:text-white group-hover:translate-x-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -150,24 +158,62 @@ import imgSoap1 from '~/assets/images/b6.jpeg'
 import imgSoap2 from '~/assets/images/b29.jpeg'
 import imgSoap3 from '~/assets/images/b27.jpeg'
 import imgSoap4 from '~/assets/images/b28.jpeg'
-
 import imgSoap5 from '~/assets/images/b18.jpeg'
 import imgSoap6 from '~/assets/images/30.jpeg'
 import imgSoap7 from '~/assets/images/31.jpeg'
 import imgSoap8 from '~/assets/images/b30.jpeg'
-
+import imgSoap9 from '~/assets/images/b34.jpeg'
+import imgSoap10 from '~/assets/images/b43.jpeg'
+import imgSoap11 from '~/assets/images/b44.jpeg'
+import imgSoap12 from '~/assets/images/b45.jpeg'
+import imgSoap13 from '~/assets/images/b46.jpeg'
+import imgSoap14 from '~/assets/images/b47.jpeg'
+import imgSoap15 from '~/assets/images/b48.jpeg'
+import imgSoap16 from '~/assets/images/b66.jpeg'
+import imgSoap17 from '~/assets/images/b67.jpeg'
 
 import imgSink1 from '~/assets/images/b24.jpeg'
 import imgSink2 from '~/assets/images/b22.jpeg'
+import imgSink3 from '~/assets/images/b39.jpeg'
+import imgSink4 from '~/assets/images/b38.jpeg'
+
 import imgHair1 from '~/assets/images/b8.jpeg'
 import imgHair2 from '~/assets/images/b11.jpeg'
 import imgHair3 from '~/assets/images/b13.jpeg'
 import imgHair4 from '~/assets/images/b23.jpeg'
+import imgHair5 from '~/assets/images/b53.jpeg'
+import imgHair6 from '~/assets/images/b54.jpeg'
+import imgHair7 from '~/assets/images/b55.jpeg'
+import imgHair8 from '~/assets/images/b56.jpeg'
+import imgHair9 from '~/assets/images/b57.jpeg'
+import imgHair10 from '~/assets/images/b58.jpeg'
+import imgHair11 from '~/assets/images/b65.jpeg'
+
 import imgMake1 from '~/assets/images/b17.jpeg'
+import imgMake2 from '~/assets/images/b37.jpeg'
+import imgMake3 from '~/assets/images/b35.jpeg'
+import imgMake4 from '~/assets/images/b36.jpeg'
+
 import imgScrub1 from '~/assets/images/b14.jpeg'
 import imgScrub2 from '~/assets/images/b19.jpeg'
 import imgScrub3 from '~/assets/images/b31.jpeg'
 import imgScrub4 from '~/assets/images/b32.jpeg'
+import imgScrub5 from '~/assets/images/b33.jpeg'
+import imgScrub6 from '~/assets/images/b40.jpeg'
+import imgScrub7 from '~/assets/images/b41.jpeg'
+import imgScrub8 from '~/assets/images/b42.jpeg'
+import imgScrub9 from '~/assets/images/b49.jpeg'
+import imgScrub10 from '~/assets/images/b50.jpeg'
+import imgScrub11 from '~/assets/images/b51.jpeg'
+import imgScrub12 from '~/assets/images/b52.jpeg'
+import imgScrub13 from '~/assets/images/b59.jpeg'
+import imgScrub14 from '~/assets/images/b60.jpeg'
+import imgScrub15 from '~/assets/images/b61.jpeg'
+import imgScrub16 from '~/assets/images/b62.jpeg'
+import imgScrub17 from '~/assets/images/b63.jpeg'
+import imgScrub18 from '~/assets/images/b64.jpeg'
+import imgScrub19 from '~/assets/images/b68.jpeg'
+
 import b15 from '~/assets/images/b15.jpeg'
 import b16 from '~/assets/images/16.jpeg'
 
@@ -230,6 +276,7 @@ const productMetadata = [
     image: imgHair1,
     images: [imgHair1, imgHair4, imgHair3, imgHair2]
   },
+
   {
     id: 7,
     key: 'p7',
@@ -249,8 +296,9 @@ const productMetadata = [
     key: 'p6',
     category: 'MAKEUP',
     image: imgMake1,
-    images: [imgMake1, imgMake1, imgMake1, imgMake1]
+    images: [imgMake1, imgMake2, imgMake3, imgMake4]
   },
+
 
 
   {
@@ -261,12 +309,112 @@ const productMetadata = [
     images: [imgSoap5, imgSoap6, imgSoap7, imgSoap8]
   },
   {
+    id: 9,
+    key: 'p9',
+    category: 'FACIAL_CARE',
+    image: imgSoap10,
+    images: [imgSoap10, imgSoap11, imgSoap9, imgSoap12]
+  },
+  {
+    id: 13,
+    key: 'p12',
+    category: 'FACIAL_CARE',
+    image: imgSoap13,
+    images: [imgSoap13, imgSoap13, imgSoap14, imgSoap15]
+  },
+  {
+    id: 19,
+    key: 'p19',
+    category: 'FACIAL_CARE',
+    image: imgSoap16,
+    images: [imgSoap16, imgSoap16, imgSoap16, imgSoap16]
+  },
+  {
+    id: 20,
+    key: 'p20',
+    category: 'FACIAL_CARE',
+    image: imgSoap17,
+    images: [imgSoap17, imgSoap17, imgSoap17, imgSoap17]
+  },
+  
+  {
+    id: 14,
+    key: 'p14',
+    category: 'HAIR_CARE',
+    image: imgHair6,
+    images: [imgHair6, imgHair5, imgHair7, imgHair5]
+  },
+  {
+    id: 15,
+    key: 'p15',
+    category: 'HAIR_CARE',
+    image: imgHair8,
+    images: [imgHair8, imgHair9, imgHair10, imgHair9]
+  },
+  {
+    id: 18,
+    key: 'p18',
+    category: 'HAIR_CARE',
+    image: imgHair11,
+    images: [imgHair11, imgHair11, imgHair11, imgHair11]
+  },
+  {
     id: 4,
     key: 'p4',
     category: 'PERSONAL_CARE',
     image: imgScrub1,
     images: [imgScrub1, b16, b15, imgScrub1]
-  }
+  },
+  {
+    id: 8,
+    key: 'p8',
+    category: 'PERSONAL_CARE',
+    image: imgScrub7,
+    images: [imgScrub7, imgScrub6,imgScrub8, imgScrub5]
+  },
+  {
+    id: 12,
+    key: 'p12',
+    category: 'PERSONAL_CARE',
+    image: imgScrub10,
+    images: [imgScrub10, imgScrub11,imgScrub9, imgScrub12]
+  },
+  {
+    id: 16,
+    key: 'p16',
+    category: 'PERSONAL_CARE',
+    image: imgScrub13,
+    images: [imgScrub13, imgScrub14,imgScrub15, imgScrub16]
+  },
+  {
+    id: 17,
+    key: 'p17',
+    category: 'PERSONAL_CARE',
+    image: imgScrub17,
+    images: [imgScrub17, imgScrub18,imgScrub17, imgScrub18]
+  },
+  {
+    id: 21,
+    key: 'p21',
+    category: 'PERSONAL_CARE',
+    image: imgScrub19,
+    images: [imgScrub19, imgScrub19,imgScrub19, imgScrub19]
+  },
+
+  {
+    id: 10,
+    key: 'p10',
+    category: 'SKIN_CARE',
+    image: imgSink3,
+    images: [imgSink2, imgSink2, imgSink2, imgSink3]
+  },
+  {
+    id: 11,
+    key: 'p11',
+    category: 'SKIN_CARE',
+    image: imgSink4,
+    images: [imgSink2, imgSink2, imgSink2, imgSink4]
+  },
 ];
 
 // Computed translation data dynamic parsing to bypass AST nodes
