@@ -29,7 +29,7 @@
             </h3>
 
             <!-- Description -->
-            <p class="font-inter text-sm leading-relaxed text-emerald-900/90 max-w-[260px]">
+            <p class="font-oswald text-sm leading-relaxed tracking-wide text-emerald-900/90 max-w-[260px]">
               {{ item.description }}
             </p>
           </div>
@@ -67,7 +67,7 @@
             </h3>
 
             <!-- Description -->
-            <p class="font-inter text-sm leading-relaxed text-emerald-900/90 max-w-[260px]">
+            <p class="font-oswald text-sm leading-relaxed tracking-wide text-emerald-900/90 max-w-[260px]">
               {{ item.description }}
             </p>
           </div>

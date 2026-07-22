@@ -38,7 +38,7 @@ const goVideo = () => {
         {{ t("mediaPage.title") }}
       </h1>
 
-      <p class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto">
+      <p class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto tracking-wide">
         {{ t("mediaPage.description") }}
       </p>
 
@@ -107,11 +107,8 @@ const goVideo = () => {
 
 h1,
 h3,
-button {
-  font-family: "Oswald", sans-serif;
-}
-
+button,
 p {
-  font-family: "Poppins", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 </style>

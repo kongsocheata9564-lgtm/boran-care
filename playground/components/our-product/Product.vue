@@ -1,7 +1,7 @@
 <template>
   <div class="font-inter min-h-screen text-[#2C3E2B] px-4 sm:px-32">
     <main class="max-w-7xl mx-auto pt-8 sm:pt-10 pb-8 sm:pb-12">
-      <h2 class="font-oswald text-center text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-widest mb-8">
+      <h2 class="font-oswald text-center text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-wider mb-8">
         {{ t('productPage.ourProducts') }}
       </h2>
 
@@ -11,7 +11,7 @@
           :key="catKey"
           @click="toggleCategory(catKey)"
           :class="[
-            'font-oswald px-3 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-sm sm:text-base  tracking-wider uppercase border transition-all text-center whitespace-nowrap sm:basis-auto sm:min-w-[140px]',
+            'font-oswald px-3 py-2.5 sm:px-5 sm:py-2.5 rounded-xl text-sm sm:text-base font-normal tracking-wider uppercase border transition-all text-center whitespace-nowrap sm:basis-auto sm:min-w-[140px]',
             index === categories.length - 1 && categories.length % 2 !== 0 ? 'col-span-2 sm:col-span-1' : '',
             activeCategory === catKey ? 'bg-[#AC8544] text-white border-[#AC8544]' : 'bg-white text-[#AC8544] border-[#AC8544] hover:bg-[#FAF9F6]'
           ]"
@@ -29,20 +29,20 @@
         >
           <div class="relative aspect-[4/3] bg-[#F3F1ED] overflow-hidden rounded-b-xl">
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
-            <span v-else class="text-xs text-gray-400 flex items-center justify-center w-full h-full">{{ t('productPage.noImage') }}</span>
+            <span v-else class="font-oswald text-xs text-gray-400 flex items-center justify-center w-full h-full">{{ t('productPage.noImage') }}</span>
             <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
 
           <div class="relative px-5 pb-3.5 pt-3.5">
-            <h3 class="font-oswald text-base sm:text-lg text-[#145A3A] font-semibold tracking-wide mb-1 leading-snug">
+            <h3 class="font-oswald text-base sm:text-lg text-[#145A3A] font-normal tracking-wide mb-1 leading-snug">
               {{ product.badge }}
             </h3>
-            <p class="text-base text-[#145A3A]/70 mb-3">
+            <p class="font-oswald text-sm text-[#145A3A]/70 mb-3 tracking-wide">
               {{ product.type }}
             </p>
 
             <div class="flex items-center justify-between">
-              <span class="text-base font-medium text-[#AC8544] uppercase tracking-wide transition-colors group-hover:text-[#8C7654]">
+              <span class="font-oswald text-base font-normal text-[#AC8544] uppercase tracking-wide transition-colors group-hover:text-[#8C7654]">
                 {{ t('productPage.viewDetails') }}
               </span>
               <span class="w-7 h-7 rounded-full border border-[#AC8544] flex items-center justify-center text-[#AC8544] transition-all duration-300 group-hover:bg-[#AC8544] group-hover:text-white group-hover:translate-x-1">
@@ -96,16 +96,16 @@
 
             <div class="flex flex-col h-full justify-start pt-2">
               <div class="mb-3">
-                <span class="font-oswald inline-block bg-[#AC8544] text-white text-[16px] font-semibold uppercase tracking-wider px-3 py-1 rounded">
+                <span class="font-oswald inline-block bg-[#AC8544] text-white text-[16px] font-normal uppercase tracking-wider px-3 py-1 rounded">
                   {{ selectedProduct.type }}
                 </span>
               </div>
 
-              <h2 class="font-oswald text-[20px] sm:text-[24px] text-[#AC8544] font-medium tracking-wide mb-2">
+              <h2 class="font-oswald text-[20px] sm:text-[24px] text-[#AC8544] font-normal tracking-wider mb-2">
                 {{ selectedProduct.name }}
               </h2>
 
-              <p class="text-[#145A3A] pt-4 text-[16px] leading-relaxed">
+              <p class="font-oswald text-[#145A3A] pt-4 text-[16px] leading-relaxed tracking-wide">
                 {{ selectedProduct.description }}
               </p>
             </div>
@@ -113,12 +113,12 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 pt-8 border-t border-[#EBE7E0]">
             <div>
-              <h3 class="font-oswald text-[21px] text-[#AC8544] font-medium mb-4">{{ t('productPage.benefits') }}</h3>
+              <h3 class="font-oswald text-[21px] text-[#AC8544] font-normal tracking-wider mb-4">{{ t('productPage.benefits') }}</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(benefit, i) in selectedProduct.benefits"
                   :key="i"
-                  class="flex items-start gap-2.5 text-[16px] text-[#145A3A]"
+                  class="font-oswald flex items-start gap-2.5 text-[16px] text-[#145A3A] tracking-wide"
                 >
                   <span class="text-[#145A3A] text-[16px] mt-0.5">•</span>
                   <span>{{ benefit }}</span>
@@ -127,15 +127,15 @@
             </div>
 
             <div>
-              <h3 class="font-oswald text-[21px] text-[#AC8544] font-medium mb-4">{{ t('productPage.keyIngredients') }}</h3>
+              <h3 class="font-oswald text-[21px] text-[#AC8544] font-normal tracking-wider mb-4">{{ t('productPage.keyIngredients') }}</h3>
               <ul class="space-y-3">
                 <li
                   v-for="(ing, i) in selectedProduct.ingredients"
                   :key="i"
-                  class="flex items-start gap-2.5 text-[16px] text-[#145A3A]"
+                  class="font-oswald flex items-start gap-2.5 text-[16px] text-[#145A3A] tracking-wide"
                 >
                   <span class="text-[#145A3A] text-[16px] mt-0.5">•</span>
-                  <span><strong class="font-medium text-[#145A3A]">{{ ing.name }}</strong> — {{ ing.desc }}</span>
+                  <span><strong class="font-normal text-[#145A3A]">{{ ing.name }}</strong> — {{ ing.desc }}</span>
                 </li>
               </ul>
             </div>

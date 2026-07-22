@@ -14,75 +14,75 @@
           <form @submit.prevent="handleSubmit">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2 text-[#A57E45]">{{ $t('contact.firstName') }}</label>
+                <label class="font-oswald block text-[0.82rem] font-semibold mb-2 text-[#A57E45] tracking-wider">{{ $t('contact.firstName') }}</label>
                 <input
                   v-model="form.firstName"
                   type="text"
                   required
                   :placeholder="$t('contact.yourFirstName')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="font-oswald w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                 />
               </div>
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2 text-[#A57E45]">{{ $t('contact.lastName') }}</label>
+                <label class="font-oswald block text-[0.82rem] font-semibold mb-2 text-[#A57E45] tracking-wider">{{ $t('contact.lastName') }}</label>
                 <input
                   v-model="form.lastName"
                   type="text"
                   required
                   :placeholder="$t('contact.yourLastName')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="font-oswald w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                 />
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2 text-[#A57E45]">{{ $t('contact.email') }}</label>
+                <label class="font-oswald block text-[0.82rem] font-semibold mb-2 text-[#A57E45] tracking-wider">{{ $t('contact.email') }}</label>
                 <input
                   v-model="form.email"
                   type="email"
                   required
                   :placeholder="$t('contact.yourEmail')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="font-oswald w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                 />
               </div>
               <div>
-                <label class="block text-[0.82rem] font-semibold mb-2 text-[#A57E45]">{{ $t('contact.phone') }}</label>
+                <label class="font-oswald block text-[0.82rem] font-semibold mb-2 text-[#A57E45] tracking-wider">{{ $t('contact.phone') }}</label>
                 <input
                   v-model="form.phone"
                   type="tel"
                   :placeholder="$t('contact.yourPhone')"
-                  class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                  class="font-oswald w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
                 />
               </div>
             </div>
 
             <div class="mb-5">
-              <label class="block text-[0.82rem] font-semibold mb-2 text-[#A57E45]">{{ $t('contact.topic') }}</label>
+              <label class="font-oswald block text-[0.82rem] font-semibold mb-2 text-[#A57E45] tracking-wider">{{ $t('contact.topic') }}</label>
               <input
                 v-model="form.topic"
                 type="text"
                 required
                 :placeholder="$t('contact.selectTopic')"
-                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
+                class="font-oswald w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] transition-all duration-200"
               />
             </div>
 
             <div class="mb-7">
-              <label class="block text-[0.82rem] font-semibold mb-2 text-[#A57E45]">{{ $t('contact.message') }}</label>
+              <label class="font-oswald block text-[0.82rem] font-semibold mb-2 text-[#A57E45] tracking-wider">{{ $t('contact.message') }}</label>
               <textarea
                 v-model="form.message"
                 required
                 rows="5"
                 :placeholder="$t('contact.writeMessage')"
-                class="w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] resize-y leading-relaxed transition-all duration-200"
+                class="font-oswald w-full rounded-[10px] border border-[#e8ddc7] bg-[#fbf9f4] px-4 py-3 text-[0.9rem] text-[#33241a] placeholder-[#145A3A]/50 hover:border-[#ddccaa] focus:outline-none focus:border-[#b8863e] focus:bg-white focus:ring-[3px] focus:ring-[rgba(184,134,62,0.15)] resize-y leading-relaxed transition-all duration-200"
               ></textarea>
             </div>
 
             <button
               type="submit"
               :disabled="status === 'sending'"
-              class="inline-flex items-center gap-2.5 rounded-full bg-[#A57E45] px-8 py-3.5 text-white text-[0.95rem] font-semibold shadow-[0_8px_18px_rgba(165,126,69,0.3)] hover:bg-[#8d6a37] hover:shadow-[0_12px_28px_rgba(141,106,55,0.4)] hover:-translate-y-0.5 hover:scale-[1.05] active:translate-y-0 active:scale-[0.98] active:shadow-[0_4px_12px_rgba(141,106,55,0.3)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-[0_8px_18px_rgba(165,126,69,0.3)]"
+              class="font-oswald inline-flex items-center gap-2.5 rounded-full bg-[#A57E45] px-8 py-3.5 text-white text-[0.95rem] font-semibold shadow-[0_8px_18px_rgba(165,126,69,0.3)] hover:bg-[#8d6a37] hover:shadow-[0_12px_28px_rgba(141,106,55,0.4)] hover:-translate-y-0.5 hover:scale-[1.05] active:translate-y-0 active:scale-[0.98] active:shadow-[0_4px_12px_rgba(141,106,55,0.3)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-[0_8px_18px_rgba(165,126,69,0.3)]"
             >
               {{ status === 'sending'
                 ? $t('contact.sending')
@@ -93,10 +93,10 @@
               </svg>
             </button>
 
-            <p v-if="status === 'success'" class="mt-3 text-[0.85rem] text-[#2f6a3f]">
+            <p v-if="status === 'success'" class="font-oswald mt-3 text-[0.85rem] text-[#2f6a3f] tracking-wide">
               {{ $t('contact.success') }}
             </p>
-            <p v-if="status === 'error'" class="mt-3 text-[0.85rem] text-[#a33a2a]">
+            <p v-if="status === 'error'" class="font-oswald mt-3 text-[0.85rem] text-[#a33a2a] tracking-wide">
               {{ $t('contact.error') }}
             </p>
           </form>
@@ -112,8 +112,8 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300">{{ $t('contact.phone') }}</p>
-                <a href="tel:+85512973500" class="font-semibold text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">+855 12 973 500</a>
+                <p class="font-oswald text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300 tracking-wide">{{ $t('contact.phone') }}</p>
+                <a href="tel:+85512973500" class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">+855 12 973 500</a>
               </div>
             </div>
 
@@ -125,8 +125,8 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300">{{ $t('contact.email') }}</p>
-                <a href="mailto:ceo@borancare.com" class="font-semibold text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">ceo@borancare.com</a>
+                <p class="font-oswald text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300 tracking-wide">{{ $t('contact.email') }}</p>
+                <a href="mailto:ceo@borancare.com" class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">ceo@borancare.com</a>
               </div>
             </div>
 
@@ -138,10 +138,10 @@
                 </svg>
               </span>
               <div>
-                <p class="text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300">{{ $t('contact.location') }}</p>
+                <p class="font-oswald text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300 tracking-wide">{{ $t('contact.location') }}</p>
 
                 <!-- whitespace-pre-line forces the text to break exactly where you put \n in your JSON file -->
-                <p class="font-semibold text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300 leading-snug whitespace-pre-line">
+                <p class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300 leading-snug whitespace-pre-line tracking-wide">
                   {{ $t('contact.address') }}
                 </p>
               </div>
@@ -208,3 +208,11 @@ async function handleSubmit() {
   }
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+</style>
