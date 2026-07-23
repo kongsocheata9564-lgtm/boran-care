@@ -30,38 +30,6 @@
     </div>
 
     <!-- Alternating Image/Text Rows -->
-<<<<<<< HEAD
-    <div class="max-w-5xl mx-auto flex flex-col gap-10 sm:gap-14">
-      <div
-        v-for="(item, index) in csrItems"
-        :key="index"
-        class="group grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center rounded-2xl p-4 sm:p-6 transition-all duration-300 ease-out hover:bg-amber-50/40"
-      >
-        <!-- Image Container -->
-        <div
-          class="rounded-xl overflow-hidden aspect-[4/3] border border-transparent shadow-sm transition-all duration-300 ease-out group-hover:shadow-lg group-hover:border-amber-200"
-          :class="index % 2 === 0 ? 'md:order-1' : 'md:order-2'"
-        >
-          <!-- Applied 'group-hover:animate-bounce-in' here -->
-          <img
-            :src="item.image"
-            :alt="item.alt"
-            class="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:animate-bounce-in"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Text -->
-        <div :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
-          <p class="font-oswald text-teal-800 text-sm sm:text-base leading-relaxed mb-4 tracking-wide">
-            {{ item.text1 }}
-          </p>
-          <p class="font-oswald text-teal-800 text-sm sm:text-base leading-relaxed tracking-wide">
-            {{ item.text2 }}
-          </p>
-        </div>
-      </div>
-=======
    <div class="max-w-5xl mx-auto flex flex-col gap-10 sm:gap-14">
   <div
     v-for="(item, index) in csrItems"
@@ -79,7 +47,6 @@
         class="w-full h-full object-cover rounded-xl transition-transform duration-300 ease-out group-hover:animate-bounce-in"
         loading="lazy"
       />
->>>>>>> c474d25 (finish)
     </div>
 
     <!-- Text -->
