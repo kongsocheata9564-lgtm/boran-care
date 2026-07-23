@@ -234,26 +234,10 @@
           { "name": "Natural saponified base", "desc": "no synthetic detergents" }
         ]
       },
-      "p19": {
-        "name": "Organic Rice Soap 75g",
-        "type": "FACIAL CARE",
-        "badge": "Organic Rice Soap",
-        "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
-        "benefits": [
-          "100% natural ingredients",
-          "Free from harsh chemicals",
-          "Suitable for everyday use",
-          "Handmade in Cambodia"
-        ],
-        "ingredients": [
-          { "name": "Local botanical oils", "desc": "sustainably farmed by the community" },
-          { "name": "Natural saponified base", "desc": "no synthetic detergents" }
-        ]
-      },
       "p20": {
-        "name": "Organic Rice Soap 75g",
+        "name": "Silk Facial Serum 110ml",
         "type": "FACIAL CARE",
-        "badge": "Organic Rice Soap",
+        "badge": "Silk Facial Serum",
         "description": "Handmade using 100% natural, sustainably sourced ingredients. Made in Banteay Meanchey, Cambodia by Boran Care, a women-led brand built on a formulation philosophy of natural, safety, efficiency, and sustainability.",
         "benefits": [
           "100% natural ingredients",
@@ -299,6 +283,22 @@
         ]
       },
       "p15": {
+        "name": "Hair Wax Stick 25g ",
+        "type": "HAIR CARE",
+        "badge": "Hair Wax Stick",
+        "description": "BORAN CARE Herbal Shampoo is developed to gently cleanse the scalp while helping maintain healthy-looking hair. The formula combines natural ingredients with modern cosmetic science to provide a refreshing cleansing experience suitable for regular use.",
+        "benefits": [
+          "Gently removes dirt and excess oil.",
+          "Leaves hair feeling soft and refreshed.",
+          "Suitable for daily hair care.",
+          "Made in Cambodia."
+        ],
+        "ingredients": [
+          { "name": "Natural plant extracts", "desc": "nourishes scalp and strands" },
+          { "name": "Silk-inspired formulation", "desc": "inspired by Boran Care’s silk sericin research" }
+        ]
+      },
+      "p24": {
         "name": "Hair Wax Stick 25g ",
         "type": "HAIR CARE",
         "badge": "Hair Wax Stick",
@@ -399,6 +399,23 @@
         ]
       },
       "p6": {
+        "name": "natural Lip Balm 5g",
+        "type": "MAKEUP",
+        "badge": "Natural Lip Balm",
+        "description": "BORAN CARE Lipstick delivers vibrant color with a smooth finish while helping keep lips comfortable throughout the day. The formula is designed for easy application and everyday wear",
+        "benefits": [
+          "Built around silk sericin extract",
+          "Lab-tested and formulated in Cambodia",
+          "Targets anti-aging and skin renewal",
+          "Backed by ITC lab quality testing"
+        ],
+        "ingredients": [
+          { "name": "Vitamin E", "desc": "Helps keep lips soft and moisturized." },
+          { "name": "Natural waxes", "desc": "Provide a smooth texture and comfortable application." },
+          { "name": "Plant-based oils", "desc": "Help prevent lips from feeling dry." }
+        ]
+      },
+      "p22": {
         "name": "natural Lip Balm 5g",
         "type": "MAKEUP",
         "badge": "Natural Lip Balm",
@@ -529,6 +546,42 @@
         "name": "Natural Mosquitoes Repellent",
         "type": "PERSONAL CARE",
         "badge": "Natural Mosquitoes Repellent",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p23": {
+        "name": "Turmeric soap",
+        "type": "PERSONAL CARE",
+        "badge": "Turmeric Soap",
+        "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
+        "benefits": [
+          "Exfoliates dead skin cells",
+          "Boosts circulation & reduces cellulite appearance",
+          "Deeply moisturizes & brightens skin",
+          "Leaves skin soft, smooth & glowing"
+        ],
+        "ingredients": [
+          { "name": "Ground Coffee", "desc": "natural exfoliant, stimulates blood flow" },
+          { "name": "Coconut Oil ", "desc": "deep moisture & skin softening" },
+          { "name": "Brown Sugar ", "desc": "gentle secondary exfoliant" },
+          { "name": "Vanilla Extract ", "desc": "antioxidant & soothing scent" }
+        ]
+      },
+      "p25": {
+        "name": "Body Wash 300ml",
+        "type": "PERSONAL CARE",
+        "badge": "Body Wash",
         "description": "A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth. A rich, energizing scrub that buffs away dull skin and leaves your body feeling silky smooth.",
         "benefits": [
           "Exfoliates dead skin cells",

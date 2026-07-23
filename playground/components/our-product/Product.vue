@@ -1,11 +1,11 @@
 <template>
   <div class="font-inter min-h-screen text-[#2C3E2B] px-4 sm:px-32">
-    <main class="max-w-7xl mx-auto pt-8 sm:pt-10 pb-8 sm:pb-12">
+    <main class="max-w-6xl mx-auto pt-8 sm:pt-8 ">
       <h2 class="font-oswald text-center text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-wider mb-8">
         {{ t('productPage.ourProducts') }}
       </h2>
 
-      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-5 mb-10 w-full max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-8 mb-10 w-full max-w-4xl mx-auto">
         <button
           v-for="(catKey, index) in categories"
           :key="catKey"
@@ -27,19 +27,21 @@
           class="group relative bg-white rounded-xl border border-[#EADFC8] overflow-hidden flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(172,133,68,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(172,133,68,0.18)] hover:border-[#AC8544] active:translate-y-0 active:shadow-sm tap-transparent"
           @click="openProduct(product)"
         >
-          <div class="relative aspect-[4/3] bg-[#F3F1ED] overflow-hidden rounded-b-xl">
+          <div class="relative aspect-[4/3.7] bg-[#F3F1ED] overflow-hidden rounded-b-xl ">
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
             <span v-else class="font-oswald text-xs text-gray-400 flex items-center justify-center w-full h-full">{{ t('productPage.noImage') }}</span>
             <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
 
           <div class="relative px-5 pb-3.5 pt-3.5">
-            <h3 class="font-oswald text-base sm:text-lg text-[#145A3A] font-normal tracking-wide mb-1 leading-snug">
-              {{ product.badge }}
-            </h3>
-            <p class="font-oswald text-sm text-[#145A3A]/70 mb-3 tracking-wide">
-              {{ product.type }}
-            </p>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <h3 class="font-oswald text-base sm:text-lg text-[#145A3A] font-normal tracking-wide leading-snug">
+                {{ product.badge }}
+              </h3>
+              <p class="font-oswald text-sm text-[#AC8544] tracking-wide shrink-0 px-3 py-1.5 rounded-lg border border-[#AC8544]/40 bg-[#FAF6EC]/0">
+                {{ product.type }}
+              </p>
+            </div>
 
             <div class="flex items-center justify-between">
               <span class="font-oswald text-base font-normal text-[#AC8544] uppercase tracking-wide transition-colors group-hover:text-[#8C7654]">
@@ -95,15 +97,14 @@
             </div>
 
             <div class="flex flex-col h-full justify-start pt-2">
-              <div class="mb-3">
-                <span class="font-oswald inline-block bg-[#AC8544] text-white text-[16px] font-normal uppercase tracking-wider px-3 py-1 rounded">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <h2 class="font-oswald text-[20px] sm:text-[24px] text-[#AC8544] font-normal tracking-wider">
+                  {{ selectedProduct.name }}
+                </h2>
+                <span class="font-oswald shrink-0 inline-block bg-[#AC8544] text-white text-[14px] font-normal uppercase tracking-wider px-3 py-1 rounded-full">
                   {{ selectedProduct.type }}
                 </span>
               </div>
-
-              <h2 class="font-oswald text-[20px] sm:text-[24px] text-[#AC8544] font-normal tracking-wider mb-2">
-                {{ selectedProduct.name }}
-              </h2>
 
               <p class="font-oswald text-[#145A3A] pt-4 text-[16px] leading-relaxed tracking-wide">
                 {{ selectedProduct.description }}
@@ -189,11 +190,22 @@ import imgHair8 from '~/assets/images/b56.jpeg'
 import imgHair9 from '~/assets/images/b57.jpeg'
 import imgHair10 from '~/assets/images/b58.jpeg'
 import imgHair11 from '~/assets/images/b65.jpeg'
+import imgHair12 from '~/assets/images/b72.jpeg'
+import imgHair13 from '~/assets/images/b73.jpeg'
+import imgHair14 from '~/assets/images/b74.jpeg'
+import imgHair15 from '~/assets/images/b75.jpeg'
+import imgHair16 from '~/assets/images/b80.jpeg'
+
+
+
 
 import imgMake1 from '~/assets/images/b17.jpeg'
 import imgMake2 from '~/assets/images/b37.jpeg'
 import imgMake3 from '~/assets/images/b35.jpeg'
 import imgMake4 from '~/assets/images/b36.jpeg'
+import imgMake5 from '~/assets/images/b78.jpeg'
+import imgMake6 from '~/assets/images/b79.jpeg'
+
 
 import imgScrub1 from '~/assets/images/b14.jpeg'
 import imgScrub2 from '~/assets/images/b19.jpeg'
@@ -214,6 +226,13 @@ import imgScrub16 from '~/assets/images/b62.jpeg'
 import imgScrub17 from '~/assets/images/b63.jpeg'
 import imgScrub18 from '~/assets/images/b64.jpeg'
 import imgScrub19 from '~/assets/images/b68.jpeg'
+import imgScrub20 from '~/assets/images/b69.jpeg'
+import imgScrub21 from '~/assets/images/b70.jpeg'
+import imgScrub22 from '~/assets/images/b71.jpeg'
+import imgScrub23 from '~/assets/images/b76.jpeg'
+import imgScrub24 from '~/assets/images/b77.jpeg'
+
+
 
 import b15 from '~/assets/images/b15.jpeg'
 import b16 from '~/assets/images/16.jpeg'
@@ -279,8 +298,8 @@ const productMetadata = [
     id: 3,
     key: 'p3',
     category: 'HAIR_CARE',
-    image: imgHair1,
-    images: [imgHair1, imgHair4, imgHair3, imgHair2]
+    image: imgHair16,
+    images: [imgHair16, imgHair4, imgHair3, imgHair1]
   },
 
   {
@@ -301,9 +320,10 @@ const productMetadata = [
     id: 6,
     key: 'p6',
     category: 'MAKEUP',
-    image: imgMake1,
-    images: [imgMake1, imgMake2, imgMake3, imgMake4]
+    image: imgMake4,
+    images: [imgMake4, imgMake6, imgMake3, imgMake1]
   },
+  
 
 
 
@@ -323,18 +343,12 @@ const productMetadata = [
   },
   {
     id: 13,
-    key: 'p12',
+    key: 'p13',
     category: 'FACIAL_CARE',
     image: imgSoap13,
     images: [imgSoap13, imgSoap13, imgSoap14, imgSoap15]
   },
-  {
-    id: 19,
-    key: 'p19',
-    category: 'FACIAL_CARE',
-    image: imgSoap16,
-    images: [imgSoap16, imgSoap16, imgSoap16, imgSoap16]
-  },
+ 
   {
     id: 20,
     key: 'p20',
@@ -351,18 +365,26 @@ const productMetadata = [
     images: [imgHair6, imgHair5, imgHair7, imgHair5]
   },
   {
-    id: 15,
-    key: 'p15',
-    category: 'HAIR_CARE',
-    image: imgHair8,
-    images: [imgHair8, imgHair9, imgHair10, imgHair9]
-  },
-  {
     id: 18,
     key: 'p18',
     category: 'HAIR_CARE',
     image: imgHair11,
     images: [imgHair11, imgHair11, imgHair11, imgHair11]
+  },
+  {
+    id: 15,
+    key: 'p15',
+    category: 'HAIR_CARE',
+    image: imgHair12,
+    images: [imgHair12, imgHair13, imgHair10, imgHair9]
+  },
+  
+  {
+    id: 24,
+    key: 'p24',
+    category: 'HAIR_CARE',
+    image: imgHair14,
+    images: [imgHair14, imgHair15, imgHair14, imgHair15]
   },
   {
     id: 4,
@@ -406,6 +428,21 @@ const productMetadata = [
     image: imgScrub19,
     images: [imgScrub19, imgScrub19,imgScrub19, imgScrub19]
   },
+  {
+    id: 23,
+    key: 'p23',
+    category: 'PERSONAL_CARE',
+    image: imgScrub20,
+    images: [imgScrub20, imgScrub21,imgScrub22, imgScrub20]
+  },
+  {
+    id: 25,
+    key: 'p25',
+    category: 'PERSONAL_CARE',
+    image: imgScrub24,
+    images: [imgScrub24, imgScrub23,imgScrub24, imgScrub23]
+  },
+
 
   {
     id: 10,
@@ -421,6 +458,16 @@ const productMetadata = [
     image: imgSink4,
     images: [imgSink2, imgSink2, imgSink2, imgSink4]
   },
+
+  {
+    id: 22,
+    key: 'p22',
+    category: 'MAKEUP',
+    image: imgMake2,
+    images: [imgMake2, imgMake5, imgMake3, imgMake4]
+  },
+  
+
 ];
 
 // Computed translation data dynamic parsing to bypass AST nodes
