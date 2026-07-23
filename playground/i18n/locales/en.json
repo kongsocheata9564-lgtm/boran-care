@@ -183,12 +183,9 @@
     }
   ]
 },
-    
-
   
   
-  
-  "productPage": {
+"productPage": {
     "ourProducts": "Our Products",
     "viewDetails": "View Details",
     "benefits": "Benefits",
@@ -348,9 +345,9 @@
         ]
       },
       "p10": {
-        "name": "Anti Wrinkle Cream",
+        "name": "Sourina",
         "type": "SKIN CARE",
-        "badge": "Anti Wrinkle Cream",
+        "badge": "Sourina",
         "description": "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
         "benefits": [
           "Helps moisturize the skin.",
@@ -365,9 +362,9 @@
         ]
       },
       "p11": {
-        "name": "Anti Wrinkle Cream",
+        "name": "Sourina",
         "type": "SKIN CARE",
-        "badge": "Anti Wrinkle Cream",
+        "badge": "Sourina",
         "description": "BORAN CARE Anti-Wrinkle Cream is designed to help nourish and moisturize the skin while supporting a smoother-looking complexion. The lightweight formula is suitable for daily skincare routines and reflects the company's focus on combining science with natural ingredients.",
         "benefits": [
           "Helps moisturize the skin.",

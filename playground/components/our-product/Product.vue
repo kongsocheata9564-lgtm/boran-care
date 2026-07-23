@@ -1,6 +1,6 @@
 <template>
   <div class="font-inter min-h-screen text-[#2C3E2B] px-4 sm:px-32">
-    <main class="max-w-6xl mx-auto pt-8 sm:pt-8 ">
+    <main class="max-w-6xl mx-auto pt-8 sm:pt-8 pb-8 sm:pb-12">
       <h2 class="font-oswald text-center text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-wider mb-8">
         {{ t('productPage.ourProducts') }}
       </h2>
@@ -97,13 +97,13 @@
             </div>
 
             <div class="flex flex-col h-full justify-start pt-2">
-              <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="mb-2">
+                <span class="font-oswald inline-block bg-[#AC8544] text-white text-[14px] font-normal uppercase tracking-wider px-3 py-1 rounded-lg mb-3">
+                  {{ selectedProduct.type }}
+                </span>
                 <h2 class="font-oswald text-[20px] sm:text-[24px] text-[#AC8544] font-normal tracking-wider">
                   {{ selectedProduct.name }}
                 </h2>
-                <span class="font-oswald shrink-0 inline-block bg-[#AC8544] text-white text-[14px] font-normal uppercase tracking-wider px-3 py-1 rounded-full">
-                  {{ selectedProduct.type }}
-                </span>
               </div>
 
               <p class="font-oswald text-[#145A3A] pt-4 text-[16px] leading-relaxed tracking-wide">
