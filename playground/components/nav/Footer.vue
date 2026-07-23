@@ -289,13 +289,13 @@ const goTo = async (item) => {
       py-12 sm:py-14
       grid
       grid-cols-1
-      sm:grid-cols-2
+      sm:grid-cols-3
       lg:grid-cols-5
       gap-y-10
       gap-x-8"
     >
       <!-- Logo -->
-      <div class="flex items-start justify-center sm:justify-start lg:justify-start pb-4 sm:pb-0">
+      <div class="col-span-1 sm:col-span-3 lg:col-span-1 flex items-center justify-center sm:justify-center lg:justify-start pb-4 sm:pb-6 lg:pb-0">
         <img
           src="assets/images/boran_care_logo-removebg-preview.png"
           alt="Boran Care"
@@ -304,7 +304,7 @@ const goTo = async (item) => {
       </div>
 
       <!-- Quick Links -->
-      <div class="text-center sm:text-left">
+      <div class="col-span-1 text-center sm:text-left">
         <h3 class="uppercase tracking-widest text-[18px] sm:text-[20px] text-white mb-4">
           {{ t('footer.quickLinks') }}
         </h3>
@@ -325,7 +325,7 @@ const goTo = async (item) => {
       </div>
 
       <!-- Products -->
-      <div class="text-center sm:text-left">
+      <div class="col-span-1 text-center sm:text-left">
         <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.products') }}
         </h3>
@@ -346,7 +346,7 @@ const goTo = async (item) => {
       </div>
 
       <!-- About -->
-      <div class="text-center lg:text-left">
+      <div class="col-span-1 text-center lg:text-left">
         <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.aboutUs') }}
         </h3>
@@ -367,7 +367,7 @@ const goTo = async (item) => {
       </div>
 
       <!-- Social -->
-      <div class="text-center">
+      <div class="col-span-1 sm:col-span-3 lg:col-span-1 text-center">
         <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.followUs') }}
         </h3>
