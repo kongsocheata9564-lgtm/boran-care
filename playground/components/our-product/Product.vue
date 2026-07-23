@@ -24,7 +24,7 @@
         <div
           v-for="product in filteredProducts"
           :key="product.id"
-          class="group relative bg-white rounded-xl border border-[#EADFC8] overflow-hidden flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(172,133,68,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(172,133,68,0.18)] hover:border-[#AC8544] active:translate-y-0 active:shadow-sm tap-transparent"
+          class="group relative bg-white rounded-xl border border-[#AC8544] overflow-hidden flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(172,133,68,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(172,133,68,0.18)] hover:border-[#AC8544] active:translate-y-0 active:shadow-sm tap-transparent"
           @click="openProduct(product)"
         >
           <div class="relative aspect-[4/3.7] bg-[#F3F1ED] overflow-hidden rounded-b-xl ">
@@ -38,7 +38,7 @@
               <h3 class="font-oswald text-base sm:text-lg text-[#AC8544] font-normal tracking-wide leading-snug">
                 {{ product.badge }}
               </h3>
-              <p class="font-oswald text-sm text-[#AC8544] tracking-wide shrink-0 px-3 py-1.5 rounded-lg border border-[#AC8544]/40 bg-[#FAF6EC]/0">
+              <p class="font-oswald text-sm text-[#AC8544] tracking-wide shrink-0 px-3 py-1.5 rounded-lg border border-[#AC8544]/70 bg-[#FAF6EC]/0">
                 {{ product.type }}
               </p>
             </div>
