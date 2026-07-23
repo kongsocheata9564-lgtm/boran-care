@@ -181,13 +181,16 @@ const goTo = async (item) => {
     class="sm:hidden w-full bg-[#AC8544] border-t border-[#C9A86A]"
     style="font-family:'Oswald',sans-serif"
   >
-    <div class="max-w-[480px] mx-auto px-6 pt-10 pb-6">
+    <div
+      class="w-full pt-10 pb-6"
+      style="padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem);"
+    >
 
       <div class="flex justify-center py-3">
         <img
           src="assets/images/boran_care_logo-removebg-preview.png"
           alt="Boran Care"
-          class="w-[150px] object-contain"
+          class="w-[130px] object-contain"
         />
       </div>
 
@@ -265,7 +268,10 @@ const goTo = async (item) => {
     </div>
 
     <div class="border-t border-[#C9A86A]">
-      <div class="max-w-[480px] mx-auto px-6 py-4 text-center text-white/85 text-[12px] tracking-wide space-y-1">
+      <div
+        class="w-full py-4 text-center text-white/85 text-[12px] tracking-wide space-y-1"
+        style="padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem);"
+      >
         <div>{{ t('footer.copyright') }}</div>
         <div class="flex justify-center gap-2">
           <span class="text-white">{{ t('footer.privacy') }}</span>
@@ -284,8 +290,7 @@ const goTo = async (item) => {
     style="font-family:'Oswald',sans-serif"
   >
     <div
-      class="max-w-[1280px] mx-auto
-      px-5 sm:px-8 lg:px-10
+      class="w-full
       py-12 sm:py-14
       grid
       grid-cols-1
@@ -293,13 +298,14 @@ const goTo = async (item) => {
       lg:grid-cols-5
       gap-y-10
       gap-x-8"
+      style="padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem);"
     >
       <!-- Logo -->
       <div class="col-span-1 flex items-start justify-center sm:justify-start pb-4 sm:pb-0">
         <img
           src="assets/images/boran_care_logo-removebg-preview.png"
           alt="Boran Care"
-          class="w-[140px] sm:w-[165px] lg:w-[180px] object-contain"
+          class="w-[120px] sm:w-[130px] lg:w-[140px] object-contain"
         />
       </div>
 
@@ -419,8 +425,7 @@ const goTo = async (item) => {
     <!-- Bottom -->
     <div class="bg-[#AC8544] border">
       <div
-        class="max-w-[1280px] mx-auto
-        px-5 sm:px-8
+        class="w-full
         py-5
         flex flex-col
         md:flex-row
@@ -433,6 +438,7 @@ const goTo = async (item) => {
         text-[13px]
         sm:text-[14px]
         tracking-wide"
+        style="padding-left: clamp(1rem, 4vw, 3rem); padding-right: clamp(1rem, 4vw, 3rem);"
       >
         <div>{{ t('footer.copyright') }}</div>
         <div class="flex flex-wrap justify-center gap-2">
