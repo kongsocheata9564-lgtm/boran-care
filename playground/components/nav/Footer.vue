@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, nextTick } from "vue";
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
@@ -82,7 +82,7 @@ const mobileSections = [
     name: "quickLinks",
     labelKey: "footer.quickLinks",
     items: quickLinks,
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12a3 3 0 0 1 3-3h3a3 3 0 1 1 0 6h-1"/><path d="M15 12a3 3 0 0 1-3 3H9a3 3 0 1 1 0-6h1"/></svg>`
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 15 15 9"/><path d="M10.5 6.5 12 5a3.5 3.5 0 0 1 5 5l-1.5 1.5"/><path d="M13.5 17.5 12 19a3.5 3.5 0 0 1-5-5l1.5-1.5"/></svg>`
   },
   {
     name: "products",
@@ -116,7 +116,7 @@ const socialLinks = [
   },
   {
     name: "Telegram",
-    url: "https://telegram.org/",
+    url: "https://t.me/ChanthaSok",
     icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.5 18 20c-.3 1.2-1 1.5-2 .9l-5.5-4.1-2.7 2.6c-.3.3-.6.6-1.2.6l.4-5.6 10.2-9.2c.5-.4-.1-.7-.7-.3L3.7 12.8.2 11.7c-1.2-.4-1.2-1.2.3-1.8L20 2.7c.9-.3 1.7.2 1.5.8z"/></svg>`
   },
   {
@@ -197,7 +197,7 @@ const goTo = async (item) => {
         <div v-for="section in mobileSections" :key="section.name" class="py-1">
           <button
             @click="toggleSection(section.name)"
-            class="w-full flex items-center justify-between py-3 text-left"
+            class="w-full flex items-center justify-between py-2 text-left"
           >
             <span class="flex items-center gap-3 text-[15px] text-white tracking-widest">
               <span class="w-5 h-5 shrink-0 text-white" v-html="section.icon"></span>
@@ -268,9 +268,9 @@ const goTo = async (item) => {
       <div class="max-w-[480px] mx-auto px-6 py-4 text-center text-white/85 text-[12px] tracking-wide space-y-1">
         <div>{{ t('footer.copyright') }}</div>
         <div class="flex justify-center gap-2">
-          <button @click="goTo('/privacy')" class="hover:underline text-white">{{ t('footer.privacy') }}</button>
+          <span class="text-white">{{ t('footer.privacy') }}</span>
           <span>|</span>
-          <button @click="goTo('/terms')" class="hover:underline text-white">{{ t('footer.terms') }}</button>
+          <span class="text-white">{{ t('footer.terms') }}</span>
         </div>
       </div>
     </div>
@@ -436,9 +436,9 @@ const goTo = async (item) => {
       >
         <div>{{ t('footer.copyright') }}</div>
         <div class="flex flex-wrap justify-center gap-2">
-          <button @click="goTo('/privacy')" class="hover:underline">{{ t('footer.privacy') }}</button>
+          <span>{{ t('footer.privacy') }}</span>
           <span>|</span>
-          <button @click="goTo('/terms')" class="hover:underline">{{ t('footer.terms') }}</button>
+          <span>{{ t('footer.terms') }}</span>
         </div>
       </div>
     </div>

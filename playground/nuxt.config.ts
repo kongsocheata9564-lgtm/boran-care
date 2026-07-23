@@ -10,9 +10,22 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2025-06-30',
 
+  app: {
+    head: {
+      title: 'Boran Care',
+      link: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/boran-care-logo.png'
+        }
+      ]
+    }
+  },
+
   runtimeConfig: {
     public: {
-      web3formsKey: 'e5d9ca62-cfb2-4eed-b7c8-ddfd488f3e7d'
+      web3formsKey: 'e5f39057-cb42-4d40-817b-2862de4a0f18'
     }
   },
 

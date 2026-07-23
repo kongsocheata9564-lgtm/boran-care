@@ -446,7 +446,7 @@ onUnmounted(() => {
                 mobileProductOpen = !mobileProductOpen;
                 mobileAboutOpen = false;
               "
-              class="nav-font w-full flex items-center justify-between py-1 text-white uppercase tracking-widest active:text-[#f5dfb5] transition-colors"
+              class="nav-font w-full flex items-center justify-between py-2 text-white uppercase tracking-widest active:text-[#f5dfb5] transition-colors"
             >
               <span
                 class="relative inline-block leading-tight
@@ -483,7 +483,7 @@ onUnmounted(() => {
                 mobileAboutOpen = !mobileAboutOpen;
                 mobileProductOpen = false;
               "
-              class="nav-font w-full flex items-center justify-between py-1 text-white uppercase tracking-widest active:text-[#f5dfb5] transition-colors"
+              class="nav-font w-full flex items-center justify-between py-2 text-white uppercase tracking-widest active:text-[#f5dfb5] transition-colors"
             >
               <span
                 class="relative inline-block leading-tight
@@ -517,7 +517,7 @@ onUnmounted(() => {
             <NuxtLink
               :to="localePath('/contact-us')"
               @click="mobileMenu = false"
-              class="nav-font relative inline-block py-1 leading-tight text-white uppercase tracking-widest hover:text-[#f5dfb5] active:text-[#f5dfb5] transition-colors
+              class="nav-font relative inline-block py-2 leading-tight text-white uppercase tracking-widest hover:text-[#f5dfb5] active:text-[#f5dfb5] transition-colors
                      after:content-[''] after:absolute after:left-0 after:-bottom-px
                      after:h-[2px] after:bg-white after:transition-all after:duration-300"
               :class="isContactActive ? 'after:w-full' : 'after:w-0'"

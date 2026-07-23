@@ -183,9 +183,14 @@ async function handleSubmit() {
     const res = await $fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: {
+        // Pulls the new key from nuxt.config.ts
         access_key: config.public.web3formsKey,
         name: `${form.firstName} ${form.lastName}`.trim(),
         email: form.email,
+        // Added replyto so when you hit reply in your inbox, it goes to the customer
+        replyto: form.email,
+        // Added from_name so your inbox shows it's from Boran Care Website
+        from_name: 'Boran Care Website',
         phone: form.phone,
         subject: form.topic ? `New Contact Topic: ${form.topic}` : 'New Contact Message',
         message: form.message,
