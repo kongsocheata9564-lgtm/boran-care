@@ -37,7 +37,7 @@
             <span class="font-oswald text-smgit  text-[#AC8544] font-normal uppercase tracking-wider inline-block mb-1.5">
               {{ product.type }}
             </span>
-            <div class="w-6 h-0.5 bg-[#AC8544]/80 mb-2.5"></div>
+            <div class="w-6 h-0.5 bg-[#AC8544]/80 mb-2"></div>
 
             <h3 class="font-oswald  text-xl sm:text-2xl text-[#145A3A] tracking-wider font-normal leading-snug mb-5">
               {{ product.badge }}
@@ -46,7 +46,7 @@
             <div class="flex items-center justify-between">
               <span class="font-oswald text-base font-normal text-[#AC8544] tracking-wider   transition-colors group-hover:text-[#8C6A32] group-hover:border-[#8C6A32]">
                 {{ t('productPage.viewDetails') }}
-                <div class="w-17 h-0.5 bg-[#AC8544]/80 mb-2.5"></div>
+                <div class="w-17 h-0.5 bg-[#AC8544]/80 mt-1 mb-2"></div>
 
               </span>
               
