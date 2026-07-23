@@ -385,7 +385,7 @@ const goTo = async (item) => {
     </div>
 
     <!-- Bottom -->
-    <div class="bg-[#AC8544] border">
+    <div class="bg-[#AC8544] border-t border-[#E8DFC8]">
       <div
         class="w-full
         py-5
