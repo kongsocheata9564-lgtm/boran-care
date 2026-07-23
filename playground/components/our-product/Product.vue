@@ -34,7 +34,7 @@
           </div>
 
           <div class="relative px-5 pb-4 pt-4">
-            <span class="font-oswald text-xs text-[#AC8544] font-normal uppercase tracking-wider inline-block mb-1.5">
+            <span class="font-oswald text-smgit  text-[#AC8544] font-normal uppercase tracking-wider inline-block mb-1.5">
               {{ product.type }}
             </span>
             <div class="w-6 h-0.5 bg-[#AC8544]/80 mb-2.5"></div>
