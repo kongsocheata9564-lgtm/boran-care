@@ -60,42 +60,34 @@ const goVideo = () => {
     </div>
 
     <!-- Media Grid -->
-    <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div
-        v-for="(item, index) in mediaItems"
-        :key="index"
-        class="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
-      >
-        <div class="relative h-[300px] overflow-hidden">
-          <!-- Video -->
-          <video
-            v-if="item.type === 'video'"
-            :src="item.image"
-            controls
-            class="w-full h-full object-cover"
-          ></video>
+  v-for="(item, index) in mediaItems"
+  :key="index"
+  class="bg-white rounded-xl border border-[#AC8544] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+>
+  <div class="relative h-[300px] overflow-hidden">
+    <img
+      v-if="item.type !== 'video'"
+      :src="item.image"
+      :alt="item.title"
+      class="w-full h-full object-cover hover:scale-105 transition duration-500"
+    />
 
-          <!-- Image -->
-          <img
-            v-else
-            :src="item.image"
-            :alt="item.title"
-            class="w-full h-full object-cover hover:scale-105 transition duration-500"
-          />
+    <video
+      v-else
+      :src="item.image"
+      controls
+      class="w-full h-full object-cover"
+    ></video>
 
-          <!-- Bottom Overlay -->
-          <div class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2">
-            <!-- <div class="flex items-center gap-2 text-xs opacity-95">
-              <CalendarDays :size="14"/>
-              <span>{{ t(item.date) }}</span>
-            </div> -->
-
-            <h3 class="mt-1 text-xl tracking-wider">
-              {{ t(item.title) }}
-            </h3>
-          </div>
-        </div>
-      </div>
+    <div class="absolute bottom-0 left-0 w-full bg-white text-white px-5 py-2">
+      <h3 class=" text-xl tracking-wider text-[#AC8544]">
+        {{ t(item.title) }}
+      </h3>
+    </div>
+  </div>
+</div>
     </div>
   </section>
 
