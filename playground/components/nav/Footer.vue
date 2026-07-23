@@ -82,7 +82,7 @@ const mobileSections = [
     name: "quickLinks",
     labelKey: "footer.quickLinks",
     items: quickLinks,
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 15 15 9"/><path d="M10.5 6.5 12 5a3.5 3.5 0 0 1 5 5l-1.5 1.5"/><path d="M13.5 17.5 12 19a3.5 3.5 0 0 1-5-5l1.5-1.5"/></svg>`
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a3.5 3.5 0 0 0 5 3l3-3a3.5 3.5 0 0 0-5-5l-1 1"/><path d="M15 12a3.5 3.5 0 0 0-5-3l-3 3a3.5 3.5 0 0 0 5 5l1-1"/></svg>`
   },
   {
     name: "products",
