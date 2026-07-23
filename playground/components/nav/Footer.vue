@@ -295,7 +295,7 @@ const goTo = async (item) => {
       gap-x-8"
     >
       <!-- Logo -->
-      <div class="col-span-1 sm:col-span-3 lg:col-span-1 flex items-center justify-center sm:justify-center lg:justify-start pb-4 sm:pb-6 lg:pb-0">
+      <div class="col-span-1 flex items-start justify-center sm:justify-start pb-4 sm:pb-0">
         <img
           src="assets/images/boran_care_logo-removebg-preview.png"
           alt="Boran Care"
