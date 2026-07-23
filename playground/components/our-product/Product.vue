@@ -1,6 +1,6 @@
 <template>
   <div class="font-inter min-h-screen text-[#2C3E2B] px-4 sm:px-32">
-    <main class="max-w-6xl mx-auto pt-8 sm:pt-8 ">
+    <main class="max-w-6xl mx-auto pt-8 sm:pt-8  pb-8 sm:pb-12">
       <h2 class="font-oswald text-center text-3xl sm:text-4xl text-[#AC8544] uppercase tracking-wider mb-8">
         {{ t('productPage.ourProducts') }}
       </h2>
