@@ -27,31 +27,29 @@
           class="group relative bg-white rounded-xl border border-[#AC8544] overflow-hidden flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(172,133,68,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(172,133,68,0.18)] hover:border-[#AC8544] active:translate-y-0 active:shadow-sm tap-transparent"
           @click="openProduct(product)"
         >
-          <div class="relative aspect-[4/3.7] bg-[#F3F1ED] overflow-hidden rounded-b-xl ">
+          <div class="relative aspect-[4/3.7] bg-[#F3F1ED] overflow-hidden  ">
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
             <span v-else class="font-oswald text-xs text-gray-400 flex items-center justify-center w-full h-full">{{ t('productPage.noImage') }}</span>
             <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
 
-          <div class="relative px-5 pb-3.5 pt-3.5">
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <h3 class="font-oswald text-base sm:text-lg text-[#AC8544] font-normal tracking-wide leading-snug">
-                {{ product.badge }}
-              </h3>
-              <p class="font-oswald text-sm text-[#AC8544] tracking-wide shrink-0 px-3 py-1.5 rounded-lg border border-[#AC8544]/70 bg-[#FAF6EC]/0">
-                {{ product.type }}
-              </p>
-            </div>
+          <div class="relative px-5 pb-4 pt-4">
+            <span class="font-oswald text-xs text-[#AC8544] font-normal uppercase tracking-wider inline-block mb-1.5">
+              {{ product.type }}
+            </span>
+            <div class="w-6 h-0.5 bg-[#AC8544]/80 mb-2.5"></div>
+
+            <h3 class="font-oswald  text-xl sm:text-2xl text-[#145A3A] tracking-wider font-normal leading-snug mb-5">
+              {{ product.badge }}
+            </h3>
 
             <div class="flex items-center justify-between">
-              <span class="font-oswald text-[15px] font-normal text-[#145A3A] tracking-wide transition-colors group-hover:text-[#AC8544]">
+              <span class="font-oswald text-base font-normal text-[#AC8544] tracking-wider   transition-colors group-hover:text-[#8C6A32] group-hover:border-[#8C6A32]">
                 {{ t('productPage.viewDetails') }}
+                <div class="w-17 h-0.5 bg-[#AC8544]/80 mb-2.5"></div>
+
               </span>
-             <span class="w-7 h-7 rounded-full border border-[#145A3A] group-hover:border-[#AC8544] flex items-center justify-center text-[#145A3A] transition-all duration-300 group-hover:bg-[#AC8544] group-hover:text-white group-hover:translate-x-1">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </span>
+              
             </div>
           </div>
         </div>
