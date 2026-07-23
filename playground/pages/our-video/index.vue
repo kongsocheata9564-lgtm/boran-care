@@ -64,29 +64,21 @@ const goMedia = () => {
       <div
         v-for="(item, index) in videoItems"
         :key="index"
-        class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+        class="bg-white rounded-xl border border-[#AC8544] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
       >
-        <div class="relative h-[300px] overflow-hidden border border-[#AC8544] rounded-xl">
+        <div class="relative h-[300px] overflow-hidden">
           <!-- Video -->
           <video
             :src="item.video"
             controls
             class="w-full h-full object-cover"
           ></video>
+        </div>
 
-          <!-- Play Icon -->
-
-          <!-- Bottom Overlay -->
-          <div class="absolute bottom-0 left-0 w-full bg-white text-white px-5 py-2">
-            <!-- <div class="flex items-center gap-2 text-xs opacity-95">
-              <CalendarDays :size="14"/>
-              <span>{{ t(item.date) }}</span>
-            </div> -->
-
-            <h3 class=" text-xl tracking-wider text-[#AC8544]">
-              {{ t(item.title) }}
-            </h3>
-          </div>
+        <div class="px-5 py-4">
+          <h3 class="text-xl tracking-wider text-[#AC8544]">
+            {{ t(item.title) }}
+          </h3>
         </div>
       </div>
     </div>

@@ -62,32 +62,32 @@ const goVideo = () => {
     <!-- Media Grid -->
     <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div
-  v-for="(item, index) in mediaItems"
-  :key="index"
-  class="bg-white rounded-xl border border-[#AC8544] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
->
-  <div class="relative h-[300px] overflow-hidden">
-    <img
-      v-if="item.type !== 'video'"
-      :src="item.image"
-      :alt="item.title"
-      class="w-full h-full object-cover hover:scale-105 transition duration-500"
-    />
+        v-for="(item, index) in mediaItems"
+        :key="index"
+        class="bg-white rounded-xl border border-[#AC8544] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+      >
+        <div class="relative h-[300px] overflow-hidden">
+          <img
+            v-if="item.type !== 'video'"
+            :src="item.image"
+            :alt="item.title"
+            class="w-full h-full object-cover hover:scale-105 transition duration-500"
+          />
 
-    <video
-      v-else
-      :src="item.image"
-      controls
-      class="w-full h-full object-cover"
-    ></video>
+          <video
+            v-else
+            :src="item.image"
+            controls
+            class="w-full h-full object-cover"
+          ></video>
+        </div>
 
-    <div class="absolute bottom-0 left-0 w-full bg-white text-white px-5 py-2">
-      <h3 class=" text-xl tracking-wider text-[#AC8544]">
-        {{ t(item.title) }}
-      </h3>
-    </div>
-  </div>
-</div>
+        <div class="px-5 py-4">
+          <h3 class="text-xl tracking-wider text-[#AC8544]">
+            {{ t(item.title) }}
+          </h3>
+        </div>
+      </div>
     </div>
   </section>
 
