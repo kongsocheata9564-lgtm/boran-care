@@ -125,8 +125,6 @@ const socialLinks = [
     icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V8.9h3.42v1.58h.05c.48-.91 1.65-1.86 3.39-1.86 3.63 0 4.3 2.39 4.3 5.5v6.33zM5.34 7.32a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V8.9h3.56v11.55zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>`
   }
 ];
-const socialLinksTopRow = computed(() => socialLinks.slice(0, 2));
-const socialLinksBottomRow = computed(() => socialLinks.slice(2, 5));
 
 // Helper function to check if the current item is active
 const isActive = (item) => {
@@ -233,23 +231,9 @@ const goTo = async (item) => {
           {{ t('footer.followUs') }}
         </h3>
 
-        <div class="flex justify-center gap-3 mb-3">
-          <button
-            v-for="social in socialLinksTopRow"
-            :key="social.name"
-            @click="openLink(social.url)"
-            class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center
-              bg-transparent border border-white text-white
-              hover:bg-white hover:text-[#AC8544]
-              hover:-translate-y-1 hover:scale-110
-              transition-all duration-300"
-          >
-            <span class="w-5 h-5" v-html="social.icon"></span>
-          </button>
-        </div>
         <div class="flex justify-center gap-3">
           <button
-            v-for="social in socialLinksBottomRow"
+            v-for="social in socialLinks"
             :key="social.name"
             @click="openLink(social.url)"
             class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center
@@ -373,35 +357,13 @@ const goTo = async (item) => {
       </div>
 
       <!-- Social -->
-      <div class="col-span-1 sm:col-span-3 lg:col-span-1 text-center">
+      <div class="col-span-1 sm:col-span-3 lg:col-span-1 text-center lg:text-left">
         <h3 class="uppercase tracking-widest text-[20px] text-white mb-3">
           {{ t('footer.followUs') }}
         </h3>
-        <!-- Row 1: 2 icons, centered -->
-        <div class="flex justify-center gap-3 mb-3">
+        <div class="flex justify-center lg:justify-start gap-3">
           <button
-            v-for="social in socialLinksTopRow"
-            :key="social.name"
-            @click="openLink(social.url)"
-            class="w-9 h-9 shrink-0 rounded-full
-              flex items-center justify-center
-              bg-[#F8F1E3]
-              text-[#B88A33]
-              hover:bg-[#AC8544]
-              hover:text-white
-              hover:-translate-y-1
-              hover:scale-110
-              hover:shadow-lg
-              hover:shadow-[#B88A33]/30
-              transition-all duration-300"
-          >
-            <span class="w-5 h-5" v-html="social.icon"></span>
-          </button>
-        </div>
-        <!-- Row 2: 3 icons, centered -->
-        <div class="flex justify-center gap-3">
-          <button
-            v-for="social in socialLinksBottomRow"
+            v-for="social in socialLinks"
             :key="social.name"
             @click="openLink(social.url)"
             class="w-9 h-9 shrink-0 rounded-full
