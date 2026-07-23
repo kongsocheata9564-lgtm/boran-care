@@ -35,7 +35,7 @@
 
           <div class="relative px-5 pb-3.5 pt-3.5">
             <div class="flex items-center justify-between gap-2 mb-3">
-              <h3 class="font-oswald text-base sm:text-lg text-[#145A3A] font-normal tracking-wide leading-snug">
+              <h3 class="font-oswald text-base sm:text-lg text-[#AC8544] font-normal tracking-wide leading-snug">
                 {{ product.badge }}
               </h3>
               <p class="font-oswald text-sm text-[#AC8544] tracking-wide shrink-0 px-3 py-1.5 rounded-lg border border-[#AC8544]/40 bg-[#FAF6EC]/0">
@@ -44,10 +44,10 @@
             </div>
 
             <div class="flex items-center justify-between">
-              <span class="font-oswald text-base font-normal text-[#AC8544] uppercase tracking-wide transition-colors group-hover:text-[#8C7654]">
+              <span class="font-oswald text-[15px] font-normal text-[#145A3A] tracking-wide transition-colors group-hover:text-[#AC8544]">
                 {{ t('productPage.viewDetails') }}
               </span>
-              <span class="w-7 h-7 rounded-full border border-[#AC8544] flex items-center justify-center text-[#AC8544] transition-all duration-300 group-hover:bg-[#AC8544] group-hover:text-white group-hover:translate-x-1">
+             <span class="w-7 h-7 rounded-full border border-[#145A3A] group-hover:border-[#AC8544] flex items-center justify-center text-[#145A3A] transition-all duration-300 group-hover:bg-[#AC8544] group-hover:text-white group-hover:translate-x-1">
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
