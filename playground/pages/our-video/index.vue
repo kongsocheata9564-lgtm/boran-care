@@ -60,13 +60,13 @@ const goMedia = () => {
     </div>
 
     <!-- Video Grid -->
-    <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div
         v-for="(item, index) in videoItems"
         :key="index"
         class="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
       >
-        <div class="relative h-[300px] overflow-hidden">
+        <div class="relative h-[300px] overflow-hidden border border-[#AC8544] rounded-xl">
           <!-- Video -->
           <video
             :src="item.video"
@@ -77,13 +77,13 @@ const goMedia = () => {
           <!-- Play Icon -->
 
           <!-- Bottom Overlay -->
-          <div class="absolute bottom-0 left-0 w-full bg-[#A77B3C]/95 text-white px-5 py-2">
+          <div class="absolute bottom-0 left-0 w-full bg-white text-white px-5 py-2">
             <!-- <div class="flex items-center gap-2 text-xs opacity-95">
               <CalendarDays :size="14"/>
               <span>{{ t(item.date) }}</span>
             </div> -->
 
-            <h3 class="mt-1 text-xl tracking-wider">
+            <h3 class=" text-xl tracking-wider text-[#AC8544]">
               {{ t(item.title) }}
             </h3>
           </div>
