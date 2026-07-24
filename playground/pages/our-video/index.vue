@@ -15,7 +15,7 @@ const { t } = useI18n();
 const localePath = useLocalePath();
 
 const videoItems = [
-  { video: video1, date: "videoPage.date1", title: "videoPage.educational" },
+  { video: video1, date: "videoPage.date1", title: "videoPage.products" },
   
   
 ];
