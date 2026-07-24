@@ -1,11 +1,11 @@
 <template>
   <section
-    class="w-full bg-white py-10 sm:py-14 md:py-16 px-4 sm:px-6"
+    class="w-full bg-white py-10 sm:py-14 md:pt-10 px-4 sm:px-6"
     style="font-family: 'Inter', sans-serif"
   >
 
     <!-- Heading -->
-    <div class="max-w-3xl mx-auto text-center mb-8">
+    <div class="max-w-3xl mx-auto text-center pb-10">
       <h2
         class="text-3xl sm:text-4xl tracking-wider text-amber-600"
         style="font-family:'Oswald', sans-serif; color:#A57E45;"
@@ -13,7 +13,7 @@
         {{ $t('founder.heading') }}
       </h2>
 
-      <p class="font-oswald mt-3 text-teal-800/80 text-sm sm:text-base tracking-wide">
+      <p class="font-oswald mt-3 text-teal-800/80 text-[16px] tracking-wider sm:text-base tracking-wide">
         {{ $t('founder.subHeading') }}
       </p>
     </div>
@@ -69,7 +69,7 @@
 
 
           <p
-            class="font-oswald text-teal-800 text-sm sm:text-base leading-relaxed tracking-wide"
+            class="font-oswald text-teal-800 text-[16px] tracking-wider sm:text-base leading-relaxed tracking-wide"
           >
             {{ founder.quote }}
           </p>

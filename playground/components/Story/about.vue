@@ -11,7 +11,7 @@ style="font-family: 'Oswald', sans-serif"
 >
         {{ t('about.heading') }}
 </h2>
-<p class="font-oswald mt-3 sm:mt-4 text-[#145A3A] text-sm sm:text-base md:text-lg leading-relaxed">
+<p class="font-oswald mt-3 sm:mt-4 text-[#145A3A] text-[16px] tracking-wider  sm:text-base md:text-lg leading-relaxed">
         {{ t('about.intro') }}
 </p>
 </div>
@@ -21,7 +21,7 @@ style="font-family: 'Oswald', sans-serif"
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
 <!-- Left: text + icons -->
 <div class="order-2 md:order-1">
-<p class="font-oswald text-[#145A3A] text-sm sm:text-base leading-relaxed">
+<p class="font-oswald text-[#145A3A] text-[16px] tracking-wider sm:text-base leading-relaxed">
 <span class="font-oswald font-semibold">BORAN CARE ASIA</span>
             {{ t('about.description') }}
 </p>

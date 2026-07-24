@@ -1,17 +1,17 @@
 <template>
   <section
-    class="w-full bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-    style="font-family: 'Inter', sans-serif"
+    class="w-full bg-white  px-4 sm:px-6"
+    style="font-family: 'oswald', sans-serif"
   >
     <!-- ABOUT US Heading -->
-    <div class="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
+    <div class="max-w-3xl mx-auto pt-10 text-center mb-8 sm:mb-10">
       <h2
         class="text-3xl sm:text-4xl tracking-wider"
         style="font-family: 'Oswald', sans-serif; color: #A57E45"
       >
         {{ $t('csr.aboutHeading') }}
       </h2>
-      <p class="font-oswald mt-3 text-teal-800/80 text-sm sm:text-base leading-relaxed tracking-wide">
+      <p class="font-oswald mt-3 text-teal-800/80 text-[16px] tracking-wider sm:text-base leading-relaxed tracking-wide">
         {{ $t('csr.aboutDescription') }}
       </p>
     </div>
@@ -24,13 +24,13 @@
       >
         {{ $t('csr.heading') }}
       </h3>
-      <p class="font-oswald text-teal-800/80 text-sm sm:text-base leading-relaxed tracking-wide">
+      <p class="font-oswald text-teal-800/80 text-[16px] tracking-wider sm:text-base leading-relaxed tracking-wide">
         {{ $t('csr.description') }}
       </p>
     </div>
 
     <!-- Alternating Image/Text Rows -->
-   <div class="max-w-5xl mx-auto flex flex-col gap-10 sm:gap-14">
+   <div class="max-w-5xl mx-auto flex flex-col gap-10 sm:gap-14 pb-10 ">
   <div
     v-for="(item, index) in csrItems"
     :key="index"
@@ -51,10 +51,10 @@
 
     <!-- Text -->
     <div :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
-      <p class="text-teal-800 text-sm sm:text-base leading-relaxed mb-4">
+      <p class="text-teal-800 text-[16px] tracking-wider sm:text-base leading-relaxed mb-4">
         {{ item.text1 }}
       </p>
-      <p class="text-teal-800 text-sm sm:text-base leading-relaxed">
+      <p class="text-teal-800 text-[16px] tracking-wider sm:text-base leading-relaxed">
         {{ item.text2 }}
       </p>
     </div>

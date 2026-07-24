@@ -1,14 +1,14 @@
 <template>
-  <section class="bg-white py-16 px-4 sm:px-6 lg:px-8 font-sans" style="font-family: 'Inter', sans-serif;">
-    <div class="max-w-6xl mx-auto">
+  <section class="bg-white px-4 sm:px-6 lg:px-8 font-sans" style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-6xl mx-auto pb-10">
       <h1
-        class="text-center text-3xl sm:text-4xl font-normal mb-12 tracking-wider text-[#A57E45]"
+        class="text-center pt-10 text-3xl sm:text-4xl font-normal mb-12 tracking-wider text-[#A57E45]"
         style="font-family: 'Oswald', sans-serif;"
       >
         {{ $t('contact.title') }}
       </h1>
 
-      <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 items-start ">
         <!-- Form Card -->
         <div class="bg-white rounded-[18px] shadow-[0_12px_32px_rgba(74,50,34,0.08)] border border-[#f0e6d2] px-6 py-7 sm:px-9 sm:py-10">
           <form @submit.prevent="handleSubmit">
@@ -82,7 +82,7 @@
             <button
               type="submit"
               :disabled="status === 'sending'"
-              class="font-oswald inline-flex items-center gap-2.5 rounded-full bg-[#A57E45] px-8 py-3.5 text-white text-[0.95rem] font-semibold shadow-[0_8px_18px_rgba(165,126,69,0.3)] hover:bg-[#8d6a37] hover:shadow-[0_12px_28px_rgba(141,106,55,0.4)] hover:-translate-y-0.5 hover:scale-[1.05] active:translate-y-0 active:scale-[0.98] active:shadow-[0_4px_12px_rgba(141,106,55,0.3)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-[0_8px_18px_rgba(165,126,69,0.3)]"
+              class="font-oswald inline-flex items-center gap-2.5 rounded-full bg-[#A57E45] px-8 py-3.5 text-white text-[16px] tracking-wider font-semibold shadow-[0_8px_18px_rgba(165,126,69,0.3)] hover:bg-[#8d6a37] hover:shadow-[0_12px_28px_rgba(141,106,55,0.4)] hover:-translate-y-0.5 hover:scale-[1.05] active:translate-y-0 active:scale-[0.98] active:shadow-[0_4px_12px_rgba(141,106,55,0.3)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:hover:shadow-[0_8px_18px_rgba(165,126,69,0.3)]"
             >
               {{ status === 'sending'
                 ? $t('contact.sending')
@@ -113,7 +113,7 @@
               </span>
               <div>
                 <p class="font-oswald text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300 tracking-wide">{{ $t('contact.phone') }}</p>
-                <a href="tel:+85512973500" class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">+855 12 973 500</a>
+                <a href="tel:+85512973500" class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300 text-[16px] tracking-wider">+855 12 973 500</a>
               </div>
             </div>
 
@@ -126,7 +126,7 @@
               </span>
               <div>
                 <p class="font-oswald text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300 tracking-wide">{{ $t('contact.email') }}</p>
-                <a href="mailto:ceo@borancare.com" class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">ceo@borancare.com</a>
+                <a href="mailto:ceo@borancare.com" class="font-oswald text-[16px] tracking-wider font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300">ceo@borancare.com</a>
               </div>
             </div>
 
@@ -141,7 +141,7 @@
                 <p class="font-oswald text-[0.75rem] font-medium text-[#b6a88e] group-hover:text-[#A57E45] mb-0.5 transition-colors duration-300 tracking-wide">{{ $t('contact.location') }}</p>
 
                 <!-- whitespace-pre-line forces the text to break exactly where you put \n in your JSON file -->
-                <p class="font-oswald font-normal text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300 leading-snug whitespace-pre-line tracking-wide">
+                <p class="font-oswald font-normal  text-[16px] text-[#145A3A] group-hover:text-[#A57E45] transition-colors duration-300 leading-snug whitespace-pre-line tracking-wider">
                   {{ $t('contact.address') }}
                 </p>
               </div>

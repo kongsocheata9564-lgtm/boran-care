@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- ===================== VISION & MISSION ===================== -->
-    <section class="w-full bg-white py-16 md:py-20">
+    <section class="w-full bg-white ">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Heading -->
         <h2
-          class="font-oswald font-normal text-3xl sm:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
+          class="font-oswald font-normal text-3xl pt-10 sm:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
         >
            {{ $t('visionMission.visionSectionTitle') }}
         </h2>
@@ -23,13 +23,13 @@
 
             <!-- Title -->
             <h3
-              class="font-oswald text-lg md:text-xl tracking-wide text-[#a97c34] mb-3"
+              class="font-oswald text-lg md:text-xl tracking-wider text-[#a97c34] mb-3"
             >
               {{ item.title }}
             </h3>
 
             <!-- Description -->
-            <p class="font-oswald text-sm leading-relaxed tracking-wide text-emerald-900/90 max-w-[260px]">
+            <p class="font-oswald text-[16px] tracking-wider leading-relaxed  text-emerald-900/90 max-w-[260px]">
               {{ item.description }}
             </p>
           </div>
@@ -39,18 +39,18 @@
     </section>
 
     <!-- ===================== CORE VALUE ===================== -->
-    <section class="w-full bg-white py-16 md:py-20">
+    <section class="w-full bg-white ">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Heading -->
         <h2
-          class="font-oswald font-normal text-3xl sm:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
+          class="font-oswald font-normal pt-10 text-3xl sm:text-4xl tracking-wider text-center text-[#a97c34] mb-10 md:mb-14"
         >
           {{ $t('visionMission.coreValueSectionTitle') }}
         </h2>
 
         <!-- Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid grid-cols-1 pb-10 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <div
             v-for="(item, index) in coreValues"
             :key="index"
@@ -61,13 +61,13 @@
 
             <!-- Title -->
             <h3
-              class="font-oswald text-lg md:text-xl tracking-wide text-[#a97c34] mb-3"
+              class="font-oswald text-lg md:text-xl tracking-wider text-[#a97c34] mb-3"
             >
               {{ item.title }}
             </h3>
 
             <!-- Description -->
-            <p class="font-oswald text-sm leading-relaxed tracking-wide text-emerald-900/90 max-w-[260px]">
+            <p class="font-oswald text-[16px] tracking-wider leading-relaxed text-emerald-900/90 max-w-[260px]">
               {{ item.description }}
             </p>
           </div>
