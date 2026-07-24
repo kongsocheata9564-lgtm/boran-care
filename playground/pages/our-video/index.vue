@@ -16,11 +16,8 @@ const localePath = useLocalePath();
 
 const videoItems = [
   { video: video1, date: "videoPage.date1", title: "videoPage.educational" },
-  { video: video2, date: "videoPage.date1", title: "videoPage.educational" },
-  { video: video3, date: "videoPage.date1", title: "videoPage.educational" },
-  { video: video4, date: "videoPage.date1", title: "videoPage.educational" },
-  { video: video5, date: "videoPage.date1", title: "videoPage.educational" },
-  { video: video6, date: "videoPage.date1", title: "videoPage.educational" },
+  
+  
 ];
 
 const goMedia = () => {
@@ -60,28 +57,29 @@ const goMedia = () => {
     </div>
 
     <!-- Video Grid -->
-    <div class="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div
-        v-for="(item, index) in videoItems"
-        :key="index"
-        class="bg-white rounded-xl border border-[#AC8544] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-      >
-        <div class="relative h-[300px] overflow-hidden">
-          <!-- Video -->
-          <video
-            :src="item.video"
-            controls
-            class="w-full h-full object-cover"
-          ></video>
-        </div>
-
-        <div class="px-5 py-4">
-          <h3 class="text-xl tracking-wider text-[#AC8544]">
-            {{ t(item.title) }}
-          </h3>
-        </div>
-      </div>
+    <div
+  class="max-w-6xl mx-auto mt-14 flex justify-center"
+>
+  <div
+    v-for="(item, index) in videoItems"
+    :key="index"
+    class="w-full max-w-md bg-white rounded-xl border border-[#AC8544] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+  >
+    <div class="relative h-[300px] overflow-hidden">
+      <video
+        :src="item.video"
+        controls
+        class="w-full h-full object-cover"
+      ></video>
     </div>
+
+    <div class="px-5 py-4">
+      <h3 class="text-xl tracking-wider text-[#AC8544]">
+        {{ t(item.title) }}
+      </h3>
+    </div>
+  </div>
+</div>
   </section>
 
   <Footer />
