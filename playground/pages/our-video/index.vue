@@ -28,14 +28,14 @@ const goMedia = () => {
 <template>
   <Header />
 
-  <section class="min-h-screen bg-white pt-[110px] pb-20 px-5 md:px-10">
+  <section class="min-h-screen bg-white pt-10 pb-10 px-5 md:px-10">
     <!-- Title -->
     <div class="text-center max-w-3xl mx-auto">
       <h1 class="text-[#A47B3B] text-3xl sm:text-4xl tracking-wider">
         {{ t("videoPage.title") }}
       </h1>
 
-      <p class="mt-5 text-[#155B43] text-sm md:text-base leading-8 max-w-2xl mx-auto tracking-wide">
+      <p class="mt-5 text-[#155B43] text-[16px] md:text-base leading-8 max-w-2xl mx-auto tracking-wider">
         {{ t("videoPage.description") }}
       </p>
 
