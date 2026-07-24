@@ -27,7 +27,7 @@
           class="group relative bg-white rounded-xl border border-[#AC8544] overflow-hidden flex flex-col cursor-pointer shadow-[0_4px_20px_rgba(172,133,68,0.08)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(172,133,68,0.18)] hover:border-[#AC8544] active:translate-y-0 active:shadow-sm tap-transparent"
           @click="openProduct(product)"
         >
-          <div class="relative aspect-[4/3.7] bg-[#F3F1ED] overflow-hidden  ">
+          <div class="relative aspect-[4/3.5] bg-[#F3F1ED] overflow-hidden  ">
             <img v-if="product.image" :src="product.image" :alt="product.name" class="w-full h-full object-cover" />
             <span v-else class="font-oswald text-xs text-gray-400 flex items-center justify-center w-full h-full">{{ t('productPage.noImage') }}</span>
             <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -37,7 +37,7 @@
             <span class="font-oswald text-smgit  text-[#AC8544] font-normal uppercase tracking-wider inline-block mb-1.5">
               {{ product.type }}
             </span>
-            <div class="w-6 h-0.5 bg-[#AC8544]/80 mb-2"></div>
+            <div class="w-6 h-0.5 bg-[#AC8544]/80 mb-1"></div>
 
             <h3 class="font-oswald  text-xl sm:text-2xl text-[#145A3A] tracking-wider font-normal leading-snug mb-5">
               {{ product.badge }}
@@ -46,7 +46,7 @@
             <div class="flex items-center justify-between">
               <span class="font-oswald text-base font-normal text-[#AC8544] tracking-wider   transition-colors group-hover:text-[#8C6A32] group-hover:border-[#8C6A32]">
                 {{ t('productPage.viewDetails') }}
-                <div class="w-17 h-0.5 bg-[#AC8544]/80 mt-1 mb-2"></div>
+                <div class="w-17 h-0.5 bg-[#AC8544]/80 mt-1 mb-1"></div>
 
               </span>
               
