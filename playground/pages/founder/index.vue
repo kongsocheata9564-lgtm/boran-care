@@ -1,19 +1,19 @@
 <template>
   <section
-    class="w-full bg-white py-10 sm:py-14 md:py-16 px-4 sm:px-6"
+    class="w-full bg-white py-10 sm:py-14 md:pt-10 px-4 sm:px-6"
     style="font-family: 'Inter', sans-serif"
   >
 
     <!-- Heading -->
-    <div class="max-w-3xl mx-auto text-center mb-8">
+    <div class="max-w-3xl mx-auto text-center pb-10">
       <h2
-        class="text-3xl sm:text-4xl tracking-wide text-amber-600"
-        style="font-family:'Bebas Neue', sans-serif; color:#A57E45;"
+        class="text-3xl sm:text-4xl tracking-wider text-amber-600"
+        style="font-family:'Oswald', sans-serif; color:#A57E45;"
       >
         {{ $t('founder.heading') }}
       </h2>
 
-      <p class="mt-3 text-teal-800/80 text-sm sm:text-base">
+      <p class="font-oswald mt-3 text-teal-800/80 text-[16px] tracking-wider sm:text-base tracking-wide">
         {{ $t('founder.subHeading') }}
       </p>
     </div>
@@ -46,8 +46,8 @@
 
 
           <h3
-            class="mt-3 text-xl sm:text-2xl text-center tracking-[0.15em]"
-            style="font-family:'Bebas Neue', sans-serif; color:#A57E45;"
+            class="mt-3 text-xl sm:text-2xl text-center tracking-wider"
+            style="font-family:'Oswald', sans-serif; color:#A57E45;"
           >
             {{ founder.name }}
           </h3>
@@ -61,15 +61,15 @@
         >
 
           <h3
-            class="text-xl sm:text-2xl tracking-wide text-amber-600 mb-5"
-            style="font-family:'Bebas Neue', sans-serif; color:#A57E45;"
+            class="text-xl sm:text-2xl tracking-wider text-amber-600 mb-5"
+            style="font-family:'Oswald', sans-serif; color:#A57E45;"
           >
             {{ $t('founder.quoteTitle') }}
           </h3>
 
 
           <p
-            class="text-teal-800 text-sm sm:text-base leading-relaxed"
+            class="font-oswald text-teal-800 text-[16px] tracking-wider sm:text-base leading-relaxed tracking-wide"
           >
             {{ founder.quote }}
           </p>
@@ -97,5 +97,9 @@ const founder = computed(() => ({
 
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Inter:wght@400;500;600;700&display=swap');
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
 </style>

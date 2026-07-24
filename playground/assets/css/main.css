@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Oswald:wght@400;500;600;700&display=swap");
+
+/* Default font for the whole website */
+body {
+  font-family: "Oswald", "Battambang", sans-serif;
+}
+
+/* Make sure all common elements inherit the font */
+html,
+body,
+button,
+input,
+textarea,
+select,
+a,
+p,
+span,
+div,
+li {
+  font-family: inherit;
+}

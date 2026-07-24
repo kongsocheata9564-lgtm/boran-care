@@ -1,37 +1,36 @@
 <template>
   <section
-    class="w-full bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-    style="font-family: 'Inter', sans-serif"
+    class="w-full bg-white  px-4 sm:px-6"
+    style="font-family: 'oswald', sans-serif"
   >
     <!-- ABOUT US Heading -->
-    <div class="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
+    <div class="max-w-3xl mx-auto pt-10 text-center mb-8 sm:mb-10">
       <h2
-  class="text-3xl sm:text-4xl tracking-wide"
-  style="font-family: 'Bebas Neue', sans-serif; color: #A57E45"
->
- {{ $t('csr.aboutHeading') }}
-</h2>
-      <p class="mt-3 text-teal-800/80 text-sm sm:text-base leading-relaxed">
-       {{ $t('csr.aboutDescription') }}
+        class="text-3xl sm:text-4xl tracking-wider"
+        style="font-family: 'Oswald', sans-serif; color: #A57E45"
+      >
+        {{ $t('csr.aboutHeading') }}
+      </h2>
+      <p class="font-oswald mt-3 text-teal-800/80 text-[16px] tracking-wider sm:text-base leading-relaxed tracking-wide">
+        {{ $t('csr.aboutDescription') }}
       </p>
     </div>
 
     <!-- CSR Subheading -->
     <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
       <h3
-        class="text-3xl sm:text-3xl tracking-wide text-amber-600 mb-3"
-        style="font-family: 'Bebas Neue', sans-serif; color: #A57E45"
+        class="text-3xl sm:text-3xl tracking-wider text-amber-600 mb-3"
+        style="font-family: 'Oswald', sans-serif; color: #A57E45"
       >
-         {{ $t('csr.heading') }}
+        {{ $t('csr.heading') }}
       </h3>
-      <p class="text-teal-800/80 text-sm sm:text-base leading-relaxed">
-       
+      <p class="font-oswald text-teal-800/80 text-[16px] tracking-wider sm:text-base leading-relaxed tracking-wide">
         {{ $t('csr.description') }}
       </p>
     </div>
 
     <!-- Alternating Image/Text Rows -->
-   <div class="max-w-5xl mx-auto flex flex-col gap-10 sm:gap-14">
+   <div class="max-w-5xl mx-auto flex flex-col gap-10 sm:gap-14 pb-10 ">
   <div
     v-for="(item, index) in csrItems"
     :key="index"
@@ -52,10 +51,10 @@
 
     <!-- Text -->
     <div :class="index % 2 === 0 ? 'md:order-2' : 'md:order-1'">
-      <p class="text-teal-800 text-sm sm:text-base leading-relaxed mb-4">
+      <p class="text-teal-800 text-[16px] tracking-wider sm:text-base leading-relaxed mb-4">
         {{ item.text1 }}
       </p>
-      <p class="text-teal-800 text-sm sm:text-base leading-relaxed">
+      <p class="text-teal-800 text-[16px] tracking-wider sm:text-base leading-relaxed">
         {{ item.text2 }}
       </p>
     </div>
@@ -67,7 +66,7 @@
 <script setup>
 const { t } = useI18n()
 const csrText =
-  'Care & Share" event represents a local business giving back to the community by providing students with essential school supplies, educational materials, or care packages to support their learning and well-being.';
+'Care & Share" event represents a local business giving back to the community by providing students with essential school supplies, educational materials, or care packages to support their learning and well-being.';
 
 const csrItems = computed(() => [
   {
@@ -92,7 +91,11 @@ const csrItems = computed(() => [
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Inter:wght@400;500;600;700&display=swap');
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
 
 /* Custom Springy Bounce-In Zoom Animation */
 @keyframes bounceInZoom {
