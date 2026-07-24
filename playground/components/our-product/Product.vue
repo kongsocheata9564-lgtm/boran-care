@@ -104,7 +104,7 @@
                 </h2>
               </div>
 
-              <p class="font-oswald text-[#145A3A] pt-4 text-[16px] leading-relaxed tracking-wide">
+              <p class="font-oswald text-[#145A3A] pt-4 text-[16px] leading-relaxed tracking-wider">
                 {{ selectedProduct.description }}
               </p>
             </div>
@@ -117,7 +117,7 @@
                 <li
                   v-for="(benefit, i) in selectedProduct.benefits"
                   :key="i"
-                  class="font-oswald flex items-start gap-2.5 text-[16px] text-[#145A3A] tracking-wide"
+                  class="font-oswald flex items-start gap-2.5 text-[16px] text-[#145A3A] tracking-wider"
                 >
                   <span class="text-[#145A3A] text-[16px] mt-0.5">•</span>
                   <span>{{ benefit }}</span>
@@ -131,7 +131,7 @@
                 <li
                   v-for="(ing, i) in selectedProduct.ingredients"
                   :key="i"
-                  class="font-oswald flex items-start gap-2.5 text-[16px] text-[#145A3A] tracking-wide"
+                  class="font-oswald flex items-start gap-2.5 text-[16px] text-[#145A3A] tracking-wider"
                 >
                   <span class="text-[#145A3A] text-[16px] mt-0.5">•</span>
                   <span><strong class="font-normal text-[#145A3A]">{{ ing.name }}</strong> — {{ ing.desc }}</span>
