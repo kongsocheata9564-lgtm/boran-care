@@ -229,6 +229,11 @@ import imgScrub21 from '~/assets/images/b70.jpeg'
 import imgScrub22 from '~/assets/images/b71.jpeg'
 import imgScrub23 from '~/assets/images/b76.jpeg'
 import imgScrub24 from '~/assets/images/b77.jpeg'
+import imgScrub25 from '~/assets/images/b81.jpeg'
+import imgScrub26 from '~/assets/images/b82.jpeg'
+import imgScrub27 from '~/assets/images/b83.jpeg'
+import imgScrub28 from '~/assets/images/b85.jpeg'
+
 
 
 
@@ -391,6 +396,13 @@ const productMetadata = [
     image: imgScrub1,
     images: [imgScrub1, b16, b15, imgScrub1]
   },
+   {
+    id: 26,
+    key: 'p26',
+    category: 'PERSONAL_CARE',
+    image: imgScrub25,
+    images: [imgScrub25, imgScrub26,imgScrub27, imgScrub28]
+  },
   {
     id: 8,
     key: 'p8',
@@ -440,6 +452,7 @@ const productMetadata = [
     image: imgScrub24,
     images: [imgScrub24, imgScrub23,imgScrub24, imgScrub23]
   },
+  
 
 
   {
