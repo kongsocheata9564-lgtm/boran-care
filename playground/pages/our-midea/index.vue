@@ -16,11 +16,11 @@ const localePath = useLocalePath();
 
 const mediaItems = [
   { image: media1, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
-  { image: media2, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
-  { image: media3, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
-  { image: media4, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
-  { image: media5, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
-  { image: media6, type: "image", date: "mediaPage.date1", title: "mediaPage.educational" },
+  { image: media2, type: "image", date: "mediaPage.date1", title: "mediaPage.school" },
+  { image: media3, type: "image", date: "mediaPage.date1", title: "mediaPage.community" },
+  { image: media4, type: "image", date: "mediaPage.date1", title: "mediaPage.supporting" },
+  { image: media5, type: "image", date: "mediaPage.date1", title: "mediaPage.schools" },
+  { image: media6, type: "image", date: "mediaPage.date1", title: "mediaPage.communitys" },
 ];
 
 const goVideo = () => {
