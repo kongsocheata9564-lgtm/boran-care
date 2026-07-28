@@ -4,7 +4,17 @@ import { Search, ChevronDown, Menu, X, Globe } from "lucide-vue-next";
 
 import logo from "~/assets/images/boran_care_logo-removebg-preview.png";
 
-const { locale, setLocale, t, getLocaleMessage } = useI18n();
+// Import both locale dictionaries directly so search works regardless of
+// which locale is currently active. getLocaleMessage() only returns data
+// for locales that have already been lazy-loaded by @nuxtjs/i18n, which is
+// why Khmer search wasn't working before (Khmer messages weren't loaded).
+// Paths match langDir: 'locales/' in nuxt.config.ts.
+import enMessages from "~/i18n/locales/en.json";
+import kmMessages from "~/i18n/locales/km.json";
+
+const localeMessages = { en: enMessages, km: kmMessages };
+
+const { locale, setLocale, t } = useI18n();
 const router = useRouter();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
@@ -79,7 +89,7 @@ const translateAllLocales = (key) => {
     .map((loc) => {
       try {
         const parts = key.split(".");
-        let value = getLocaleMessage(loc);
+        let value = localeMessages[loc];
         for (const part of parts) value = value?.[part];
         return typeof value === "string" ? value : null;
       } catch {
@@ -89,13 +99,17 @@ const translateAllLocales = (key) => {
     .filter(Boolean);
 };
 
+// Extra short/partial keywords in both languages, on top of the full
+// translated labels already pulled in via translateAllLocales(). These are
+// sourced from the real header.* strings in km.json / en.json so partial
+// words (e.g. just "សក់" or just "hair") still match.
 const EXTRA_KEYWORDS = {
-  "header.facialCare": ["facial care", "facial"],
-  "header.hairCare": ["hair care", "hair"],
-  "header.skinCare": ["skin care", "skin"],
-  "header.personalCare": ["personal care", "personal"],
-  "header.makeup": ["makeup", "make up"],
-  "header.story": ["our story", "story"],
+  "header.facialCare": ["facial care", "facial", "ផ្ទៃមុខ", "មុខ"],
+  "header.hairCare": ["hair care", "hair", "សក់"],
+  "header.skinCare": ["skin care", "skin", "ស្បែក"],
+  "header.personalCare": ["personal care", "personal", "ខ្លួន", "ផ្ទាល់ខ្លួន"],
+  "header.makeup": ["makeup", "make up", "សម្អាង"],
+  "header.story": ["our story", "story", "ប្រវត្តិ"],
   "header.vision": [
     "vision",
     "mission",
@@ -103,12 +117,15 @@ const EXTRA_KEYWORDS = {
     "our vision",
     "core values",
     "mission core values",
+    "ចក្ខុវិស័យ",
+    "បេសកកម្ម",
+    "គុណតម្លៃ",
   ],
-  "header.founder": ["founder", "our founder"],
-  "header.csr": ["csr", "our csr"],
-  "header.media": ["media", "video", "our media", "media and video"],
-  "header.about": ["about", "about us"],
-  "header.contact": ["contact", "contact us"],
+  "header.founder": ["founder", "our founder", "ស្ថាបនិក"],
+  "header.csr": ["csr", "our csr", "ទំនួលខុសត្រូវសង្គម"],
+  "header.media": ["media", "video", "our media", "media and video", "ប្រព័ន្ធផ្សព្វផ្សាយ", "វីដេអូ"],
+  "header.about": ["about", "about us", "អំពី"],
+  "header.contact": ["contact", "contact us", "ទាក់ទង"],
 };
 
 const searchTargets = computed(() => {
