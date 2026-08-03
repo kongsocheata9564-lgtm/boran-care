@@ -410,13 +410,7 @@ const productMetadata = [
     image: imgScrub7,
     images: [imgScrub7, imgScrub6,imgScrub8, imgScrub5]
   },
-  {
-    id: 12,
-    key: 'p12',
-    category: 'PERSONAL_CARE',
-    image: imgScrub10,
-    images: [imgScrub10, imgScrub11,imgScrub9, imgScrub12]
-  },
+
   {
     id: 16,
     key: 'p16',
